@@ -1,0 +1,292 @@
+* {
+  transition: all 0.3s ease-in-out;
+}
+
+html {
+  font-size: 16px;
+  font-family: "Maison neue", sans-serif;
+  scroll-behavior: smooth;
+  color: #B63030;
+  background-image: url("/img/Gradient.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+body a {
+  text-decoration: none;
+  color: #B63030;
+}
+body .container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+body .container .insideContainer {
+  display: flex;
+  justify-content: center;
+  flex-flow: column nowrap;
+  align-items: left;
+  gap: 10px;
+}
+body .container .explore {
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+body .nav-bar ul {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 5px 0;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+body .nav-bar ul li {
+  border-radius: 50px;
+  padding: 4px 0;
+}
+body .nav-bar ul li a {
+  color: #B63030;
+  padding: 4px 20px;
+  border: 1px solid #B63030;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .nav-bar ul li a:hover {
+  background-color: #B63030;
+  color: white;
+}
+body .nav-bar ul li .current-page {
+  background-color: #B63030;
+  color: white;
+}
+body h1 {
+  font-family: "Adieu", sans-serif;
+  font-size: 48px;
+  margin: 5px 0;
+}
+body h2 {
+  font-family: "Adieu", sans-serif;
+  font-size: 36px;
+  margin: 5px 0;
+}
+body .always {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  font-size: 24px;
+  margin: 5px 0;
+  z-index: 1000;
+}
+body .always h1 {
+  font-size: 24px;
+}
+body .always .menu-toggle,
+body .always .menu-checkbox {
+  display: none;
+}
+body .burger {
+  display: none;
+}
+body p {
+  font-size: 16px;
+  max-width: 500px;
+  margin: 0 20px;
+  margin: 5px 0;
+}
+body .glass {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 22vw;
+  max-width: 400px;
+  height: auto;
+}
+body .glass ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+body .glass ul li {
+  border-radius: 10px;
+  padding: 0;
+  margin: 0;
+  width: auto;
+}
+body .glass ul li a {
+  color: #B63030;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+body .glass ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+body .glass ul li .current-zone {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+@media all and (max-width: 1100px) {
+  .explore {
+    display: none;
+  }
+  .glass {
+    display: hidden;
+    overflow: hidden;
+    visibility: hidden;
+  }
+  .glass * {
+    display: hidden;
+    overflow: hidden;
+    visibility: hidden;
+  }
+  .insideContainer {
+    margin: 0 20px;
+  }
+  .insideContainer p {
+    font-size: 20px;
+  }
+  .always {
+    display: flex;
+    align-items: center;
+    width: auto;
+    top: auto !important;
+    right: 1vh !important;
+    left: 1vh !important;
+    bottom: 1vh;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .always h1 {
+    padding: 5px 20px;
+    margin: 0;
+    z-index: 1001;
+  }
+  .always .menu-toggle {
+    position: absolute;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    color: #B63030;
+    cursor: pointer;
+    right: 20px;
+  }
+  nav.burger {
+    display: block;
+    position: relative;
+    z-index: 1000;
+    position: fixed;
+    top: 1vh;
+    left: 1vh;
+    right: 1vh;
+    bottom: calc(1vh + 50px);
+    padding: 15px;
+    transform: translateX(-100vw);
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  nav.burger.visible {
+    transform: translateX(0%);
+  }
+  nav.burger ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  nav.burger ul li {
+    border-radius: 10px;
+    padding: 0;
+    margin: 0;
+    width: auto;
+  }
+  nav.burger ul li a {
+    font-size: 20px;
+    color: #B63030;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
+  nav.burger ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  nav.burger ul li .current-zone {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  nav.burger .close-btn {
+    height: 50px;
+    width: 50px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  nav.burger .close-btn img {
+    width: 20px;
+    height: auto;
+  }
+}/*# sourceMappingURL=style.css.map */
