@@ -364,24 +364,9 @@ body {
 }
 
 
-// .always {
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     padding: 20px;
-//     font-size: 24px;
-//     max-width: 500px;
-//     margin: 5px 0;
-//     z-index: 1000;
-    
-//     h1 {
-//         font-size: 24px;
-//     }
-// }
+@media all and (max-height: 800px) {
 
-// p {
-//     font-size: 16px;
-//     max-width: 500px;
-//     margin: 0 20px;
-//     margin: 5px 0;
-// }
+    .explore {
+        display: none;
+    }
+}

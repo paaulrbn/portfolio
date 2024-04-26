@@ -289,4 +289,9 @@ body .glass ul li .current-zone {
     width: 20px;
     height: auto;
   }
+}
+@media all and (max-height: 800px) {
+  .explore {
+    display: none;
+  }
 }/*# sourceMappingURL=style.css.map */
