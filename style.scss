@@ -364,6 +364,17 @@ body {
 }
 
 
+@media all and (max-width: 400px) {
+    .nav-bar {
+        width: 100%;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+}
+
+
 @media all and (max-height: 800px) {
 
     .explore {
