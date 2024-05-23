@@ -86,6 +86,25 @@ body {
             flex-flow: column nowrap;
             align-items: left;
             gap: 10px;
+
+
+            .projetDetails {
+                display: flex;
+                flex-direction: column;
+
+                padding: 25px;
+                background: rgba( 255, 255, 255, 0.6 );
+                width: calc(100% - 50px);
+                height: auto;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                border-radius: 25px;
+
+                h3 {
+                    margin: 0;
+                }
+            }
+
+
         }
 
         .explore {
@@ -129,6 +148,7 @@ body {
             margin: 20px 0;
 
             .projet-part {
+                position: relative;
                 display: flex;
                 flex-direction: column;
 
@@ -136,9 +156,7 @@ body {
                 background: rgba( 255, 255, 255, 0.6 );
                 width: 325px;
                 height: 150px;
-                box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-                backdrop-filter: blur( 20px );
-                -webkit-backdrop-filter: blur( 20px );
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
                 border-radius: 25px;
 
                 h3 {
@@ -185,7 +203,6 @@ body {
 
         li {
             border-radius: 50px;
-            padding: 4px 0;
 
             a {
                 color: $red;
@@ -350,6 +367,10 @@ body {
         p {
             font-size: 20px;
         }
+
+        ul li a {
+            padding: 4px 15px !important;
+        }
     }
 
     .always {
@@ -404,7 +425,6 @@ body {
         transform: translateX(-100vw);
 
         background: rgba( 255, 255, 255, 0.25 );
-        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
         backdrop-filter: blur( 20px );
         -webkit-backdrop-filter: blur( 20px );
         border-radius: 25px;
@@ -412,7 +432,8 @@ body {
 
         
         &.visible {
-        transform: translateX(0%);
+            transform: translateX(0%);
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
         }
     
 
