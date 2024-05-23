@@ -105,6 +105,56 @@ body {
             }
 
 
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                background: rgba( 255, 255, 255, 0.25 );
+                box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+                border-radius: 30px;
+                border: 1px solid rgba( 255, 255, 255, 0.18 );
+                padding: 20px;
+                margin-top: 2vh;
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                }
+                label {
+                    margin-left: 1vw;
+                }
+
+                #name, #email, #message {
+                    width: calc(100% - 22px);
+                    padding: 10px;
+                    border-radius: 10px;
+                    border: 1px solid $red;
+                    transition: all 0.03s ease-in-out;
+                }
+
+                #message {
+                    height: 200px;
+                    resize: vertical;
+                }
+
+                #submit {
+                    width: 100%;
+                    background-color: $red;
+                    color: white;
+                    border: none;
+                    border-radius: 10px;
+                    padding: 10px;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+
+                    &:hover {
+                        background-color: black;
+                        color: white;
+                    }
+                }
+            }
+
         }
 
         .explore {
@@ -331,7 +381,15 @@ body {
 
     }
 
+
+
+
+
+
+
+
 }
+
 
 
 

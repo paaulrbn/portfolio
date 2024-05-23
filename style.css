@@ -87,6 +87,50 @@ body .container .insideContainer .projetDetails {
 body .container .insideContainer .projetDetails h3 {
   margin: 0;
 }
+body .container .insideContainer form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 20px;
+  margin-top: 2vh;
+}
+body .container .insideContainer form div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+body .container .insideContainer form label {
+  margin-left: 1vw;
+}
+body .container .insideContainer form #name, body .container .insideContainer form #email, body .container .insideContainer form #message {
+  width: calc(100% - 22px);
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #B63030;
+  transition: all 0.03s ease-in-out;
+}
+body .container .insideContainer form #message {
+  height: 200px;
+  resize: vertical;
+}
+body .container .insideContainer form #submit {
+  width: 100%;
+  background-color: #B63030;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+body .container .insideContainer form #submit:hover {
+  background-color: black;
+  color: white;
+}
 body .container .explore {
   position: absolute;
   bottom: 0;
