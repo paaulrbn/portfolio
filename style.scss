@@ -99,6 +99,14 @@ body {
 
     }
 
+    
+    .rightContainer {
+        $margin-left: min(22vw + 52px, 400px + 52px);
+        margin-left: calc($margin-left + 6vw);
+        min-width: calc(100% - $margin-left - 6vw);
+        align-items: start;
+    }
+
     .projetsContainer {
         max-width: 1600px;
         min-width: 200px;
@@ -311,6 +319,15 @@ body {
 
 
 @media all and (max-width: 1100px) {
+
+    .container {
+        max-width: 100% !important;
+    }
+    .rightContainer {
+        margin-left: 0 !important;
+        min-width: 100vw !important;
+        max-width: 100vw !important;
+    }
 
     .explore {
         display: none;
