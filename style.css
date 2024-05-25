@@ -131,6 +131,69 @@ body .container .insideContainer form #submit:hover {
   background-color: black;
   color: white;
 }
+body .container .widgets {
+  width: 1000px;
+  height: 700px;
+  display: flex;
+  flex-flow: row;
+  gap: 20px;
+  margin-top: 15px;
+}
+body .container .widgets .widget {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 35px;
+}
+body .container .widgets .col1 {
+  width: 33.3333333333%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+body .container .widgets .col1 .about {
+  height: 66.6666666667%;
+}
+body .container .widgets .col1 .education {
+  height: 33.3333333333%;
+}
+body .container .widgets .col2 {
+  width: 66.6666666667%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+body .container .widgets .col2 .row1 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  height: 33.3333333333%;
+}
+body .container .widgets .col2 .row1 .languages {
+  width: 33.3333333333%;
+}
+body .container .widgets .col2 .row1 .avenir {
+  width: 66.6666666667%;
+}
+body .container .widgets .col2 .experiences {
+  height: 33.3333333333%;
+}
+body .container .widgets .col2 .contact {
+  height: 33.3333333333%;
+}
 body .container .explore {
   position: absolute;
   bottom: 0;

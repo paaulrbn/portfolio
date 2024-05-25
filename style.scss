@@ -104,7 +104,6 @@ body {
                 }
             }
 
-
             form {
                 display: flex;
                 flex-direction: column;
@@ -154,7 +153,91 @@ body {
                     }
                 }
             }
+        }
 
+        .widgets {
+            width: 1000px;
+            height: 700px;
+            display: flex;
+            flex-flow: row;
+            gap: 20px;
+            margin-top: 15px;
+
+            .widget {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: start;
+                gap: 20px;
+                background-color: rgba($color: #fff, $alpha: .3);
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                border-radius: 35px;
+
+            }
+
+            .col1 {
+                width: calc(1/3 * 100%);
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+
+                .about {
+                    // must be 2/3 of the height
+                    height: calc(2/3 * 100%);
+
+                }
+
+                .education {
+                    // must be 1/3 of the height
+                    height: calc(1/3 * 100%);
+                }
+
+            }
+
+            .col2 {
+                width: calc(2/3 * 100%);
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+
+                .row1 {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 20px;
+                    height: calc(1/3 * 100%);
+
+                    .languages {
+                        // must be 1/3 of the width
+                        width: calc(1/3 * 100%);
+                    }
+
+                    .avenir {
+                        // must be 2/3 of the width
+                        width: calc(2/3 * 100%);
+                    
+                    }
+
+                }
+
+                .experiences {
+                    // must be 1/3 of the height
+                    height: calc(1/3 * 100%);
+                }
+
+                .contact {
+                    // must be 1/3 of the height
+                    height: calc(1/3 * 100%);
+                }
+            }
         }
 
         .explore {
