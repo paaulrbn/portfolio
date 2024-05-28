@@ -520,8 +520,13 @@ body {
 
             .widget {
                 margin: 0 20px;
+                max-width: 100vw;
+                font-size: 20px !important;
+                p,li {
+                    font-size: 20px !important;
+                }
             }
-        
+
         }
     }
     .rightContainer {
@@ -555,6 +560,10 @@ body {
         ul li a {
             padding: 4px 15px !important;
         }
+    }
+
+    form label{
+        font-size: 20px;
     }
 
     .always {
@@ -686,6 +695,19 @@ body {
 
         
     }
+}
+
+
+@media all and (max-width: 470px) {
+    .contact .grid {
+        display: flex !important;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 5px !important;
+        .two {
+            margin-bottom: 15px;
+        }
+    }    
 }
 
 
