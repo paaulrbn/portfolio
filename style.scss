@@ -296,6 +296,11 @@ body {
         min-width: 200px;
         align-items: start;
 
+        & > p {
+            max-width: 800px;
+            padding-left: 2vw;
+        }
+
         h2 {
             padding-left: 2vw;
         }

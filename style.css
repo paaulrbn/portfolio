@@ -245,6 +245,10 @@ body .projetsContainer {
   min-width: 200px;
   align-items: start;
 }
+body .projetsContainer > p {
+  max-width: 800px;
+  padding-left: 2vw;
+}
 body .projetsContainer h2 {
   padding-left: 2vw;
 }
