@@ -454,6 +454,12 @@ body .glass ul li .current-zone {
   .insideContainer ul li a {
     padding: 4px 15px !important;
   }
+  .projetsContainer {
+    margin: 0 20px;
+  }
+  .projetsContainer > p {
+    font-size: 20px;
+  }
   form label {
     font-size: 20px;
   }
