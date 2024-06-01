@@ -74,9 +74,13 @@ body .container .insideContainer {
   align-items: left;
   gap: 10px;
 }
+body .container .insideContainer h2 {
+  margin-top: 6vh;
+}
 body .container .insideContainer .projetDetails {
   display: flex;
   flex-direction: column;
+  max-width: 750px;
   padding: 25px;
   background: rgba(255, 255, 255, 0.6);
   width: calc(100% - 50px);
@@ -84,8 +88,12 @@ body .container .insideContainer .projetDetails {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 25px;
 }
+body .container .insideContainer .projetDetails p {
+  max-width: 700px;
+}
 body .container .insideContainer .projetDetails h3 {
-  margin: 0;
+  margin-top: 3vh;
+  margin-bottom: 1vh;
 }
 body .container .insideContainer form {
   display: flex;
