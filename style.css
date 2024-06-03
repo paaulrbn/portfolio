@@ -73,6 +73,7 @@ body .container .insideContainer {
   flex-flow: column nowrap;
   align-items: left;
   gap: 10px;
+  max-width: 750px;
 }
 body .container .insideContainer h2 {
   margin-top: 6vh;
@@ -80,13 +81,15 @@ body .container .insideContainer h2 {
 body .container .insideContainer .projetDetails {
   display: flex;
   flex-direction: column;
-  max-width: 750px;
   padding: 25px;
   background: rgba(255, 255, 255, 0.6);
   width: calc(100% - 50px);
   height: auto;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 25px;
+}
+body .container .insideContainer .projetDetails ul {
+  margin: 0;
 }
 body .container .insideContainer .projetDetails p {
   max-width: 700px;
@@ -461,6 +464,12 @@ body .glass ul li .current-zone {
   }
   .insideContainer ul li a {
     padding: 4px 15px !important;
+  }
+  .insideContainer .projetDetails li {
+    font-size: 20px;
+  }
+  .insideContainer .projetDetails h3 {
+    font-size: 24px;
   }
   .projetsContainer {
     margin: 0 20px;

@@ -86,6 +86,8 @@ body {
             flex-flow: column nowrap;
             align-items: left;
             gap: 10px;
+            max-width: 750px;
+
 
             h2 {
                 margin-top: 6vh;
@@ -94,7 +96,6 @@ body {
             .projetDetails {
                 display: flex;
                 flex-direction: column;
-                max-width: 750px;
 
                 padding: 25px;
                 background: rgba( 255, 255, 255, 0.6 );
@@ -102,6 +103,10 @@ body {
                 height: auto;
                 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
                 border-radius: 25px;
+
+                ul {
+                    margin: 0;
+                }
 
                 p {
                     max-width: 700px;
@@ -575,6 +580,18 @@ body {
         ul li a {
             padding: 4px 15px !important;
         }
+
+        .projetDetails {
+            li {
+                font-size: 20px;
+            }
+
+            h3 {
+                font-size: 24px; 
+            }
+
+        }
+
     }
 
     .projetsContainer {
