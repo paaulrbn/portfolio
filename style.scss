@@ -96,6 +96,7 @@ body {
             .projetDetails {
                 display: flex;
                 flex-direction: column;
+                margin-bottom: 3vh;
 
                 padding: 25px;
                 background: rgba( 255, 255, 255, 0.6 );
@@ -115,6 +116,10 @@ body {
                 h3 {
                     margin-top: 3vh;
                     margin-bottom: 1vh;
+                }
+
+                a {
+                    text-decoration: underline;
                 }
 
             }

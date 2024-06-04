@@ -81,6 +81,7 @@ body .container .insideContainer h2 {
 body .container .insideContainer .projetDetails {
   display: flex;
   flex-direction: column;
+  margin-bottom: 3vh;
   padding: 25px;
   background: rgba(255, 255, 255, 0.6);
   width: calc(100% - 50px);
@@ -97,6 +98,9 @@ body .container .insideContainer .projetDetails p {
 body .container .insideContainer .projetDetails h3 {
   margin-top: 3vh;
   margin-bottom: 1vh;
+}
+body .container .insideContainer .projetDetails a {
+  text-decoration: underline;
 }
 body .container .insideContainer form {
   display: flex;
