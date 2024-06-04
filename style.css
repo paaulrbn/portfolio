@@ -76,12 +76,12 @@ body .container .insideContainer {
   max-width: 750px;
 }
 body .container .insideContainer h2 {
-  margin-top: 6vh;
+  margin-top: 3vh;
 }
 body .container .insideContainer .projetDetails {
   display: flex;
   flex-direction: column;
-  margin-bottom: 3vh;
+  margin-bottom: 8vh;
   padding: 25px;
   background: rgba(255, 255, 255, 0.6);
   width: calc(100% - 50px);
