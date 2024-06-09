@@ -1,6 +1,7 @@
 //variables
 $red: #B63030;
 
+
 @font-face {
     font-family: 'Argentum-Sans-Black';
     src:url('fonts/Argentum-Sans-Black.ttf.woff') format('woff'),
@@ -20,6 +21,7 @@ $red: #B63030;
     font-weight: normal;
     font-style: normal;
 }
+
 * {
     transition: all 0.3s ease-in-out;
 }
@@ -81,6 +83,7 @@ body {
         min-height : 100svh;
 
         .insideContainer {
+
             display: flex;
             justify-content: center;
             flex-flow: column nowrap;
@@ -94,6 +97,7 @@ body {
             }
 
             .projetDetails {
+
                 display: flex;
                 flex-direction: column;
                 margin-bottom: 8vh;
@@ -312,6 +316,23 @@ body {
     }
 
     .projetsContainer {
+
+        & > * {
+            animation: appear linear;
+            animation-timeline: view();
+            animation-range: entry 0 cover 40%;
+        }
+        @keyframes appear {
+        from {
+            opacity: 0;
+            scale: 0.5;
+        }
+        to {
+            opacity: 1;
+            scale: 1;
+        }
+}
+
         max-width: 1600px;
         min-width: 200px;
         align-items: start;
@@ -338,6 +359,7 @@ body {
             margin: 20px 0;
 
             .projet-part {
+
                 position: relative;
                 display: flex;
                 flex-direction: column;
@@ -577,6 +599,7 @@ body {
     }
 
     .insideContainer {
+        
         margin: 0 20px;
         p {
             font-size: 20px;
