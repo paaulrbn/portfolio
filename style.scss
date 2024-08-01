@@ -218,7 +218,7 @@ body {
             .widget {
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: start;
                 align-items: start;
                 gap: 20px;
                 background-color: rgba($color: #fff, $alpha: .3);

@@ -173,7 +173,7 @@ body .container .widgets {
 body .container .widgets .widget {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: start;
   gap: 20px;
   background-color: rgba(255, 255, 255, 0.3);
