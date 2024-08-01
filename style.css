@@ -190,6 +190,7 @@ body .container .widgets .widget p, body .container .widgets .widget li, body .c
   font-size: 16px;
   font-weight: 400;
   margin: 0;
+  max-width: 100%;
 }
 body .container .widgets .widget ul {
   margin: 0;
