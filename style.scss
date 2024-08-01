@@ -1,6 +1,7 @@
 //variables
 $red: #B63030;
-
+$black: #000000;
+$white: #ffffff;
 
 @font-face {
     font-family: 'Argentum-Sans-Black';
@@ -12,15 +13,18 @@ $red: #B63030;
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'Karla';
-    src:url('fonts/Karla.ttf.woff') format('woff'),
-        url('fonts/Karla.ttf.svg#Karla') format('svg'),
-        url('fonts/Karla.ttf.eot'),
-        url('fonts/Karla.ttf.eot?#iefix') format('embedded-opentype'); 
-    font-weight: normal;
-    font-style: normal;
-}
+// @font-face {
+//     font-family: 'Karla';
+//     src:url('fonts/Karla.ttf.woff') format('woff'),
+//         url('fonts/Karla.ttf.svg#Karla') format('svg'),
+//         url('fonts/Karla.ttf.eot'),
+//         url('fonts/Karla.ttf.eot?#iefix') format('embedded-opentype'); 
+//     font-weight: normal;
+//     font-style: normal;
+// }
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
 
 * {
     transition: all 0.3s ease-in-out;
@@ -111,6 +115,10 @@ body {
 
                 ul {
                     margin: 0;
+
+                    li {
+                        width: 100%;
+                    }
                 }
 
                 p {
@@ -126,6 +134,10 @@ body {
                     text-decoration: underline;
                 }
 
+            }
+
+            #last {
+                margin-bottom: 0;
             }
 
             form {
@@ -144,16 +156,31 @@ body {
                     flex-direction: column;
                     gap: 5px;
                 }
+
                 label {
                     margin-left: 1vw;
                 }
 
                 #name, #email, #message {
+                    font-family: "Karla";
                     width: calc(100% - 22px);
                     padding: 10px;
                     border-radius: 10px;
                     border: 1px solid $red;
                     transition: all 0.03s ease-in-out;
+                    color: $black;
+                    font-weight: 500;
+
+                    &::placeholder {
+                        color: $red;
+                        font-weight: 400;
+                    }
+
+                    &:focus {
+                        color: $black;
+                        font-weight: 500;
+                    }
+
                 }
 
                 #message {
@@ -164,7 +191,7 @@ body {
                 #submit {
                     width: 100%;
                     background-color: $red;
-                    color: white;
+                    color: $white;
                     border: none;
                     border-radius: 10px;
                     padding: 10px;
@@ -172,8 +199,8 @@ body {
                     transition: all 0.3s ease-in-out;
 
                     &:hover {
-                        background-color: black;
-                        color: white;
+                        background-color: $black;
+                        color: $white;
                     }
                 }
             }
@@ -205,7 +232,7 @@ body {
                     font-weight: bold;
                 }
 
-                p {
+                p, li, .grid {
                     font-size: 16px;
                     font-weight: 400;
                     margin: 0;
@@ -261,7 +288,7 @@ body {
     
                     &:hover {
                         background-color: $red;
-                        color: white;
+                        color: $white;
                     }
                 }
             }
@@ -389,12 +416,14 @@ body {
                     right: 20px;
                     border-radius: 10px;
 
+                    font-weight: normal;
+
                     &:hover {
                         transform: scale(1.1);
                     }
 
                     a {
-                        color: white;
+                        color: $white;
                         text-decoration: none;
                     }
                 }
@@ -410,11 +439,13 @@ body {
         padding: 0;
         margin: 5px 0;
         gap: 10px;
-        font-size: 14px;
-        font-weight: 600;
+        
 
         li {
             border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+
 
             a {
                 color: $red;
@@ -427,13 +458,13 @@ body {
 
                 &:hover {
                     background-color: $red;
-                    color: white;
+                    color: $white;
                 }
             }
 
             .current-page {
                 background-color: $red;
-                color: white;
+                color: $white;
             }
         }
 
@@ -472,7 +503,7 @@ body {
         display: none;
     }
 
-    p {
+    p, li, .grid {
         font-size: 16px;
         max-width: 500px;
         font-weight: 400;
@@ -509,10 +540,11 @@ body {
             padding: 0;
             margin: 0;
             gap: 10px;
-            font-size: 16px;
-            font-weight: 600;
+            
 
             li {
+                font-size: 16px;
+                font-weight: 600;
                 border-radius: 10px;
                 padding: 0;
                 margin: 0;
@@ -544,11 +576,39 @@ body {
     }
 
 
+    footer {
+        padding: 20px;
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        max-width: 1165px;
+        width: calc(100% - 40px);
+        font-weight: bold;
 
+        div {
+            display: flex;
+            gap: 15px;
+        }
+    
+        a {
+            text-decoration: underline;
+        }
+    
+        p {
+            margin: 0;
+            justify-self: end;
+            font-weight: inherit;
+        }
+    }
 
+    #inProjets {
+        margin-bottom: 8vh;
+        max-width: calc(750px - 40px);
+    }
 
-
-
+    #inAbout {
+        max-width: calc(1100px - 40px);
+    }
 
 }
 
@@ -569,7 +629,7 @@ body {
                 margin: 0 20px;
                 max-width: 100vw;
                 font-size: 20px !important;
-                p,li {
+                p,li, .grid {
                     font-size: 20px !important;
                 }
             }
@@ -629,8 +689,12 @@ body {
         }
     }
 
-    form label{
+    form #name, form #email, form #message {
         font-size: 20px;
+    }
+
+    form #message {
+        height: 300px !important;
     }
 
     .always {
@@ -649,7 +713,7 @@ body {
 
         background: rgba( 255, 255, 255, 0.25 );
         box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-        backdrop-filter: blur( 20px );
+        backdrop-filter: blur( 10px );
         -webkit-backdrop-filter: blur( 20px );
         border-radius: 25px;
         border: 1px solid rgba( 255, 255, 255, 0.18 ); 
@@ -686,14 +750,14 @@ body {
 
         background: rgba( 255, 255, 255, 0.25 );
         backdrop-filter: blur( 20px );
-        -webkit-backdrop-filter: blur( 20px );
+        -webkit-backdrop-filter: blur( 10px );
         border-radius: 25px;
         border: 1px solid rgba( 255, 255, 255, 0.18 ); 
 
         
         &.visible {
             transform: translateX(0%);
-            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            // box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
         }
     
 
@@ -706,14 +770,14 @@ body {
             padding: 0;
             margin: 0;
             gap: 10px;
-            font-size: 16px;
-            font-weight: 600;
 
             li {
                 border-radius: 10px;
                 padding: 0;
                 margin: 0;
                 width: auto;
+                font-size: 16px;
+                font-weight: 600;
                 
                 a {
                     font-size: 20px;
@@ -759,8 +823,11 @@ body {
             }
 
         }
+ 
+    }
 
-        
+    footer p {
+        display: none;
     }
 }
 
