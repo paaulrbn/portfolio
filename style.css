@@ -333,8 +333,8 @@ body .projetsContainer .indexProjets .projet-part .en-savoir-plus {
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 15px;
+  right: 15px;
   border-radius: 10px;
   font-weight: normal;
 }
