@@ -181,6 +181,7 @@ body .container .widgets .widget {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 35px;
   padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 body .container .widgets .widget h2 {
   margin: 0;
