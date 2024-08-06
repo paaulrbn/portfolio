@@ -587,12 +587,14 @@ body {
         margin: 0;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         max-width: 1165px;
         width: calc(100% - 40px);
         font-weight: bold;
 
         div {
             display: flex;
+            align-items: center;
             gap: 15px;
         }
     
