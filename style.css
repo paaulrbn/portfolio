@@ -113,7 +113,7 @@ body .container .insideContainer form {
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   padding: 20px;
-  margin-top: 2vh;
+  margin: 2vh 0;
 }
 body .container .insideContainer form div {
   display: flex;
