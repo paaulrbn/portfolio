@@ -128,10 +128,11 @@ body .container .insideContainer form #name, body .container .insideContainer fo
   width: calc(100% - 22px);
   padding: 10px;
   border-radius: 10px;
-  border: 1px solid #B63030;
+  border: none;
   transition: all 0.03s ease-in-out;
   color: #000000;
   font-weight: 500;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 body .container .insideContainer form #name::-moz-placeholder, body .container .insideContainer form #email::-moz-placeholder, body .container .insideContainer form #message::-moz-placeholder {
   color: #B63030;
@@ -150,6 +151,7 @@ body .container .insideContainer form #message {
   resize: vertical;
 }
 body .container .insideContainer form #submit {
+  font-family: "Karla";
   width: 100%;
   background-color: #B63030;
   color: #ffffff;
@@ -296,10 +298,10 @@ body .projetsContainer > * {
 }
 body .projetsContainer > p {
   max-width: 800px;
-  padding-left: 2vw;
+  padding: 0 25px;
 }
 body .projetsContainer h2 {
-  padding-left: 2vw;
+  padding: 0 25px;
 }
 body .projetsContainer a {
   text-decoration: underline;
@@ -502,10 +504,10 @@ body #inAbout {
   .container .widgets .widget {
     margin: 0 20px;
     max-width: 100vw;
-    font-size: 20px !important;
+    font-size: 17px !important;
   }
   .container .widgets .widget p, .container .widgets .widget li, .container .widgets .widget .grid {
-    font-size: 20px !important;
+    font-size: 17px !important;
   }
   .rightContainer {
     margin-left: 0 !important;
@@ -529,13 +531,13 @@ body #inAbout {
     margin: 0 20px;
   }
   .insideContainer p {
-    font-size: 20px;
+    font-size: 17px;
   }
   .insideContainer ul li a {
     padding: 4px 15px !important;
   }
   .insideContainer .projetDetails li {
-    font-size: 20px;
+    font-size: 17px;
   }
   .insideContainer .projetDetails h3 {
     font-size: 24px;
@@ -544,10 +546,10 @@ body #inAbout {
     margin: 0 20px;
   }
   .projetsContainer > p {
-    font-size: 20px;
+    font-size: 17px;
   }
   form #name, form #email, form #message {
-    font-size: 20px;
+    font-size: 17px;
   }
   form #message {
     height: 300px !important;
@@ -622,7 +624,7 @@ body #inAbout {
     font-weight: 600;
   }
   nav.burger ul li a {
-    font-size: 20px;
+    font-size: 17px;
     color: #B63030;
     padding: 10px;
     border-radius: 10px;
