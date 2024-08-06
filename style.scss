@@ -230,7 +230,7 @@ body {
                 gap: 20px;
                 background-color: rgba($color: #fff, $alpha: .3);
                 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-                border-radius: 35px;
+                border-radius: 30px;
                 padding: 30px;
                 border: 1px solid rgba( 255, 255, 255, 0.18 );
 
@@ -530,8 +530,7 @@ body {
 
         background: rgba( 255, 255, 255, 0.25 );
         box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-        backdrop-filter: blur( 20px );
-        -webkit-backdrop-filter: blur( 20px );
+        backdrop-filter: blur( 15px );
         border-radius: 25px;
         border: 1px solid rgba( 255, 255, 255, 0.18 ); 
 
@@ -724,8 +723,7 @@ body {
 
         background: rgba( 255, 255, 255, 0.25 );
         box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-        backdrop-filter: blur( 10px );
-        -webkit-backdrop-filter: blur( 20px );
+        backdrop-filter: blur( 5px );
         border-radius: 25px;
         border: 1px solid rgba( 255, 255, 255, 0.18 ); 
 
@@ -757,11 +755,10 @@ body {
         bottom: calc(1svh + 50px);
         padding: 15px;
 
-        transform: translateX(-100vw);
+        transform: translateX(100vw);
 
         background: rgba( 255, 255, 255, 0.25 );
-        backdrop-filter: blur( 20px );
-        -webkit-backdrop-filter: blur( 10px );
+        backdrop-filter: blur( 15px );
         border-radius: 25px;
         border: 1px solid rgba( 255, 255, 255, 0.18 ); 
 
