@@ -125,6 +125,7 @@ body .container .insideContainer form label {
 }
 body .container .insideContainer form #name, body .container .insideContainer form #email, body .container .insideContainer form #message {
   font-family: "Karla";
+  font-size: 14px;
   width: calc(100% - 22px);
   padding: 10px;
   border-radius: 10px;
