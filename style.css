@@ -244,6 +244,7 @@ body .container .widgets .contact {
   align-items: stretch;
 }
 body .container .widgets .contact a {
+  transition: all 0.15s ease-in-out;
   color: #B63030;
   padding: 4px 20px;
   border: 1px solid #B63030;
