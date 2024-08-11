@@ -431,7 +431,7 @@ var VanillaTilt = (function () {
           transition: true,
           axis: null,
           glare: true,
-          "max-glare": 0.3,
+          "max-glare": 0.15,
           "glare-prerender": false,
           "full-page-listening": false,
           "mouse-event-element": null,

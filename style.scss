@@ -265,6 +265,30 @@ body {
             .langues {
                 grid-column: 3;
                 grid-row: 1;
+
+                ol li {
+                    display: flex;
+                    counter-increment: numbers;
+                    align-items: center;
+
+                    &::before {
+                        content: counter(numbers);
+                        width: 16px;
+                        height: 16px;
+                        color: $white;
+                        background-color: $red;
+                        border-radius: 50%;
+                        position: absolute;
+                        display: flex;
+                        left: 45px;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 0.7em;
+                        font-weight: bold;
+                    }
+
+                }
+
             }
 
             .avenir {
@@ -351,6 +375,9 @@ body {
     }
 
     .projetsContainer {
+        max-width: 1600px;
+        min-width: 200px;
+        align-items: start;
 
         & > * {
             animation: appear linear;
@@ -358,19 +385,15 @@ body {
             animation-range: entry 0 cover 40%;
         }
         @keyframes appear {
-        from {
-            opacity: 0;
-            scale: 0.5;
+            from {
+                opacity: 0;
+                scale: 0.5;
+            }
+            to {
+                opacity: 1;
+                scale: 1;
+            }
         }
-        to {
-            opacity: 1;
-            scale: 1;
-        }
-}
-
-        max-width: 1600px;
-        min-width: 200px;
-        align-items: start;
 
         & > p {
             max-width: 800px;
@@ -458,17 +481,20 @@ body {
 
 
             a {
+                transition: all 0.15s ease-in-out;
                 color: $red;
+                z-index: 0;
                 padding: 4px 20px;
                 border: 1px solid $red;
                 border-radius: 50px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                position: relative;
 
                 &:hover {
-                    background-color: $red;
                     color: $white;
+                    background-color: $red;
                 }
             }
 
@@ -560,6 +586,7 @@ body {
                 width: auto;
 
                 a {
+                    transition: all 0.15s ease-in-out;
                     color: $red;
                     padding: 10px;
                     border-radius: 10px;

@@ -210,6 +210,26 @@ body .container .widgets .langues {
   grid-column: 3;
   grid-row: 1;
 }
+body .container .widgets .langues ol li {
+  display: flex;
+  counter-increment: numbers;
+  align-items: center;
+}
+body .container .widgets .langues ol li::before {
+  content: counter(numbers);
+  width: 16px;
+  height: 16px;
+  color: #ffffff;
+  background-color: #B63030;
+  border-radius: 50%;
+  position: absolute;
+  display: flex;
+  left: 45px;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7em;
+  font-weight: bold;
+}
 body .container .widgets .avenir {
   grid-column: 4/6;
   grid-row: 1;
@@ -362,17 +382,20 @@ body .nav-bar ul li {
   font-size: 14px;
 }
 body .nav-bar ul li a {
+  transition: all 0.15s ease-in-out;
   color: #B63030;
+  z-index: 0;
   padding: 4px 20px;
   border: 1px solid #B63030;
   border-radius: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 body .nav-bar ul li a:hover {
-  background-color: #B63030;
   color: #ffffff;
+  background-color: #B63030;
 }
 body .nav-bar ul li .current-page {
   background-color: #B63030;
@@ -447,6 +470,7 @@ body .glass ul li {
   width: auto;
 }
 body .glass ul li a {
+  transition: all 0.15s ease-in-out;
   color: #B63030;
   padding: 10px;
   border-radius: 10px;
