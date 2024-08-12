@@ -79,6 +79,9 @@ body .container .insideContainer .projetDetails {
   height: auto;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 25px;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  transform: translateY(50px);
 }
 body .container .insideContainer .projetDetails ul {
   margin: 0;
@@ -95,6 +98,10 @@ body .container .insideContainer .projetDetails h3 {
 }
 body .container .insideContainer .projetDetails a {
   text-decoration: underline;
+}
+body .container .insideContainer .projetDetails-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 body .container .insideContainer #last {
   margin-bottom: 0;
@@ -300,21 +307,6 @@ body .projetsContainer {
   min-width: 200px;
   align-items: start;
 }
-body .projetsContainer > * {
-  animation: appear linear;
-  animation-timeline: view();
-  animation-range: entry 0 cover 40%;
-}
-@keyframes appear {
-  from {
-    opacity: 0;
-    scale: 0.5;
-  }
-  to {
-    opacity: 1;
-    scale: 1;
-  }
-}
 body .projetsContainer > p {
   max-width: 800px;
   padding: 0 25px;
@@ -334,6 +326,7 @@ body .projetsContainer .indexProjets {
   margin: 20px 0;
 }
 body .projetsContainer .indexProjets .projet-part {
+  transition: all 0.3s ease-in-out;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -343,6 +336,8 @@ body .projetsContainer .indexProjets .projet-part {
   height: 150px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 25px;
+  opacity: 0;
+  transform: translateY(50px);
 }
 body .projetsContainer .indexProjets .projet-part h3 {
   margin: 0;
@@ -367,6 +362,10 @@ body .projetsContainer .indexProjets .projet-part .en-savoir-plus:hover {
 body .projetsContainer .indexProjets .projet-part .en-savoir-plus a {
   color: #ffffff;
   text-decoration: none;
+}
+body .projetsContainer .indexProjets .projet-part-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 body .nav-bar ul {
   display: flex;

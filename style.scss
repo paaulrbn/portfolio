@@ -114,6 +114,11 @@ body {
                 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
                 border-radius: 25px;
 
+                transition: all 0.3s ease-in-out;
+                opacity: 0;
+                transform: translateY(50px);
+
+
                 ul {
                     margin: 0;
 
@@ -136,6 +141,12 @@ body {
                 }
 
             }
+
+            .projetDetails-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
 
             #last {
                 margin-bottom: 0;
@@ -380,22 +391,6 @@ body {
         min-width: 200px;
         align-items: start;
 
-        & > * {
-            animation: appear linear;
-            animation-timeline: view();
-            animation-range: entry 0 cover 40%;
-        }
-        @keyframes appear {
-            from {
-                opacity: 0;
-                scale: 0.5;
-            }
-            to {
-                opacity: 1;
-                scale: 1;
-            }
-        }
-
         & > p {
             max-width: 800px;
             padding: 0 25px;
@@ -419,6 +414,8 @@ body {
 
             .projet-part {
 
+                transition: all 0.3s ease-in-out;
+
                 position: relative;
                 display: flex;
                 flex-direction: column;
@@ -429,6 +426,11 @@ body {
                 height: 150px;
                 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
                 border-radius: 25px;
+
+
+                opacity: 0;
+                transform: translateY(50px);
+
 
                 h3 {
                     margin: 0;
@@ -462,6 +464,12 @@ body {
                     }
                 }
             }
+
+            .projet-part-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
         }
     }
 
@@ -709,6 +717,8 @@ body {
         }
 
         .projetDetails {
+
+            
             li {
                 font-size: 17px;
             }
