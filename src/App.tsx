@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState } from "react";
+import { Analytics } from "@vercel/analytics/react"
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Project from "./components/Project";
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <div className="min-h-screen overflow-visible">
+      <Analytics />
       <div className="absolute top-0 left-0 h-full w-full -z-10 overflow-visible">
         <LightRays
           raysOrigin="top-center"
