@@ -1,12 +1,28 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 
 interface MenuProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+const menuItems = [
+  { label: "HOME", href: "#", angle: -15 },
+  { label: "À PROPOS", href: "#about", angle: -5 },
+  { label: "PROJETS", href: "#projects", angle: 5 },
+  { label: "CONTACT", href: "#contact", angle: 15 },
+];
+
 function Menu({ isOpen, onClose }: MenuProps) {
-  // Empêcher le scroll quand le menu est ouvert
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [starRotation, setStarRotation] = useState(-15);
+
+  useEffect(() => {
+    if (hoveredIndex !== null) {
+      setStarRotation(menuItems[hoveredIndex].angle);
+    }
+  }, [hoveredIndex]);
+
   useEffect(() => {
     if (isOpen) {
       const scrollBarWidth =
@@ -26,7 +42,6 @@ function Menu({ isOpen, onClose }: MenuProps) {
     };
   }, [isOpen]);
 
-  // Fermer avec Escape
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isOpen) {
@@ -37,86 +52,103 @@ function Menu({ isOpen, onClose }: MenuProps) {
     return () => window.removeEventListener("keydown", handleEscape);
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
-
-  const menuItems = [
-    { label: "ACCUEIL", href: "#" },
-    { label: "À PROPOS", href: "#about" },
-    { label: "PROJETS", href: "#projects" },
-    { label: "CONTACT", href: "#contact" },
-  ];
-
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md animate-fade-in"
-      onClick={onClose}
-    >
-      <div
-        className="relative w-full h-full flex flex-col items-center justify-center p-8"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Bouton fermer */}
-        <button
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="fixed inset-0 z-50 bg-black overflow-hidden"
           onClick={onClose}
-          className="absolute top-8 right-8 p-2 hover:bg-white/10 rounded-full transition-colors group"
-          aria-label="Fermer le menu"
         >
-          <img
-            src="/star-icon.png"
-            alt="Fermer"
-            className="w-8 h-8 group-hover:rotate-180 transition-transform duration-500"
-          />
-        </button>
-
-        {/* Navigation principale */}
-        <nav className="flex flex-col items-start gap-8">
-          {menuItems.map((item, index) => (
-            <a
-              key={item.label}
-              href={item.href}
-              onClick={onClose}
-              className="text-9xl md:text-8xl sm:text-7xl animate-slide-up"
-              style={{
-                fontFamily: "Cirka",
-                animationDelay: `${index * 0.1}s`,
-              }}
+          <div
+            className="relative w-full h-full flex"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Étoile à gauche avec cercle */}
+            <motion.div
+              initial={{ x: "-100%", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: "-100%", opacity: 0 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3/5 w-[200vh] h-[200vh]"
             >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-      </div>
+              {/* Grand cercle avec bordure blanche */}
+              <div
+                className="absolute inset-[1%] rounded-full"
+                style={{
+                  border: "2px solid rgba(243, 243, 236, 1)",
+                }}
+              />
+              {/* Étoile */}
+              <motion.img
+                src="/star-no-effect.png"
+                alt=""
+                className="absolute inset-0 w-full h-full object-contain"
+                animate={{ rotate: starRotation }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+              />
+            </motion.div>
 
-      <style>
-        {`
-					@keyframes fade-in {
-						from {
-							opacity: 0;
-						}
-						to {
-							opacity: 1;
-						}
-					}
-					@keyframes slide-up {
-						from {
-							opacity: 0;
-							transform: translateY(30px);
-						}
-						to {
-							opacity: 1;
-							transform: translateY(0);
-						}
-					}
-					.animate-fade-in {
-						animation: fade-in 0.3s ease-out;
-					}
-					.animate-slide-up {
-						opacity: 0;
-						animation: slide-up 0.6s ease-out forwards;
-					}
-				`}
-      </style>
-    </div>
+            {/* Bouton fermer */}
+            <motion.button
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              onClick={onClose}
+              className="absolute top-8 right-8 flex items-center gap-4 hover:opacity-70 transition-opacity cursor-pointer z-10"
+              aria-label="Fermer le menu"
+            >
+              <span
+                className="text-xl tracking-wider"
+                style={{ fontFamily: "Cirka" }}
+              >
+                FERMER
+              </span>
+              <img
+                src="/star-icon.png"
+                alt=""
+                className="w-15 h-15 -rotate-45"
+              />
+            </motion.button>
+
+            {/* Navigation */}
+            <nav
+              className="absolute left-1/2 top-1/2 -translate-y-1/2 flex flex-col justify-center"
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              {menuItems.map((item, index) => (
+                <motion.a
+                  key={item.label}
+                  href={item.href}
+                  onClick={onClose}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  initial={{ x: 80 }}
+                  animate={{ x: 0 }}
+                  exit={{ x: 80 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.08,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl py-3 md:py-5 font-medium transition-opacity duration-300"
+                  style={{
+                    fontFamily: "Cirka",
+                    opacity:
+                      hoveredIndex === null || hoveredIndex === index ? 1 : 0.3,
+                  }}
+                >
+                  {item.label}
+                </motion.a>
+              ))}
+            </nav>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 

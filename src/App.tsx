@@ -3,6 +3,7 @@ import { useState } from "react";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Project from "./components/Project";
+import Contact from "./components/Contact";
 import Menu from "./components/Menu";
 import LightRays from "./components/ReactBits/LightRays";
 
@@ -31,6 +32,7 @@ function App() {
       <Hero onMenuClick={() => setIsMenuOpen(true)} />
       <About />
       <Project />
+      <Contact />
     </div>
   );
 }

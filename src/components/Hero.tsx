@@ -1,4 +1,5 @@
 import React from "react";
+import { Menu as MenuIcon } from "lucide-react";
 import ExploreIndicator from "./ExploreIndicator";
 
 interface HeroProps {
@@ -53,9 +54,10 @@ function Hero({ onMenuClick }: HeroProps) {
 
         <button
           onClick={onMenuClick}
-          className="min-w-64 text-right hover:opacity-70 transition-opacity cursor-pointer"
+          className="min-w-64 flex items-center justify-end gap-3 hover:opacity-70 transition-opacity cursor-pointer"
         >
           MENU
+          <MenuIcon size={24} strokeWidth={1.5} />
         </button>
       </div>
 
@@ -85,7 +87,12 @@ function Hero({ onMenuClick }: HeroProps) {
         </div>
       </div>
 
-      <ExploreIndicator className="absolute left-1/2 -translate-x-1/2 bottom-0" />
+      <ExploreIndicator
+        className="absolute left-1/2 -translate-x-1/2 bottom-0"
+        onClick={() =>
+          document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
+        }
+      />
 
       <img
         className="animate-spin-slow"

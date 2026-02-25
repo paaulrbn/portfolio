@@ -7,51 +7,22 @@ import {
   Wrench,
 } from "lucide-react";
 import TiltedCard from "./ReactBits/TiltedCard";
+import CardBackground from "./CardBackground";
+import SectionTitle from "./SectionTitle";
+import Timeline, { type TimelineEntry } from "./Timeline";
 
-// Styles communs
-const cardStyle = {
-  background: "linear-gradient(135deg, #111111 0%, rgba(26, 26, 26, 0.8) 100%)",
-  borderColor: "rgba(51, 51, 51, 0.3)",
-};
-
-const CardBackground = ({ children }: { children: React.ReactNode }) => (
-  <div
-    className="rounded-3xl border backdrop-blur-md relative overflow-hidden w-full h-full"
-    style={cardStyle}
-  >
-    {/* Ligne brillante en haut */}
-    <div
-      className="absolute top-0 left-0 right-0 h-px"
-      style={{
-        background:
-          "linear-gradient(90deg, transparent 0%, rgba(243, 243, 236, 0.1) 50%, transparent 100%)",
-      }}
-    />
-    {/* Contenu invisible pour définir la hauteur */}
-    <div className="opacity-0 pointer-events-none p-6">{children}</div>
-  </div>
-);
-
-const SectionTitle = ({ icon: Icon, title }: { icon: any; title: string }) => (
-  <h3 className="text-lg font-bold mb-5 flex items-center gap-3">
-    <Icon size={24} />
-    {title}
-  </h3>
-);
-
-// Composants de contenu
 const WhoAmI = () => {
   const content = (
     <>
       <SectionTitle icon={User} title="Qui suis-je" />
       <div className="flex flex-col gap-4">
         <p className="opacity-80 leading-relaxed">
-          Je m'appelle Paul Roubinet, j'ai 20 ans et je suis étudiant en 2ème
+          Je m'appelle Paul Roubinet, j'ai 20 ans et je suis étudiant en 3ème
           année de BUT Informatique à l'IUT2 de Grenoble, dans le parcours
           réalisation d'applications.
         </p>
         <p className="opacity-80 leading-relaxed">
-          Je suis développeur Fullstack junior passionné par le développement
+          Je suis développeur Fullstack passionné par le développement
           web, le développement d'applications et la cybersécurité.
         </p>
         <p className="opacity-80 leading-relaxed">
@@ -92,69 +63,26 @@ const FutureProjects = () => {
   );
 };
 
+const experienceEntries: TimelineEntry[] = [
+  {
+    period: "Avril 2025 - Juillet 2025",
+    title: "Stage - Laboratoire G-SCOP, Grenoble",
+    description:
+      "Développement d'un outil d'aide à la décision multi-critère de type graphe en coordonnées parallèles en C++",
+  },
+  {
+    period: "Décembre 2019",
+    title: "Stage de 3ème - AFB, Saint-Égrève",
+    description:
+      "Diagnostic matériel et logiciel, remplacement de composants défectueux, configuration de systèmes Windows.",
+  },
+];
+
 const Experience = () => {
   const content = (
     <>
       <SectionTitle icon={Briefcase} title="Expérience" />
-      <div className="flex flex-col gap-8 relative">
-        {/* Trait de liaison SVG */}
-        <svg className="absolute left-0 top-0 w-8 h-full pointer-events-none">
-          <line
-            x1="37%"
-            y1="5%"
-            x2="37%"
-            y2="62%"
-            stroke="rgba(243,243,236,0.15)"
-            strokeWidth="2"
-          />
-        </svg>
-
-        {/* timeline */}
-        <img
-          src="star-icon.png"
-          alt="star"
-          className="absolute top-0 -left-1 w-8 h-8  "
-        />
-        <img
-          src="star-icon.png"
-          alt="star"
-          className="absolute top-35 -left-1 w-8 h-8  "
-        />
-
-        {/* Timeline Item 1 */}
-        <div className="pl-9 relative">
-          <div
-            className="inline-block px-2 py-1 rounded font-medium text-sm opacity-80 mb-2 -translate-x-2"
-            style={{ background: "rgba(243, 243, 236, 0.05)" }}
-          >
-            Avril 2025 - Juillet 2025
-          </div>
-          <h4 className="font-semibold mb-1">
-            Stage - Laboratoire G-SCOP, Grenoble
-          </h4>
-          <p className="text-sm opacity-60 leading-relaxed">
-            Développement d'un outil d'aide à la décision multi-critère de type
-            graphe en coordonnées parallèles en C++
-          </p>
-        </div>
-
-        {/* Timeline Item 2 */}
-        <div className="pl-9 relative">
-          <div
-            className="inline-block px-2 py-1 rounded font-medium text-sm opacity-80 mb-2 -translate-x-2"
-            style={{ background: "rgba(243, 243, 236, 0.05)" }}
-          >
-            Décembre 2019
-          </div>
-          <h4 className="font-semibold mb-1">
-            Stage de 3ème - AFB, Saint-Égrève
-          </h4>
-          <p className="text-sm opacity-60 leading-relaxed">
-            Diagnostic matériel et logiciel, remplacement de composants
-            défectueux, configuration de systèmes Windows.
-          </p>
-        </div>
-      </div>
+      <Timeline entries={experienceEntries} />
     </>
   );
 
@@ -165,66 +93,31 @@ const Experience = () => {
   );
 };
 
+const educationEntries: TimelineEntry[] = [
+  {
+    period: "2023 - Présent",
+    title: "BUT Informatique, parcours réalisation d'applications",
+    description: "IUT2 de Grenoble",
+  },
+  {
+    period: "2020 - 2023",
+    title: "Baccalauréat général",
+    description: (
+      <>
+        Lycée Les Eaux Claires, mention assez bien
+        <br />
+        Spécialités : Mathématiques, NSI (Numérique et Sciences Informatiques)
+        et Anglais
+      </>
+    ),
+  },
+];
+
 const Education = () => {
   const content = (
     <>
       <SectionTitle icon={GraduationCap} title="Parcours" />
-      <div className="flex flex-col gap-8 relative">
-        {/* Trait de liaison SVG */}
-        <svg className="absolute left-0 top-0 w-8 h-full pointer-events-none">
-          <line
-            x1="37%"
-            y1="5%"
-            x2="37%"
-            y2="55%"
-            stroke="rgba(243,243,236,0.15)"
-            strokeWidth="2"
-          />
-        </svg>
-
-        {/* timeline */}
-        <img
-          src="star-icon.png"
-          alt="star"
-          className="absolute top-0 -left-1 w-8 h-8  "
-        />
-        <img
-          src="star-icon.png"
-          alt="star"
-          className="absolute top-29.5 -left-1 w-8 h-8  "
-        />
-
-        {/* Timeline Item 1 */}
-        <div className="pl-9 relative">
-          <div
-            className="inline-block px-2 py-1 rounded font-medium text-sm opacity-80 mb-2 -translate-x-2"
-            style={{ background: "rgba(243, 243, 236, 0.05)" }}
-          >
-            2023 - Présent
-          </div>
-          <h4 className="font-semibold mb-1">
-            BUT Informatique, parcours réalisation d'applications
-          </h4>
-          <p className="text-sm opacity-60 leading-relaxed">IUT2 de Grenoble</p>
-        </div>
-
-        {/* Timeline Item 2 */}
-        <div className="pl-9 relative">
-          <div
-            className="inline-block px-2 py-1 rounded font-medium text-sm opacity-80 mb-2 -translate-x-2"
-            style={{ background: "rgba(243, 243, 236, 0.05)" }}
-          >
-            2020 - 2023
-          </div>
-          <h4 className="font-semibold mb-1">Baccalauréat général</h4>
-          <p className="text-sm opacity-60 leading-relaxed">
-            Lycée Les Eaux Claires, mention assez bien
-            <br />
-            Spécialités : Mathématiques, NSI (Numérique et Sciences
-            Informatiques) et Anglais
-          </p>
-        </div>
-      </div>
+      <Timeline entries={educationEntries} />
     </>
   );
 
@@ -380,9 +273,9 @@ const Tools = () => {
   );
 };
 
-function About() {
+export default function About() {
   return (
-    <section className="flex flex-col justify-center m-8 mt-24 gap-10">
+    <section id="about" className="flex flex-col justify-center m-8 mt-24 gap-10">
       <h2
         className="text-6xl font-medium"
         style={{ fontFamily: "Monument Extended" }}
@@ -401,5 +294,3 @@ function About() {
     </section>
   );
 }
-
-export default About;

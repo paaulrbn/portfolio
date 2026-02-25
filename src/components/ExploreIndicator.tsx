@@ -2,16 +2,26 @@ const ExploreIndicator = ({
   size = 200,
   color = "#F3F3EC",
   className = "",
+  onClick,
+}: {
+  size?: number;
+  color?: string;
+  className?: string;
+  onClick?: () => void;
 }) => {
   return (
-    <div
-      className={className}
+    <button
+      onClick={onClick}
+      className={`${className} cursor-pointer hover:opacity-70 transition-opacity`}
       style={{
         width: size,
         color: color,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        background: "none",
+        border: "none",
+        padding: 0,
       }}
     >
       <svg
@@ -53,7 +63,7 @@ const ExploreIndicator = ({
           EXPLORE
         </text>
       </svg>
-    </div>
+    </button>
   );
 };
 
