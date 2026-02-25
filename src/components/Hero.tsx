@@ -21,11 +21,11 @@ function Hero({ onMenuClick }: HeroProps) {
   }, []);
 
   return (
-    <div className="flex flex-col items-start justify-between h-screen w-full p-8 relative">
-      <div className="flex justify-between w-full">
-        <p className="min-w-64 text-left">
+    <div className="flex flex-col items-start h-screen w-full p-4 sm:p-6 md:p-8 pb-20 sm:pb-24 relative">
+      <div className="flex justify-between w-full items-center">
+        <p className="text-xs sm:text-sm md:text-base sm:min-w-64 text-left">
           GRENOBLE, FRANCE
-          <span className="ml-12">
+          <span className="ml-6 sm:ml-12">
             {(() => {
               const [time, setTime] = React.useState(
                 new Date().toLocaleTimeString("fr-FR", {
@@ -50,31 +50,36 @@ function Hero({ onMenuClick }: HeroProps) {
             })()}
           </span>
         </p>
-        <p>Web Developer</p>
+        <p className="hidden md:block text-sm md:text-base">Web Developer</p>
 
         <button
           onClick={onMenuClick}
-          className="min-w-64 flex items-center justify-end gap-3 hover:opacity-70 transition-opacity cursor-pointer"
+          className="ml-auto flex items-center justify-end gap-3 hover:opacity-70 transition-opacity cursor-pointer"
         >
           MENU
           <MenuIcon size={24} strokeWidth={1.5} />
         </button>
       </div>
 
-      <h1 className="text-9xl" style={{ fontFamily: "Monument Extended" }}>
-        PAUL ROUBINET
-      </h1>
+      <div className="flex flex-col gap-4 sm:gap-6 my-auto">
+        <h1
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
+          style={{ fontFamily: "Monument Extended" }}
+        >
+          PAUL ROUBINET
+        </h1>
 
-      <div className="max-w-80 text-left">
-        <p>
-          Étudiant en BUT Informatique à l'IUT2 de Grenoble. Passionné par la
-          technologie et la programmation, je développe des solutions créatives
-          et fonctionnelles.
-        </p>
+        <div className="max-w-80 text-left">
+          <p className="text-sm sm:text-base">
+            Étudiant en BUT Informatique à l'IUT2 de Grenoble. Passionné par la
+            technologie et la programmation, je développe des solutions créatives
+            et fonctionnelles.
+          </p>
+        </div>
       </div>
 
       <div
-        className="flex flex-row gap-0 justify-end"
+        className="hidden sm:flex flex-row gap-0 justify-end"
         style={{ letterSpacing: "0.08em", fontFamily: "Andale Mono" }}
       >
         <div className="flex flex-col text-[#515151]">

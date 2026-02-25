@@ -275,15 +275,15 @@ const Tools = () => {
 
 export default function About() {
   return (
-    <section id="about" className="flex flex-col justify-center m-8 mt-24 gap-10">
+    <section id="about" className="flex flex-col justify-center mx-4 sm:mx-6 md:mx-8 mt-16 sm:mt-24 gap-6 sm:gap-10">
       <h2
-        className="text-6xl font-medium"
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium"
         style={{ fontFamily: "Monument Extended" }}
       >
         À PROPOS
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
         <WhoAmI />
         <FutureProjects />
         <Experience />

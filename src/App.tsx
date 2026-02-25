@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Project from "./components/Project";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 import Menu from "./components/Menu";
 import LightRays from "./components/ReactBits/LightRays";
 
@@ -33,6 +34,7 @@ function App() {
       <About />
       <Project />
       <Contact />
+      <Footer />
     </div>
   );
 }

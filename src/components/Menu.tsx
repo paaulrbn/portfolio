@@ -7,15 +7,15 @@ interface MenuProps {
 }
 
 const menuItems = [
-  { label: "HOME", href: "#", angle: -15 },
+  { label: "HOME", href: "#", angle: -12.9 },
   { label: "À PROPOS", href: "#about", angle: -5 },
   { label: "PROJETS", href: "#projects", angle: 5 },
-  { label: "CONTACT", href: "#contact", angle: 15 },
+  { label: "CONTACT", href: "#contact", angle: 14 },
 ];
 
 function Menu({ isOpen, onClose }: MenuProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [starRotation, setStarRotation] = useState(-15);
+  const [starRotation, setStarRotation] = useState(-12.9);
 
   useEffect(() => {
     if (hoveredIndex !== null) {
@@ -73,7 +73,7 @@ function Menu({ isOpen, onClose }: MenuProps) {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: "-100%", opacity: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3/5 w-[200vh] h-[200vh]"
+              className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3/5 w-[200vh] h-[200vh]"
             >
               {/* Grand cercle avec bordure blanche */}
               <div
@@ -99,7 +99,7 @@ function Menu({ isOpen, onClose }: MenuProps) {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4, delay: 0.2 }}
               onClick={onClose}
-              className="absolute top-8 right-8 flex items-center gap-4 hover:opacity-70 transition-opacity cursor-pointer z-10"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 flex items-center gap-3 sm:gap-4 hover:opacity-70 transition-opacity cursor-pointer z-10"
               aria-label="Fermer le menu"
             >
               <span
@@ -117,7 +117,7 @@ function Menu({ isOpen, onClose }: MenuProps) {
 
             {/* Navigation */}
             <nav
-              className="absolute left-1/2 top-1/2 -translate-y-1/2 flex flex-col justify-center"
+              className="absolute left-4 sm:left-8 md:left-1/2 top-1/2 -translate-y-1/2 flex flex-col justify-center"
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {menuItems.map((item, index) => (
@@ -134,7 +134,7 @@ function Menu({ isOpen, onClose }: MenuProps) {
                     delay: index * 0.08,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl py-3 md:py-5 font-medium transition-opacity duration-300"
+                  className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl py-2 sm:py-3 md:py-5 font-medium transition-opacity duration-300"
                   style={{
                     fontFamily: "Cirka",
                     opacity:

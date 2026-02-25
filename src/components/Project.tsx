@@ -340,15 +340,15 @@ function Project() {
 
   return (
     <>
-      <section className="flex flex-col justify-center m-8 mt-24 gap-10">
+      <section id="projects" className="flex flex-col justify-center mx-4 sm:mx-6 md:mx-8 mt-16 sm:mt-24 gap-6 sm:gap-10">
         <h2
-          className="text-6xl font-medium"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium"
           style={{ fontFamily: "Monument Extended" }}
         >
           MES PROJETS
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 w-full auto-rows-fr">
           {projects.map((proj) => {
             const content = (
               <>
@@ -435,12 +435,12 @@ function Project() {
                 duration: 0.3,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="relative bg-linear-to-br from-[#111111] to-[#1a1a1acc] w-full max-w-5xl max-h-[90vh] rounded-4xl border border-[#333333]/30 backdrop-blur-2xl flex flex-col overflow-hidden cursor-default"
+              className="relative bg-linear-to-br from-[#111111] to-[#1a1a1acc] w-full max-w-5xl max-h-[90vh] rounded-2xl sm:rounded-4xl border border-[#333333]/30 backdrop-blur-2xl flex flex-col overflow-hidden cursor-default mx-2 sm:mx-4"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="sticky top-0 flex justify-between items-center p-8 border-b border-[#333333]/30 bg-inherit backdrop-blur-2xl rounded-t-4xl z-10">
-                <h2 className="text-3xl font-semibold bg-linear-to-br from-[#F3F3EC] to-gray-400 bg-clip-text text-transparent">
+              <div className="sticky top-0 flex justify-between items-center p-4 sm:p-6 md:p-8 border-b border-[#333333]/30 bg-inherit backdrop-blur-2xl rounded-t-2xl sm:rounded-t-4xl z-10">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold bg-linear-to-br from-[#F3F3EC] to-gray-400 bg-clip-text text-transparent">
                   {project.title}
                 </h2>
                 <button
@@ -457,7 +457,7 @@ function Project() {
 
               {/* Body */}
               <div
-                className="overflow-y-auto flex-1 p-8"
+                className="overflow-y-auto flex-1 p-4 sm:p-6 md:p-8"
                 onWheel={(e) => e.stopPropagation()}
               >
                 <div className="inline-block bg-linear-to-br from-[#F3F3EC]/10 to-[#F3F3EC]/5 px-4 py-2 rounded-full text-sm font-regular mb-6 border border-[#F3F3EC]/10 -translate-x-4">
@@ -484,7 +484,7 @@ function Project() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
                   <div>
                     <h4 className="text-base font-semibold mb-4 flex items-center gap-2 bg-linear-to-br from-[#F3F3EC] to-gray-400 bg-clip-text text-transparent">
                       <span className="flex items-center justify-center w-6 h-6 text-[#F3F3EC]/70">
