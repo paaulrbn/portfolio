@@ -54,3 +54,10 @@ body {
     background: rgba(232, 232, 224, 0.25);
     color: #fff;
 }
+
+/* Compense le header fixe lors du scroll vers les ancres */
+#about,
+#projects,
+#contact {
+    scroll-margin-top: 5.5rem;
+}
