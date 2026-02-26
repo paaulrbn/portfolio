@@ -8,8 +8,8 @@ export default function SectionTitle({
   title: string;
 }) {
   return (
-    <h3 className="text-lg font-bold mb-5 flex items-center gap-3">
-      <Icon size={24} />
+    <h3 className="text-sm font-semibold mb-5 flex items-center gap-2.5 tracking-wide uppercase opacity-80">
+      <Icon size={16} strokeWidth={1.5} />
       {title}
     </h3>
   );

@@ -7,6 +7,8 @@ import {
   Wrench,
 } from "lucide-react";
 import TiltedCard from "./ReactBits/TiltedCard";
+import FadeIn from "./ReactBits/FadeIn";
+import BlurText from "./ReactBits/BlurText";
 import CardBackground from "./CardBackground";
 import SectionTitle from "./SectionTitle";
 import Timeline, { type TimelineEntry } from "./Timeline";
@@ -15,17 +17,17 @@ const WhoAmI = () => {
   const content = (
     <>
       <SectionTitle icon={User} title="Qui suis-je" />
-      <div className="flex flex-col gap-4">
-        <p className="opacity-80 leading-relaxed">
+      <div className="flex flex-col gap-3">
+        <p className="opacity-80 leading-relaxed text-[0.9rem]">
           Je m'appelle Paul Roubinet, j'ai 20 ans et je suis étudiant en 3ème
           année de BUT Informatique à l'IUT2 de Grenoble, dans le parcours
           réalisation d'applications.
         </p>
-        <p className="opacity-80 leading-relaxed">
-          Je suis développeur Fullstack passionné par le développement
-          web, le développement d'applications et la cybersécurité.
+        <p className="opacity-80 leading-relaxed text-[0.9rem]">
+          Je suis développeur Fullstack passionné par le développement web, le
+          développement d'applications et la cybersécurité.
         </p>
-        <p className="opacity-80 leading-relaxed">
+        <p className="opacity-80 leading-relaxed text-[0.9rem]">
           Titulaire du permis B, je suis toujours curieux d'apprendre de
           nouvelles technologies. J'ai développé mes compétences en autodidacte
           en parallèle de ma formation.
@@ -35,7 +37,7 @@ const WhoAmI = () => {
   );
 
   return (
-    <TiltedCard overlayContent={<div className="p-6">{content}</div>}>
+    <TiltedCard overlayContent={<div className="p-5 sm:p-6">{content}</div>}>
       <CardBackground>{content}</CardBackground>
     </TiltedCard>
   );
@@ -45,19 +47,19 @@ const FutureProjects = () => {
   const content = (
     <>
       <SectionTitle icon={Target} title="Projets d'avenir" />
-      <div className="flex flex-col gap-4">
-        <p className="opacity-80 leading-relaxed">
+      <div className="flex flex-col gap-3">
+        <p className="opacity-80 leading-relaxed text-[0.9rem]">
           Mon objectif est de me spécialiser en développement d'applications et
           cybersécurité tout en restant ouvert aux opportunités qui se
-          présentent. Je souhaite apporter des solutions innovantes, efficaces
-          et sécurisées.
+          présentent. Je souhaite apporter des solutions innovantes, efficaces et
+          sécurisées.
         </p>
       </div>
     </>
   );
 
   return (
-    <TiltedCard overlayContent={<div className="p-6">{content}</div>}>
+    <TiltedCard overlayContent={<div className="p-5 sm:p-6">{content}</div>}>
       <CardBackground>{content}</CardBackground>
     </TiltedCard>
   );
@@ -75,19 +77,19 @@ const experienceEntries: TimelineEntry[] = [
     title: "Stage - Laboratoire G-SCOP, Grenoble",
     description:
       "Développement d'un outil d'aide à la décision multi-critère de type graphe en coordonnées parallèles en C++",
-  }
+  },
 ];
 
 const Experience = () => {
   const content = (
     <>
-      <SectionTitle icon={Briefcase} title="Expérience" />
+      <SectionTitle icon={Briefcase} title="Expériences" />
       <Timeline entries={experienceEntries} />
     </>
   );
 
   return (
-    <TiltedCard overlayContent={<div className="p-6">{content}</div>}>
+    <TiltedCard overlayContent={<div className="p-5 sm:p-6">{content}</div>}>
       <CardBackground>{content}</CardBackground>
     </TiltedCard>
   );
@@ -106,8 +108,7 @@ const educationEntries: TimelineEntry[] = [
       <>
         Lycée Les Eaux Claires, mention assez bien
         <br />
-        Spécialités : Mathématiques, NSI (Numérique et Sciences Informatiques)
-        et Anglais
+        Spécialités : Mathématiques, NSI et Anglais
       </>
     ),
   },
@@ -122,11 +123,31 @@ const Education = () => {
   );
 
   return (
-    <TiltedCard overlayContent={<div className="p-6">{content}</div>}>
+    <TiltedCard overlayContent={<div className="p-5 sm:p-6">{content}</div>}>
       <CardBackground>{content}</CardBackground>
     </TiltedCard>
   );
 };
+
+const TechBadge = ({ name, icon }: { name: string; icon: string }) => (
+  <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg border border-white/8 bg-white/5 transition-all hover:-translate-y-0.5 hover:bg-white/10 hover:border-white/15 cursor-default">
+    <div
+      className="w-4 h-4 opacity-80"
+      style={{
+        maskImage: `url(${icon})`,
+        WebkitMaskImage: `url(${icon})`,
+        maskSize: "contain",
+        WebkitMaskSize: "contain",
+        maskRepeat: "no-repeat",
+        WebkitMaskRepeat: "no-repeat",
+        maskPosition: "center",
+        WebkitMaskPosition: "center",
+        backgroundColor: "currentColor",
+      }}
+    />
+    <span className="text-xs font-medium opacity-80">{name}</span>
+  </div>
+);
 
 const Languages = () => {
   const techs = [
@@ -150,53 +171,16 @@ const Languages = () => {
   const content = (
     <>
       <SectionTitle icon={Code} title="Langages & Frameworks" />
-      <div className="flex flex-wrap gap-2.5 mt-4">
+      <div className="flex flex-wrap gap-2 mt-1">
         {techs.map((tech) => (
-          <div
-            key={tech.name}
-            className="flex items-center gap-3 px-3.5 py-3 rounded-xl border transition-all hover:-translate-y-0.5 hover:drop-shadow-[0_4px_12px_rgba(243,243,236,0.25)] group cursor-pointer"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(243, 243, 236, 0.05) 0%, rgba(243, 243, 236, 0.02) 100%)",
-              borderColor: "rgba(243, 243, 236, 0.08)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background =
-                "linear-gradient(135deg, rgba(243, 243, 236, 0.12) 0%, rgba(243, 243, 236, 0.06) 100%)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background =
-                "linear-gradient(135deg, rgba(243, 243, 236, 0.05) 0%, rgba(243, 243, 236, 0.02) 100%)";
-            }}
-          >
-            {tech.icon && (
-              <div
-                className="w-5 h-5"
-                style={{
-                  maskImage: `url(${tech.icon})`,
-                  WebkitMaskImage: `url(${tech.icon})`,
-                  maskSize: "contain",
-                  WebkitMaskSize: "contain",
-                  maskRepeat: "no-repeat",
-                  WebkitMaskRepeat: "no-repeat",
-                  maskPosition: "center",
-                  WebkitMaskPosition: "center",
-                  background:
-                    "linear-gradient(135deg, #F3F3EC 0%, #999999 100%)",
-                }}
-              />
-            )}
-            <span className="text-[0.85rem] font-medium opacity-80 transition-colors">
-              {tech.name}
-            </span>
-          </div>
+          <TechBadge key={tech.name} {...tech} />
         ))}
       </div>
     </>
   );
 
   return (
-    <TiltedCard overlayContent={<div className="p-6">{content}</div>}>
+    <TiltedCard overlayContent={<div className="p-5 sm:p-6">{content}</div>}>
       <CardBackground>{content}</CardBackground>
     </TiltedCard>
   );
@@ -221,75 +205,53 @@ const Tools = () => {
   const content = (
     <>
       <SectionTitle icon={Wrench} title="Outils" />
-      <div className="flex flex-wrap gap-2.5 mt-4">
+      <div className="flex flex-wrap gap-2 mt-1">
         {tools.map((tool) => (
-          <div
-            key={tool.name}
-            className="flex items-center gap-3 px-3.5 py-3 rounded-xl border transition-all hover:-translate-y-0.5 hover:drop-shadow-[0_4px_12px_rgba(243,243,236,0.25)] group cursor-pointer"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(243, 243, 236, 0.05) 0%, rgba(243, 243, 236, 0.02) 100%)",
-              borderColor: "rgba(243, 243, 236, 0.08)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background =
-                "linear-gradient(135deg, rgba(243, 243, 236, 0.12) 0%, rgba(243, 243, 236, 0.06) 100%)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background =
-                "linear-gradient(135deg, rgba(243, 243, 236, 0.05) 0%, rgba(243, 243, 236, 0.02) 100%)";
-            }}
-          >
-            {tool.icon && (
-              <div
-                className="w-5 h-5"
-                style={{
-                  maskImage: `url(${tool.icon})`,
-                  WebkitMaskImage: `url(${tool.icon})`,
-                  maskSize: "contain",
-                  WebkitMaskSize: "contain",
-                  maskRepeat: "no-repeat",
-                  WebkitMaskRepeat: "no-repeat",
-                  maskPosition: "center",
-                  WebkitMaskPosition: "center",
-                  background:
-                    "linear-gradient(135deg, #F3F3EC 0%, #999999 100%)",
-                }}
-              />
-            )}
-            <span className="text-[0.85rem] font-medium opacity-70 transition-colors">
-              {tool.name}
-            </span>
-          </div>
+          <TechBadge key={tool.name} {...tool} />
         ))}
       </div>
     </>
   );
 
   return (
-    <TiltedCard overlayContent={<div className="p-6">{content}</div>}>
+    <TiltedCard overlayContent={<div className="p-5 sm:p-6">{content}</div>}>
       <CardBackground>{content}</CardBackground>
     </TiltedCard>
   );
 };
 
+const cards = [WhoAmI, FutureProjects, Experience, Education, Languages, Tools];
+
 export default function About() {
   return (
-    <section id="about" className="flex flex-col justify-center mx-4 sm:mx-6 md:mx-8 mt-16 sm:mt-24 gap-6 sm:gap-10">
-      <h2
-        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium"
-        style={{ fontFamily: "Monument Extended" }}
-      >
-        À PROPOS
-      </h2>
+    <section
+      id="about"
+      className="flex flex-col justify-center mx-4 sm:mx-6 md:mx-8 mt-24 sm:mt-32 gap-8 sm:gap-12"
+    >
+      <FadeIn direction="up" distance={40}>
+        <div style={{ fontFamily: "Monument Extended" }}>
+          <BlurText
+            text="À PROPOS"
+            delay={80}
+            animateBy="letters"
+            direction="bottom"
+            stepDuration={0.3}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight"
+            animationFrom={{ filter: "blur(10px)", opacity: 0, y: 20 }}
+            animationTo={[{ filter: "blur(0px)", opacity: 1, y: 0 }]}
+          />
+        </div>
+        <p className="mt-3 text-sm opacity-70 max-w-lg">
+          Développeur passionné, toujours en quête de nouveaux défis techniques.
+        </p>
+      </FadeIn>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-        <WhoAmI />
-        <FutureProjects />
-        <Experience />
-        <Education />
-        <Languages />
-        <Tools />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        {cards.map((Card, i) => (
+          <FadeIn key={i} delay={i * 0.08} distance={30}>
+            <Card />
+          </FadeIn>
+        ))}
       </div>
     </section>
   );

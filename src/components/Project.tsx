@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { Target, Flag, Wrench, Github } from "lucide-react";
+import { Target, Flag, Wrench, Github, X, ExternalLink } from "lucide-react";
 import TiltedCard from "./ReactBits/TiltedCard";
+import FadeIn from "./ReactBits/FadeIn";
+import BlurText from "./ReactBits/BlurText";
 import { motion, AnimatePresence } from "motion/react";
 
 type ProjectData = {
@@ -266,61 +268,81 @@ const projectsData: Record<number, ProjectData> = {
 const projects = [
   {
     id: 1,
-    title: "Classificateur de Dépêches Journalistiques",
+    title: "Classificateur de Dépêches",
     description:
       "Programme Java de classification automatique de dépêches journalistiques en 5 catégories prédéfinies",
-    tags: ["Java", "Algorithmique", "Analyse de données"],
+    tags: ["Java", "Algorithmique"],
   },
   {
     id: 2,
-    title: "Base de Données du Titanic",
+    title: "Base de Données Titanic",
     description:
-      "Modélisation complète d'une base de données PostgreSQL sur le naufrage du Titanic avec SEA et SLR",
-    tags: ["PostgreSQL", "SQL", "Modélisation BDD"],
+      "Modélisation complète d'une base de données PostgreSQL sur le naufrage du Titanic",
+    tags: ["PostgreSQL", "SQL"],
   },
   {
     id: 3,
-    title: "Site Web Institutionnel Capgemini",
+    title: "Site Institutionnel Capgemini",
     description:
       "Conception et réalisation du site web institutionnel de Capgemini pour les élèves de 3ème",
-    tags: ["HTML", "CSS", "JavaScript", "Whimsical"],
+    tags: ["HTML", "CSS", "JavaScript"],
   },
   {
     id: 4,
-    title: "Thibou - Guide de Musée Intelligent",
+    title: "Thibou - Guide de Musée",
     description:
       "Application web d'optimisation de parcours dans un musée avec itinéraires personnalisés",
-    tags: ["React", "Next.js", "TypeScript", "PostgreSQL"],
+    tags: ["React", "Next.js", "TypeScript"],
   },
   {
     id: 5,
-    title: "Plateforme de Gestion de Stages",
+    title: "Gestion de Stages",
     description:
       "Solution complète de gestion des stages avec back-office web et application mobile Android",
-    tags: ["Symfony", "Android Java", "API REST", "PostgreSQL"],
+    tags: ["Symfony", "Android", "API REST"],
   },
   {
     id: 6,
-    title: "École des Loustics - Jeux Éducatifs",
+    title: "École des Loustics",
     description:
       "Application éducative Android avec mini-jeux pour développer les compétences en mathématiques",
-    tags: ["Android Java", "Room Database", "Architecture MVC"],
+    tags: ["Android Java", "Room DB"],
   },
   {
     id: 7,
-    title: "ACDeces - Logiciel de Pompes Funèbres",
+    title: "ACDeces - Pompes Funèbres",
     description:
       "Application JavaFX de gestion complète pour pompes funèbres avec calendrier et planning",
-    tags: ["Java", "JavaFX", "FXML", "Architecture MVC"],
+    tags: ["Java", "JavaFX"],
   },
   {
     id: 8,
-    title: "PCPWidget - Visualisation Interactive",
+    title: "PCPWidget - Visualisation",
     description:
       "Outil de visualisation C++/Qt6 pour données multidimensionnelles avec coordonnées parallèles",
-    tags: ["C++17", "Qt6", "CMake", "Python"],
+    tags: ["C++17", "Qt6", "Python"],
   },
 ];
+
+function ModalSection({
+  icon: Icon,
+  title,
+  children,
+}: {
+  icon: React.ComponentType<{ size: number; strokeWidth?: number }>;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <h4 className="text-xs font-semibold tracking-wide uppercase opacity-60 mb-3 flex items-center gap-2">
+        <Icon size={14} strokeWidth={1.5} />
+        {title}
+      </h4>
+      {children}
+    </div>
+  );
+}
 
 function Project() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
@@ -340,76 +362,94 @@ function Project() {
 
   return (
     <>
-      <section id="projects" className="flex flex-col justify-center mx-4 sm:mx-6 md:mx-8 mt-16 sm:mt-24 gap-6 sm:gap-10">
-        <h2
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium"
-          style={{ fontFamily: "Monument Extended" }}
-        >
-          MES PROJETS
-        </h2>
+      <section
+        id="projects"
+        className="flex flex-col justify-center mx-4 sm:mx-6 md:mx-8 mt-24 sm:mt-32 gap-8 sm:gap-12"
+      >
+        <FadeIn direction="up" distance={40}>
+          <div style={{ fontFamily: "Monument Extended" }}>
+            <BlurText
+              text="PROJETS"
+              delay={80}
+              animateBy="letters"
+              direction="bottom"
+              stepDuration={0.3}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight"
+              animationFrom={{ filter: "blur(10px)", opacity: 0, y: 20 }}
+              animationTo={[{ filter: "blur(0px)", opacity: 1, y: 0 }]}
+            />
+          </div>
+          <p className="mt-3 text-sm opacity-70 max-w-lg">
+            Une sélection de projets académiques et personnels qui illustrent mon
+            parcours en développement.
+          </p>
+        </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 w-full auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 w-full auto-rows-fr">
           {projects.map((proj) => {
             const content = (
               <>
-                <div className="absolute top-2 left-6 text-7xl font-bold text-white/10">
+                <div
+                  className="absolute top-2 right-4 text-8xl font-bold text-white/10 select-none pointer-events-none"
+                  style={{ fontFamily: "Monument Extended" }}
+                >
                   {String(proj.id).padStart(2, "0")}
                 </div>
 
-                <h3 className="text-2xl font-bold mt-6 mb-4 bg-linear-to-br from-[#F3F3EC] to-gray-400 bg-clip-text text-transparent relative z-10 leading-tight">
+                <h3 className="text-lg font-semibold mb-2 leading-snug relative z-10">
                   {proj.title}
                 </h3>
 
-                <p className="text-white/70 text-sm leading-relaxed mb-6 grow">
+                <p className="text-sm opacity-70 leading-relaxed mb-5 grow relative z-10">
                   {proj.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mb-6 -translate-x-3">
+                <div className="flex flex-wrap gap-1.5 mt-auto relative z-10">
                   {proj.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="bg-white/8 text-white/60 px-3 py-1.5 rounded-full text-xs font-medium border border-white/10"
+                      className="text-[0.7rem] font-medium opacity-70 px-2.5 py-1 rounded-full border border-white/10 bg-white/5"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-
-                <div className="text-white/80 font-medium inline-flex items-center gap-2 text-sm hover:text-white transition-colors self-start mt-auto">
-                  Voir les détails
-                  <span className="transition-transform group-hover:translate-x-1">
-                    →
-                  </span>
-                </div>
               </>
             );
 
             return (
-              <TiltedCard
-                key={proj.id}
-                className="h-full"
-                overlayContent={
+              <FadeIn key={proj.id} delay={proj.id * 0.06} distance={25}>
+                <TiltedCard
+                  className="h-full"
+                  overlayContent={
+                    <div
+                      onClick={() => openModal(proj.id)}
+                      className="p-5 sm:p-6 flex flex-col h-full cursor-pointer group"
+                    >
+                      {content}
+                    </div>
+                  }
+                >
                   <div
-                    onClick={() => openModal(proj.id)}
-                    className="p-6 flex flex-col h-full cursor-pointer"
-                  >
-                    {content}
-                  </div>
-                }
-              >
-                <div className="rounded-3xl border border-[#333333]/30 backdrop-blur-md relative overflow-hidden w-full h-full flex flex-col bg-linear-to-br from-[#111111] to-[#1a1a1acc]">
-                  <div
-                    className="absolute top-0 left-0 right-0 h-px"
+                    className="rounded-2xl border border-white/8 backdrop-blur-xl relative overflow-hidden w-full h-full flex flex-col"
                     style={{
                       background:
-                        "linear-gradient(90deg, transparent 0%, rgba(243, 243, 236, 0.1) 50%, transparent 100%)",
+                        "linear-gradient(135deg, rgba(14,14,18,0.95) 0%, rgba(22,22,28,0.7) 100%)",
                     }}
-                  />
-                  <div className="opacity-0 pointer-events-none p-6 flex-1 flex flex-col">
-                    {content}
+                  >
+                    <div
+                      className="absolute top-0 left-0 right-0 h-px"
+                      style={{
+                        background:
+                          "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%)",
+                      }}
+                    />
+                    <div className="opacity-0 pointer-events-none p-5 sm:p-6 flex-1 flex flex-col">
+                      {content}
+                    </div>
                   </div>
-                </div>
-              </TiltedCard>
+                </TiltedCard>
+              </FadeIn>
             );
           })}
         </div>
@@ -422,154 +462,123 @@ function Project() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-1000 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 overflow-hidden cursor-pointer"
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-1000 flex items-center justify-center bg-black/70 backdrop-blur-md p-4 overflow-hidden cursor-pointer"
             onClick={closeModal}
             onWheel={(e) => e.preventDefault()}
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              initial={{ scale: 0.95, opacity: 0, y: 10 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              exit={{ scale: 0.95, opacity: 0, y: 10 }}
               transition={{
                 duration: 0.3,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="relative bg-linear-to-br from-[#111111] to-[#1a1a1acc] w-full max-w-5xl max-h-[90vh] rounded-2xl sm:rounded-4xl border border-[#333333]/30 backdrop-blur-2xl flex flex-col overflow-hidden cursor-default mx-2 sm:mx-4"
+              className="relative w-full max-w-4xl max-h-[85vh] rounded-2xl border border-white/8 flex flex-col overflow-hidden cursor-default mx-2 sm:mx-4"
+              style={{
+                background:
+                  "linear-gradient(180deg, #0e0e12 0%, #08080c 100%)",
+              }}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="sticky top-0 flex justify-between items-center p-4 sm:p-6 md:p-8 border-b border-[#333333]/30 bg-inherit backdrop-blur-2xl rounded-t-2xl sm:rounded-t-4xl z-10">
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold bg-linear-to-br from-[#F3F3EC] to-gray-400 bg-clip-text text-transparent">
-                  {project.title}
-                </h2>
+              <div className="flex justify-between items-center p-5 sm:p-7 border-b border-white/6">
+                <div className="flex-1 min-w-0 pr-4">
+                  <span className="inline-block text-[0.65rem] font-semibold tracking-wider uppercase opacity-60 mb-2">
+                    {project.category}
+                  </span>
+                  <h2 className="text-xl sm:text-2xl font-semibold leading-snug">
+                    {project.title}
+                  </h2>
+                </div>
                 <button
                   onClick={closeModal}
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-white/5 text-white/60 hover:text-white/90 hover:bg-white/10 hover:scale-110 transition-all cursor-pointer"
+                  className="flex items-center justify-center w-9 h-9 rounded-full border border-white/10 bg-white/5 text-white/50 hover:text-white hover:bg-white/10 transition-all cursor-pointer shrink-0 mt-0.5"
                 >
-                  <img
-                    src="star-icon.png"
-                    alt="Close"
-                    className="w-8 h-8 rotate-45"
-                  />
+                  <X size={16} strokeWidth={1.5} />
                 </button>
               </div>
 
               {/* Body */}
               <div
-                className="overflow-y-auto flex-1 p-4 sm:p-6 md:p-8"
+                className="overflow-y-auto flex-1 p-5 sm:p-7"
                 onWheel={(e) => e.stopPropagation()}
               >
-                <div className="inline-block bg-linear-to-br from-[#F3F3EC]/10 to-[#F3F3EC]/5 px-4 py-2 rounded-full text-sm font-regular mb-6 border border-[#F3F3EC]/10 -translate-x-4">
-                  {project.category}
+                <p className="leading-relaxed opacity-80 text-[0.95rem] mb-8">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-1.5 mb-8">
+                  {project.technologies.map((tech: string, index: number) => (
+                    <span
+                      key={index}
+                      className="text-xs font-medium opacity-75 px-3 py-1.5 rounded-full border border-white/10 bg-white/4"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
 
-                <div className="mb-8">
-                  <p className="leading-relaxed">{project.description}</p>
-                </div>
-
-                <div className="mb-8">
-                  <h4 className="text-lg font-semibold mb-4 bg-linear-to-br from-[#F3F3EC] to-gray-400 bg-clip-text text-transparent">
-                    Technologies utilisées
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech: string, index: number) => (
-                      <span
-                        key={index}
-                        className="bg-linear-to-br from-[#F3F3EC]/8 to-[#F3F3EC]/3 text-[#F3F3EC]/80 px-3 py-2 rounded-xl text-sm font-regular border border-[#F3F3EC]/10 -translate-x-2"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
-                  <div>
-                    <h4 className="text-base font-semibold mb-4 flex items-center gap-2 bg-linear-to-br from-[#F3F3EC] to-gray-400 bg-clip-text text-transparent">
-                      <span className="flex items-center justify-center w-6 h-6 text-[#F3F3EC]/70">
-                        <Target size={20} />
-                      </span>
-                      Compétences
-                    </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                  <ModalSection icon={Target} title="Compétences">
                     <ul className="space-y-2">
                       {project.competences.map(
                         (comp: string, index: number) => (
                           <li
                             key={index}
-                            className="text-[#F3F3EC]/70 text-sm leading-relaxed pl-0.5 relative flex items-start gap-2"
+                            className="text-sm opacity-75 leading-relaxed flex items-start gap-2.5"
                           >
-                            <img
-                              src="/star-icon.png"
-                              alt=""
-                              className="w-5 h-5 mt-0.5 shrink-0"
-                            />
-                            <span>{comp}</span>
+                            <span className="w-1 h-1 rounded-full bg-white/40 mt-2 shrink-0" />
+                            {comp}
                           </li>
                         ),
                       )}
                     </ul>
-                  </div>
+                  </ModalSection>
 
-                  <div>
-                    <h4 className="text-base font-semibold mb-4 flex items-center gap-2 bg-linear-to-br from-[#F3F3EC] to-gray-400 bg-clip-text text-transparent">
-                      <span className="flex items-center justify-center w-6 h-6 text-[#F3F3EC]/70">
-                        <Flag size={20} />
-                      </span>
-                      Objectifs
-                    </h4>
+                  <ModalSection icon={Flag} title="Objectifs">
                     <ul className="space-y-2">
                       {project.objectifs.map((obj: string, index: number) => (
                         <li
                           key={index}
-                          className="text-[#F3F3EC]/70 text-sm leading-relaxed pl-0.5 relative flex items-start gap-2"
+                          className="text-sm opacity-75 leading-relaxed flex items-start gap-2.5"
                         >
-                          <img
-                            src="/star-icon.png"
-                            alt=""
-                            className="w-5 h-5 mt-0.5 shrink-0"
-                          />
-                          <span>{obj}</span>
+                          <span className="w-1 h-1 rounded-full bg-white/40 mt-2 shrink-0" />
+                          {obj}
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </ModalSection>
 
-                  <div>
-                    <h4 className="text-base font-semibold mb-4 flex items-center gap-2 bg-linear-to-br from-[#F3F3EC] to-gray-400 bg-clip-text text-transparent">
-                      <span className="flex items-center justify-center w-6 h-6 text-[#F3F3EC]/70">
-                        <Wrench size={20} />
-                      </span>
-                      Techniques acquises
-                    </h4>
+                  <ModalSection icon={Wrench} title="Techniques acquises">
                     <ul className="space-y-2">
-                      {project.techniques.map((tech: string, index: number) => (
-                        <li
-                          key={index}
-                          className="text-[#F3F3EC]/70 text-sm leading-relaxed pl-0.5 relative flex items-start gap-2"
-                        >
-                          <img
-                            src="/star-icon.png"
-                            alt=""
-                            className="w-5 h-5 mt-0.5 shrink-0"
-                          />
-                          <span>{tech}</span>
-                        </li>
-                      ))}
+                      {project.techniques.map(
+                        (tech: string, index: number) => (
+                          <li
+                            key={index}
+                            className="text-sm opacity-75 leading-relaxed flex items-start gap-2.5"
+                          >
+                            <span className="w-1 h-1 rounded-full bg-white/40 mt-2 shrink-0" />
+                            {tech}
+                          </li>
+                        ),
+                      )}
                     </ul>
-                  </div>
+                  </ModalSection>
                 </div>
 
                 {project.github && (
-                  <div className="text-center mt-8">
+                  <div className="mt-8 pt-6 border-t border-white/6">
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-br from-[#F3F3EC]/10 to-[#F3F3EC]/5 text-[#F3F3EC]/90 rounded-xl font-medium border border-[#F3F3EC]/20 hover:from-[#F3F3EC]/15 hover:to-[#F3F3EC]/8 hover:shadow-2xl transition-all"
+                      className="inline-flex items-center gap-2.5 text-sm font-medium opacity-70 hover:opacity-100 transition-opacity"
                     >
-                      <Github size={18} />
-                      <span>Voir sur GitHub</span>
+                      <Github size={16} strokeWidth={1.5} />
+                      Voir sur GitHub
+                      <ExternalLink size={12} strokeWidth={1.5} />
                     </a>
                   </div>
                 )}
