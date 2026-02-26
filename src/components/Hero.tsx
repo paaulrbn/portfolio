@@ -21,7 +21,7 @@ function Hero({ onMenuClick }: HeroProps) {
   }, []);
 
   return (
-    <div className="flex flex-col items-start h-screen w-full p-4 sm:p-6 md:p-8 pb-20 sm:pb-24 relative">
+    <div className="flex flex-col items-start h-svh w-full p-4 sm:p-6 md:p-8 pb-20 sm:pb-24 relative">
       <div className="flex justify-between w-full items-center">
         <p className="text-base sm:min-w-64 text-left">
           GRENOBLE, FRANCE
@@ -50,11 +50,12 @@ function Hero({ onMenuClick }: HeroProps) {
             })()}
           </span>
         </p>
+
         <p className="hidden md:block text-sm md:text-base">Web Developer</p>
 
         <button
           onClick={onMenuClick}
-          className="ml-auto flex items-center justify-end gap-3 hover:opacity-70 transition-opacity cursor-pointer"
+          className="flex items-center justify-end gap-3 hover:opacity-70 transition-opacity cursor-pointer"
         >
           MENU
           <MenuIcon size={24} strokeWidth={1.5} />
@@ -100,15 +101,10 @@ function Hero({ onMenuClick }: HeroProps) {
       />
 
       <img
-        className="animate-spin-slow"
+        className="animate-spin-slow w-screen h-[100vw] md:w-[80vw] md:h-[80vw] bottom-[10vw] sm:bottom-[-5vw] md:bottom-[-15vw] lg:bottom-[-25vw]"
         style={{
-          minWidth: "80vw",
-          minHeight: "80vw",
-          maxWidth: "80vw",
-          maxHeight: "80vw",
           position: "absolute",
           right: "-30vw",
-          bottom: "-25vw",
           zIndex: "-1",
         }}
         src="star.png"
