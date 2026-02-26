@@ -73,7 +73,7 @@ function Menu({ isOpen, onClose }: MenuProps) {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: "-100%", opacity: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3/5 w-[200vh] h-[200vh]"
+              className="block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3/5 w-screen h-[100vw]"
             >
               {/* Grand cercle avec bordure blanche */}
               <div
@@ -117,7 +117,7 @@ function Menu({ isOpen, onClose }: MenuProps) {
 
             {/* Navigation */}
             <nav
-              className="absolute left-4 sm:left-8 md:left-1/2 top-1/2 -translate-y-1/2 flex flex-col justify-center"
+              className="absolute left-1/2 top-1/2 -translate-y-1/2 flex flex-col justify-center"
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {menuItems.map((item, index) => (

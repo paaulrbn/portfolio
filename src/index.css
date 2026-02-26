@@ -1,5 +1,26 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: "Monument Extended";
+    src: url("/fonts/MonumentExtended-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Monument Extended";
+    src: url("/fonts/MonumentExtended-Ultrabold.otf") format("opentype");
+    font-weight: 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Cirka";
+    src: url("/fonts/cirka-3.ttf") format("truetype");
+    font-weight: 400;
+    font-display: swap;
+}
+
 :root {
     font-family:
         system-ui,

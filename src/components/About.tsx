@@ -65,17 +65,17 @@ const FutureProjects = () => {
 
 const experienceEntries: TimelineEntry[] = [
   {
+    period: "Septembre 2025 - Août 2026",
+    title: "Alternance - CNRS, Grenoble",
+    description:
+      "Refonte du backend d'une application de gestion d'effectifs sous CodeIgniter 4 avec tests unitaires PhpUnit.",
+  },
+  {
     period: "Avril 2025 - Juillet 2025",
     title: "Stage - Laboratoire G-SCOP, Grenoble",
     description:
       "Développement d'un outil d'aide à la décision multi-critère de type graphe en coordonnées parallèles en C++",
-  },
-  {
-    period: "Décembre 2019",
-    title: "Stage de 3ème - AFB, Saint-Égrève",
-    description:
-      "Diagnostic matériel et logiciel, remplacement de composants défectueux, configuration de systèmes Windows.",
-  },
+  }
 ];
 
 const Experience = () => {

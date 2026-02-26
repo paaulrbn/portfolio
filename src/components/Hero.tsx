@@ -23,7 +23,7 @@ function Hero({ onMenuClick }: HeroProps) {
   return (
     <div className="flex flex-col items-start h-screen w-full p-4 sm:p-6 md:p-8 pb-20 sm:pb-24 relative">
       <div className="flex justify-between w-full items-center">
-        <p className="text-xs sm:text-sm md:text-base sm:min-w-64 text-left">
+        <p className="text-base sm:min-w-64 text-left">
           GRENOBLE, FRANCE
           <span className="ml-6 sm:ml-12">
             {(() => {
