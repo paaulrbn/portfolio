@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu as MenuIcon } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 
 interface HeaderProps {
   onMenuClick: () => void;
@@ -46,18 +46,48 @@ export default function Header({ onMenuClick }: HeaderProps) {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-[1400px] mx-auto flex items-center justify-between px-4 sm:px-6 md:px-8 py-4 sm:py-5">
+      <motion.div
+        layout
+        transition={{ layout: { duration: 0.35, ease } }}
+        className="max-w-[1400px] mx-auto flex items-center justify-between px-4 sm:px-6 md:px-8 py-4 sm:py-5"
+      >
         <motion.p
+          layout="position"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 0.8, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1, ease }}
-          className="text-xs sm:text-sm tracking-wider"
+          className="text-xs sm:text-sm tracking-wider flex items-baseline gap-4 sm:gap-8"
         >
-          GRENOBLE, FRANCE
-          <span className="ml-4 sm:ml-8 tabular-nums">{time}</span>
+          <AnimatePresence mode="popLayout">
+            {scrolled ? (
+              <motion.span
+                key="name"
+                layout="position"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 0.9, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.35, ease }}
+              >
+                PAUL ROUBINET
+              </motion.span>
+            ) : (
+              <motion.span
+                key="location"
+                layout="position"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 0.9, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.35, ease }}
+              >
+                GRENOBLE, FRANCE
+              </motion.span>
+            )}
+          </AnimatePresence>
+          <span className="tabular-nums">{time}</span>
         </motion.p>
 
         <motion.p
+          layout="position"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 0.8, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2, ease }}
@@ -67,6 +97,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
         </motion.p>
 
         <motion.button
+          layout="position"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 0.8, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3, ease }}
@@ -76,7 +107,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
           MENU
           <MenuIcon size={20} strokeWidth={1.5} />
         </motion.button>
-      </div>
+      </motion.div>
     </header>
   );
 }

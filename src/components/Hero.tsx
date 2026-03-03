@@ -84,7 +84,7 @@ function Hero() {
         />
       </motion.div>
 
-      <motion.img
+      <motion.picture
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5, delay: 0.4, ease }}
@@ -94,11 +94,16 @@ function Hero() {
           right: "-30vw",
           zIndex: "-1",
         }}
-        src="star.png"
-        alt="star"
-        loading="lazy"
-        decoding="async"
-      />
+      >
+        <source srcSet="/star.webp" type="image/webp" />
+        <img
+          src="/star.png"
+          alt="star"
+          loading="lazy"
+          decoding="async"
+          className="w-full h-full object-contain"
+        />
+      </motion.picture>
       <style>
         {`
           @keyframes spin-slow {

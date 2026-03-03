@@ -355,8 +355,8 @@ function Project() {
 
   const closeModal = () => {
     setSelectedProject(null);
-    document.body.style.overflow = "auto";
-    document.documentElement.style.overflow = "auto";
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
   };
   const project = selectedProject ? projectsData[selectedProject] : null;
 
@@ -495,6 +495,7 @@ function Project() {
                 <button
                   onClick={closeModal}
                   className="flex items-center justify-center w-9 h-9 rounded-full border border-white/10 bg-white/5 text-white/50 hover:text-white hover:bg-white/10 transition-all cursor-pointer shrink-0 mt-0.5"
+                  aria-label="Fermer la fiche projet"
                 >
                   <X size={16} strokeWidth={1.5} />
                 </button>

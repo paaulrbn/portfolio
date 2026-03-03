@@ -11,8 +11,10 @@ const ExploreIndicator = ({
 }) => {
   return (
     <button
+      type="button"
       onClick={onClick}
       className={`${className} cursor-pointer opacity-40 hover:opacity-70 transition-opacity`}
+      aria-label="Explorer le contenu"
       style={{
         width: size,
         color: color,

@@ -44,12 +44,14 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center w-9 h-9 rounded-full border border-white/8 bg-white/3 hover:bg-white/8 hover:border-white/15 transition-all"
+            aria-label="Ouvrir le profil GitHub de Paul Roubinet dans un nouvel onglet"
           >
             <Github size={15} strokeWidth={1.5} />
           </a>
           <button
             onClick={scrollToTop}
             className="flex items-center justify-center w-9 h-9 rounded-full border border-white/8 bg-white/3 hover:bg-white/8 hover:border-white/15 transition-all cursor-pointer"
+            aria-label="Revenir en haut de la page"
           >
             <ArrowUp size={15} strokeWidth={1.5} />
           </button>

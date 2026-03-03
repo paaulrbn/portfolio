@@ -97,7 +97,9 @@ function Menu({ isOpen, onClose }: MenuProps) {
                 alt=""
                 className="absolute inset-0 w-full h-full object-contain"
                 animate={{ rotate: starRotation }}
-                transition={{ duration: 0.7, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
 
