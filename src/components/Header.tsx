@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu as MenuIcon } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import { useHaptics } from "../hooks/useHaptics";
 
 interface HeaderProps {
   onMenuClick: () => void;
@@ -10,6 +11,7 @@ const ease = [0.25, 0.1, 0.25, 1] as const;
 
 export default function Header({ onMenuClick }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
+  const { hapticMedium } = useHaptics();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -38,11 +40,16 @@ export default function Header({ onMenuClick }: HeaderProps) {
     return () => clearInterval(interval);
   }, []);
 
+  const handleMenuClick = () => {
+    hapticMedium();
+    onMenuClick();
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
         scrolled
-          ? "bg-[#060608]/80 backdrop-blur-xl border-b border-white/6"
+          ? "bg-[#060608]/75 backdrop-blur-2xl saturate-150 border-b border-white/6"
           : "bg-transparent"
       }`}
     >
@@ -101,7 +108,8 @@ export default function Header({ onMenuClick }: HeaderProps) {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 0.8, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3, ease }}
-          onClick={onMenuClick}
+          whileTap={{ scale: 0.94 }}
+          onClick={handleMenuClick}
           className="flex items-center gap-2.5 text-xs sm:text-sm tracking-wider hover:opacity-100 transition-opacity cursor-pointer"
         >
           MENU

@@ -4,6 +4,7 @@ import TiltedCard from "./ReactBits/TiltedCard";
 import FadeIn from "./ReactBits/FadeIn";
 import BlurText from "./ReactBits/BlurText";
 import { motion, AnimatePresence } from "motion/react";
+import { useHaptics } from "../hooks/useHaptics";
 
 type ProjectData = {
   title: string;
@@ -346,14 +347,17 @@ function ModalSection({
 
 function Project() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const { hapticRigid, hapticLight } = useHaptics();
 
   const openModal = (projectId: number) => {
+    hapticRigid();
     setSelectedProject(projectId);
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
   };
 
   const closeModal = () => {
+    hapticLight();
     setSelectedProject(null);
     document.body.style.overflow = "";
     document.documentElement.style.overflow = "";

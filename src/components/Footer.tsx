@@ -1,4 +1,6 @@
 import { Github, ArrowUp } from "lucide-react";
+import { motion } from "motion/react";
+import { useHaptics } from "../hooks/useHaptics";
 
 const navLinks = [
   { label: "À propos", href: "#about" },
@@ -7,7 +9,10 @@ const navLinks = [
 ];
 
 export default function Footer() {
+  const { hapticLight } = useHaptics();
+
   const scrollToTop = () => {
+    hapticLight();
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -39,22 +44,25 @@ export default function Footer() {
         </nav>
 
         <div className="flex items-center gap-2.5">
-          <a
+          <motion.a
             href="https://github.com/paaulrbn"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-9 h-9 rounded-full border border-white/8 bg-white/3 hover:bg-white/8 hover:border-white/15 transition-all"
+            whileTap={{ scale: 0.92 }}
+            onClick={() => hapticLight()}
+            className="flex items-center justify-center w-9 h-9 rounded-full border border-white/8 bg-white/3 hover:bg-white/8 hover:border-white/15 transition-all cursor-pointer"
             aria-label="Ouvrir le profil GitHub de Paul Roubinet dans un nouvel onglet"
           >
             <Github size={15} strokeWidth={1.5} />
-          </a>
-          <button
+          </motion.a>
+          <motion.button
+            whileTap={{ scale: 0.92 }}
             onClick={scrollToTop}
             className="flex items-center justify-center w-9 h-9 rounded-full border border-white/8 bg-white/3 hover:bg-white/8 hover:border-white/15 transition-all cursor-pointer"
             aria-label="Revenir en haut de la page"
           >
             <ArrowUp size={15} strokeWidth={1.5} />
-          </button>
+          </motion.button>
         </div>
       </div>
 

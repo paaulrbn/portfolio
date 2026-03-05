@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Send, User, MessageSquare, Sparkles } from "lucide-react";
+import { motion } from "motion/react";
 import TiltedCard from "./ReactBits/TiltedCard";
 import FadeIn from "./ReactBits/FadeIn";
 import BlurText from "./ReactBits/BlurText";
 import CardBackground from "./CardBackground";
+import { useHaptics } from "../hooks/useHaptics";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -11,6 +13,7 @@ export default function Contact() {
     subject: "",
     message: "",
   });
+  const { hapticSuccess } = useHaptics();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -19,6 +22,7 @@ export default function Contact() {
   };
 
   const handleSubmit = () => {
+    hapticSuccess();
     const mailtoLink = `mailto:paaul.rbn@gmail.com?subject=${encodeURIComponent(
       formData.subject,
     )}&body=${encodeURIComponent(
@@ -95,9 +99,10 @@ export default function Contact() {
         </div>
       </div>
 
-      <button
+      <motion.button
         type="button"
         onClick={handleSubmit}
+        whileTap={{ scale: 0.98 }}
         className="group relative mt-1 w-full py-3 px-6 rounded-xl font-medium text-sm text-black bg-[#F3F3EC] hover:bg-white transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden cursor-pointer hover:shadow-[0_0_40px_rgba(243,243,236,0.15)] hover:-translate-y-0.5"
       >
         <span className="relative z-10 flex items-center gap-2">
@@ -108,7 +113,7 @@ export default function Contact() {
           Envoyer
         </span>
         <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-      </button>
+      </motion.button>
     </div>
   );
 
