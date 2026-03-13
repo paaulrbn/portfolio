@@ -47,23 +47,23 @@ export default function Header({ onMenuClick }: HeaderProps) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? "bg-[#060608]/75 backdrop-blur-2xl saturate-150 border-b border-white/6"
-          : "bg-transparent"
+          ? "bg-[#060608]/80 backdrop-blur-xl shadow-2xl shadow-black/20 outline-1 outline-[#e8e8e0]/5"
+          : "bg-transparent outline-1 outline-[#e8e8e0]/0"
       }`}
     >
       <motion.div
         layout
         transition={{ layout: { duration: 0.35, ease } }}
-        className="max-w-[1400px] mx-auto flex items-center justify-between px-4 sm:px-6 md:px-8 py-4 sm:py-5"
+        className="max-w-[1400px] mx-auto flex items-center justify-between px-4 sm:px-6 md:px-8 py-5 sm:py-6"
       >
         <motion.p
           layout="position"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 0.8, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1, ease }}
-          className="text-xs sm:text-sm tracking-wider flex items-baseline gap-4 sm:gap-8"
+          className="text-sm sm:text-base tracking-wider flex items-baseline gap-4 sm:gap-8"
         >
           <AnimatePresence mode="popLayout">
             {scrolled ? (
@@ -98,7 +98,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 0.8, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2, ease }}
-          className="hidden md:block text-xs sm:text-sm tracking-wider"
+          className="hidden md:block text-sm sm:text-base tracking-wider"
         >
           Développeur Full-Stack
         </motion.p>
@@ -110,10 +110,10 @@ export default function Header({ onMenuClick }: HeaderProps) {
           transition={{ duration: 0.5, delay: 0.3, ease }}
           whileTap={{ scale: 0.94 }}
           onClick={handleMenuClick}
-          className="flex items-center gap-2.5 text-xs sm:text-sm tracking-wider hover:opacity-100 transition-opacity cursor-pointer"
+          className="flex items-center gap-2.5 text-sm sm:text-base tracking-wider hover:opacity-100 transition-opacity cursor-pointer"
         >
           MENU
-          <MenuIcon size={20} strokeWidth={1.5} />
+          <MenuIcon size={22} strokeWidth={1.5} />
         </motion.button>
       </motion.div>
     </header>

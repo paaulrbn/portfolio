@@ -51,7 +51,7 @@ export default function Contact() {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="John Doe"
+            placeholder="Nom"
             className={inputClasses}
           />
         </div>
@@ -72,7 +72,7 @@ export default function Contact() {
             name="subject"
             value={formData.subject}
             onChange={handleChange}
-            placeholder="Collaboration, question, opportunité..."
+            placeholder="Objet"
             className={inputClasses}
           />
         </div>
@@ -92,7 +92,7 @@ export default function Contact() {
             name="message"
             value={formData.message}
             onChange={handleChange}
-            placeholder="Décrivez votre projet ou votre demande..."
+            placeholder="Message"
             rows={5}
             className={`${inputClasses} resize-none`}
           />
