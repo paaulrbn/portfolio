@@ -20,13 +20,16 @@ function Hero() {
   }, []);
 
   return (
-    <div className="flex flex-col items-start h-svh w-full px-4 sm:px-6 md:px-8 pt-20 sm:pt-24 pb-20 sm:pb-24 relative">
+    <section
+      aria-label="Introduction"
+      className="flex flex-col items-start min-h-svh w-full px-4 sm:px-6 md:px-8 pt-20 sm:pt-24 pb-24 sm:pb-28 relative"
+    >
       <div className="flex flex-col gap-5 sm:gap-7 my-auto">
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2, ease }}
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.95] tracking-tight"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.92] tracking-[-0.03em] text-balance"
           style={{ fontFamily: "Monument Extended" }}
         >
           PAUL
@@ -46,7 +49,7 @@ function Hero() {
             animateBy="words"
             direction="bottom"
             stepDuration={0.4}
-            className="text-sm sm:text-base leading-relaxed opacity-80"
+            className="text-sm sm:text-base leading-[1.65] opacity-80 max-w-[65ch]"
           />
         </motion.div>
 
@@ -98,7 +101,8 @@ function Hero() {
         <source srcSet="/star.webp" type="image/webp" />
         <img
           src="/star.png"
-          alt="star"
+          alt=""
+          role="presentation"
           loading="lazy"
           decoding="async"
           className="w-full h-full object-contain"
@@ -115,7 +119,7 @@ function Hero() {
           }
         `}
       </style>
-    </div>
+    </section>
   );
 }
 

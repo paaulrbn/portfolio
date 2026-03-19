@@ -1,11 +1,27 @@
-import { useState } from "react";
-import { Send, User, MessageSquare, Sparkles } from "lucide-react";
+import { useState, useRef } from "react";
+import {
+  Send,
+  User,
+  MessageSquare,
+  Sparkles,
+  Github,
+  ArrowUp,
+} from "lucide-react";
 import { motion } from "motion/react";
-import TiltedCard from "./ReactBits/TiltedCard";
 import FadeIn from "./ReactBits/FadeIn";
 import BlurText from "./ReactBits/BlurText";
-import CardBackground from "./CardBackground";
+import VariableProximity from "./ReactBits/VariableProximity";
 import { useHaptics } from "../hooks/useHaptics";
+
+const navFromSettings = "'wght' 520, 'wdth' 100";
+const navToSettings = "'wght' 900, 'wdth' 118";
+
+const navLinks = [
+  { label: "Accueil", href: "#top" },
+  { label: "À propos", href: "#about" },
+  { label: "Projets", href: "#projects" },
+  { label: "Contact", href: "#contact" },
+];
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -13,32 +29,60 @@ export default function Contact() {
     subject: "",
     message: "",
   });
-  const { hapticSuccess } = useHaptics();
+  const [errors, setErrors] = useState<{
+    name?: string;
+    subject?: string;
+    message?: string;
+  }>({});
+  const { hapticSuccess, hapticLight } = useHaptics();
+  const contactSectionRef = useRef<HTMLElement | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name } = e.target;
+    setFormData({ ...formData, [name]: e.target.value });
+    if (errors[name as keyof typeof errors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
   };
 
   const handleSubmit = () => {
+    const next: typeof errors = {};
+    const name = formData.name.trim();
+    const subject = formData.subject.trim();
+    const message = formData.message.trim();
+    if (!name) next.name = "Indiquez au moins un nom ou un pseudo.";
+    if (!subject) next.subject = "L’objet aide à classer le message.";
+    if (!message) next.message = "Écrivez quelques lignes, même courtes.";
+    setErrors(next);
+    if (Object.keys(next).length > 0) return;
+
     hapticSuccess();
     const mailtoLink = `mailto:paaul.rbn@gmail.com?subject=${encodeURIComponent(
-      formData.subject,
-    )}&body=${encodeURIComponent(
-      `${formData.message}\n\n\n${formData.name}`,
-    )}`;
+      subject,
+    )}&body=${encodeURIComponent(`${message}\n\n\n${name}`)}`;
     window.location.href = mailtoLink;
   };
 
-  const inputClasses =
-    "w-full pl-10 pr-4 py-3 rounded-xl border border-white/8 bg-white/3 text-[#F3F3EC] placeholder:text-white/30 focus:outline-none focus:border-white/20 focus:bg-white/5 transition-all text-sm font-light";
+  const scrollToTop = () => {
+    hapticLight();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-  const content = (
+  const inputClasses =
+    "w-full pl-10 pr-4 py-3 rounded-xl border bg-white/3 text-[#F3F3EC] placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#e8e8e0]/25 focus:border-white/22 focus:bg-white/5 transition-all duration-200 text-sm font-light";
+  const inputBorder = (field: keyof typeof errors) =>
+    errors[field] ? "border-red-300/35" : "border-white/8";
+
+  const formBlock = (
     <div className="flex flex-col gap-5">
       <div className="relative group">
-        <label className="block text-xs font-medium opacity-65 mb-2 tracking-wide uppercase">
-          Votre nom
+        <label
+          htmlFor="contact-name"
+          className="block text-xs font-medium opacity-65 mb-2 tracking-[0.03em]"
+        >
+          Nom
         </label>
         <div className="relative">
           <User
@@ -47,18 +91,34 @@ export default function Contact() {
             strokeWidth={1.5}
           />
           <input
+            id="contact-name"
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="Nom"
-            className={inputClasses}
+            placeholder="Comment vous appeler"
+            autoComplete="name"
+            aria-invalid={Boolean(errors.name)}
+            aria-describedby={errors.name ? "contact-name-error" : undefined}
+            className={`${inputClasses} ${inputBorder("name")}`}
           />
         </div>
+        {errors.name && (
+          <p
+            id="contact-name-error"
+            className="mt-1.5 text-xs text-red-200/80"
+            role="alert"
+          >
+            {errors.name}
+          </p>
+        )}
       </div>
 
       <div className="relative group">
-        <label className="block text-xs font-medium opacity-65 mb-2 tracking-wide uppercase">
+        <label
+          htmlFor="contact-subject"
+          className="block text-xs font-medium opacity-65 mb-2 tracking-[0.03em]"
+        >
           Objet
         </label>
         <div className="relative">
@@ -68,19 +128,36 @@ export default function Contact() {
             strokeWidth={1.5}
           />
           <input
+            id="contact-subject"
             type="text"
             name="subject"
             value={formData.subject}
             onChange={handleChange}
-            placeholder="Objet"
-            className={inputClasses}
+            placeholder="Sujet du message"
+            aria-invalid={Boolean(errors.subject)}
+            aria-describedby={
+              errors.subject ? "contact-subject-error" : undefined
+            }
+            className={`${inputClasses} ${inputBorder("subject")}`}
           />
         </div>
+        {errors.subject && (
+          <p
+            id="contact-subject-error"
+            className="mt-1.5 text-xs text-red-200/80"
+            role="alert"
+          >
+            {errors.subject}
+          </p>
+        )}
       </div>
 
       <div className="relative group">
-        <label className="block text-xs font-medium opacity-65 mb-2 tracking-wide uppercase">
-          Votre message
+        <label
+          htmlFor="contact-message"
+          className="block text-xs font-medium opacity-65 mb-2 tracking-[0.03em]"
+        >
+          Message
         </label>
         <div className="relative">
           <MessageSquare
@@ -89,21 +166,35 @@ export default function Contact() {
             strokeWidth={1.5}
           />
           <textarea
+            id="contact-message"
             name="message"
             value={formData.message}
             onChange={handleChange}
-            placeholder="Message"
+            placeholder="Votre message"
             rows={5}
-            className={`${inputClasses} resize-none`}
+            aria-invalid={Boolean(errors.message)}
+            aria-describedby={
+              errors.message ? "contact-message-error" : undefined
+            }
+            className={`${inputClasses} resize-none ${inputBorder("message")}`}
           />
         </div>
+        {errors.message && (
+          <p
+            id="contact-message-error"
+            className="mt-1.5 text-xs text-red-200/80"
+            role="alert"
+          >
+            {errors.message}
+          </p>
+        )}
       </div>
 
       <motion.button
         type="button"
         onClick={handleSubmit}
         whileTap={{ scale: 0.98 }}
-        className="group relative mt-1 w-full py-3 px-6 rounded-xl font-medium text-sm text-black bg-[#F3F3EC] hover:bg-white transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden cursor-pointer hover:shadow-[0_0_40px_rgba(243,243,236,0.15)] hover:-translate-y-0.5"
+        className="group relative mt-1 w-full py-3 px-6 rounded-full font-medium text-sm text-[#0a0a0c] bg-[#F3F3EC] hover:bg-[#fafaf6] transition-all duration-200 flex items-center justify-center gap-2 overflow-hidden cursor-pointer hover:shadow-[0_20px_48px_-12px_rgba(232,232,224,0.18)] hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#e8e8e0]/55"
       >
         <span className="relative z-10 flex items-center gap-2">
           <Send
@@ -119,36 +210,111 @@ export default function Contact() {
 
   return (
     <section
+      ref={contactSectionRef}
       id="contact"
-      className="flex flex-col justify-center mx-4 sm:mx-6 md:mx-8 mt-24 sm:mt-32 gap-8 sm:gap-12"
+      className="mx-4 sm:mx-6 md:mx-8 mt-28 sm:mt-36 pb-16 sm:pb-24"
+      aria-labelledby="contact-heading"
     >
-      <FadeIn direction="up" distance={40}>
-        <div style={{ fontFamily: "Monument Extended" }}>
-          <BlurText
-            text="CONTACT"
-            delay={80}
-            animateBy="letters"
-            direction="bottom"
-            stepDuration={0.3}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight"
-            animationFrom={{ filter: "blur(10px)", opacity: 0, y: 20 }}
-            animationTo={[{ filter: "blur(0px)", opacity: 1, y: 0 }]}
-          />
-        </div>
-        <p className="mt-3 text-sm opacity-70 max-w-lg">
-          Un projet en tête ? N'hésitez pas à me contacter.
-        </p>
-      </FadeIn>
+      <div className="max-w-[1400px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20 lg:items-end">
+          {/* Colonne navigation + marque : ancrée en bas comme le formulaire */}
+          <aside className="lg:col-span-5 order-2 lg:order-1 flex flex-col gap-8 sm:gap-10 lg:justify-end">
+            <FadeIn direction="up" distance={28}>
+              <nav
+                className="flex flex-col gap-2 sm:gap-3"
+                aria-label="Navigation du site"
+              >
+                {navLinks.map(({ label, href }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    className="block w-fit py-0.5 text-[#e8e8e0]/88 hover:text-[#e8e8e0] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8e8e0]/40 rounded-sm"
+                  >
+                    <VariableProximity
+                      label={label}
+                      containerRef={contactSectionRef}
+                      fromFontVariationSettings={navFromSettings}
+                      toFontVariationSettings={navToSettings}
+                      radius={72}
+                      falloff="gaussian"
+                      className="text-2xl sm:text-3xl md:text-4xl tracking-tight leading-none"
+                      style={{ color: "inherit" }}
+                    />
+                  </a>
+                ))}
+              </nav>
+            </FadeIn>
+            <FadeIn delay={0.06} distance={24}>
+              <div className="flex flex-row flex-wrap items-center justify-between gap-x-4 gap-y-3">
+                <div className="min-w-0">
+                  <p className="text-lg sm:text-xl md:text-2xl font-medium tracking-[-0.02em] text-[#e8e8e0]/95 normal-case">
+                    Paul Roubinet
+                  </p>
+                  <p className="mt-1.5 text-sm opacity-50 tracking-wide">
+                    Développeur full-stack
+                  </p>
+                </div>
+                <div className="flex items-center gap-2.5 shrink-0">
+                  <motion.a
+                    href="https://github.com/paaulrbn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileTap={{ scale: 0.92 }}
+                    onClick={() => hapticLight()}
+                    className="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/[0.04] hover:bg-white/10 hover:border-white/18 transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#e8e8e0]/40"
+                    aria-label="Profil GitHub"
+                  >
+                    <Github size={16} strokeWidth={1.5} />
+                  </motion.a>
+                  <motion.button
+                    type="button"
+                    whileTap={{ scale: 0.92 }}
+                    onClick={scrollToTop}
+                    className="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/[0.04] hover:bg-white/10 hover:border-white/18 transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#e8e8e0]/40"
+                    aria-label="Revenir en haut de la page"
+                  >
+                    <ArrowUp size={16} strokeWidth={1.5} />
+                  </motion.button>
+                </div>
+              </div>
+            </FadeIn>
+          </aside>
 
-      <FadeIn delay={0.15} distance={30}>
-        <div className="max-w-xl mx-auto w-full">
-          <TiltedCard
-            overlayContent={<div className="p-5 sm:p-6">{content}</div>}
-          >
-            <CardBackground>{content}</CardBackground>
-          </TiltedCard>
+          {/* Colonne contact : même ancrage bas */}
+          <div className="lg:col-span-7 order-1 lg:order-2 flex flex-col gap-8 sm:gap-10 lg:justify-end">
+            <FadeIn direction="up" distance={36}>
+              <p
+                id="contact-heading"
+                className="text-[0.7rem] font-medium tracking-[0.2em] text-[#e8e8e0]/45 uppercase sr-only"
+              >
+                Contact
+              </p>
+              <div style={{ fontFamily: "Monument Extended, sans-serif" }}>
+                <BlurText
+                  text="CONTACT"
+                  delay={80}
+                  animateBy="letters"
+                  direction="bottom"
+                  stepDuration={0.3}
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight"
+                  animationFrom={{ filter: "blur(10px)", opacity: 0, y: 20 }}
+                  animationTo={[{ filter: "blur(0px)", opacity: 1, y: 0 }]}
+                />
+              </div>
+              <p className="mt-4 text-sm opacity-70 prose-readable text-pretty max-w-lg">
+                Un projet, une question ou une idée : écrivez-moi, je réponds
+                dès que possible.
+              </p>
+            </FadeIn>
+
+            <FadeIn delay={0.1} distance={28}>
+              <div className="rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-md p-5 sm:p-7 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.5)]">
+                {formBlock}
+              </div>
+            </FadeIn>
+          </div>
         </div>
-      </FadeIn>
+      </div>
     </section>
   );
 }

@@ -22,7 +22,7 @@ const ExploreIndicator = ({
     <button
       type="button"
       onClick={handleClick}
-      className={`${className} cursor-pointer opacity-40 hover:opacity-70 active:scale-95 transition-all`}
+      className={`${className} cursor-pointer opacity-40 hover:opacity-70 active:scale-95 transition-all duration-200 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8e8e0]/45`}
       aria-label="Explorer le contenu"
       style={{
         width: size,

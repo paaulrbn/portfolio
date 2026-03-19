@@ -6,41 +6,40 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Project from "./components/Project";
 import Contact from "./components/Contact";
-import Footer from "./components/Footer";
 import Menu from "./components/Menu";
-import LightRays from "./components/ReactBits/LightRays";
-import BackgroundLayers from "./components/BackgroundLayers";
+import Silk from "./components/ReactBits/Silk";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen overflow-visible">
+    <div id="top" className="relative min-h-dvh overflow-visible">
       <Analytics />
-      <BackgroundLayers />
-      <div className="absolute top-0 left-0 h-full w-full -z-10 overflow-visible">
-        <LightRays
-          raysOrigin="top-center"
-          raysColor="#e8e8e0"
-          raysSpeed={0.5}
-          lightSpread={10}
-          rayLength={2}
-          fadeDistance={1.5}
-          followMouse={false}
-          mouseInfluence={0}
-          noiseAmount={0.1}
-          distortion={0}
-          className="custom-rays -z-10"
+      {/* z-0 + contenu en z-10 : évite -z-* qui passe sous le fond du document (Silk invisible) */}
+      <div
+        className="fixed inset-0 z-0 h-dvh w-full pointer-events-none"
+        aria-hidden
+      >
+        <Silk
+          className="min-h-dvh h-full w-full"
+          speed={3}
+          scale={.8}
+          color="#333333"
+          noiseIntensity={0.7}
+          rotation={0.18}
         />
       </div>
 
-      <Header onMenuClick={() => setIsMenuOpen(true)} />
-      <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-      <Hero />
-      <About />
-      <Project />
-      <Contact />
-      <Footer />
+      <div className="relative z-10">
+        <Header onMenuClick={() => setIsMenuOpen(true)} />
+        <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+        <main id="contenu-principal">
+          <Hero />
+          <About />
+          <Project />
+          <Contact />
+        </main>
+      </div>
     </div>
   );
 }

@@ -27,12 +27,12 @@ export default function BackgroundLayers() {
         }}
       />
 
-      {/* Radial vignette */}
+      {/* Radial vignette - teinte chaude, pas de noir pur */}
       <div
         className="fixed inset-0 -z-20 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 50% 20%, transparent 0%, transparent 50%, rgba(0,0,0,0.4) 100%)",
+            "radial-gradient(ellipse 80% 60% at 50% 18%, transparent 0%, transparent 48%, rgba(12,10,8,0.55) 100%)",
         }}
       />
 

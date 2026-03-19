@@ -41,6 +41,9 @@
     color: #e8e8e0;
     background-color: #060608;
 
+    --surface-shadow: 0 28px 56px -16px rgba(8, 8, 6, 0.55);
+    --surface-shadow-warm: 0 20px 40px -12px rgba(18, 16, 12, 0.6);
+
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -53,8 +56,50 @@ body {
     margin: 0;
     display: flex;
     min-width: 320px;
-    min-height: 100vh;
+    min-height: 100dvh;
     overflow-x: hidden;
+}
+
+.skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 100;
+    padding: 0.65rem 1rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: #060608;
+    background: #e8e8e0;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    transform: translateY(-200%);
+    transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+    outline: 2px solid rgba(232, 232, 224, 0.9);
+    outline-offset: 3px;
+}
+
+.prose-readable {
+    max-width: 65ch;
+    line-height: 1.65;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
 }
 
 ::selection {
@@ -63,6 +108,7 @@ body {
 }
 
 /* Compense le header fixe lors du scroll vers les ancres */
+#contenu-principal,
 #about,
 #projects,
 #contact {

@@ -49,9 +49,17 @@ export default function Header({ onMenuClick }: HeaderProps) {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? "bg-[#060608]/80 backdrop-blur-xl shadow-2xl shadow-black/20 outline-1 outline-[#e8e8e0]/5"
+          ? "bg-[#060608]/48 backdrop-blur-md outline-1 outline-[#e8e8e0]/[0.06]"
           : "bg-transparent outline-1 outline-[#e8e8e0]/0"
       }`}
+      style={
+        scrolled
+          ? {
+              boxShadow:
+                "0 20px 48px -20px rgba(6, 6, 8, 0.35)",
+            }
+          : undefined
+      }
     >
       <motion.div
         layout
@@ -110,7 +118,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
           transition={{ duration: 0.5, delay: 0.3, ease }}
           whileTap={{ scale: 0.94 }}
           onClick={handleMenuClick}
-          className="flex items-center gap-2.5 text-sm sm:text-base tracking-wider hover:opacity-100 transition-opacity cursor-pointer"
+          className="flex items-center gap-2.5 text-sm sm:text-base tracking-wider rounded-md px-1 -mx-1 py-1 hover:opacity-100 opacity-90 transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8e8e0]/45"
         >
           MENU
           <MenuIcon size={22} strokeWidth={1.5} />

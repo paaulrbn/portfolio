@@ -5,10 +5,12 @@ export default function CardBackground({
 }) {
   return (
     <div
-      className="rounded-2xl border border-white/8 backdrop-blur-xl relative overflow-hidden w-full h-full"
+      className="rounded-2xl border border-white/[0.07] backdrop-blur-xl relative overflow-hidden w-full h-full"
       style={{
         background:
-          "linear-gradient(135deg, rgba(14,14,18,0.95) 0%, rgba(22,22,28,0.7) 100%)",
+          "linear-gradient(145deg, rgba(16,15,18,0.96) 0%, rgba(22,21,26,0.72) 100%)",
+        boxShadow:
+          "var(--surface-shadow-warm, 0 20px 40px -12px rgba(18, 16, 12, 0.5)), 0 1px 0 0 rgba(255,255,255,0.06) inset, 0 0 0 1px rgba(255,255,255,0.04) inset",
       }}
     >
       <div

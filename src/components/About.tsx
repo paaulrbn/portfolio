@@ -19,7 +19,7 @@ const WhoAmI = () => {
       <SectionTitle icon={User} title="Qui suis-je" />
       <div className="flex flex-col gap-3">
         <p className="opacity-80 leading-relaxed text-[0.9rem]">
-          Je m'appelle Paul Roubinet, j'ai 20 ans et je suis étudiant en 3ème
+          Je suis Paul Roubinet, j'ai 20 ans et je suis étudiant en 3ème
           année de BUT Informatique à l'IUT2 de Grenoble, dans le parcours
           réalisation d'applications.
         </p>
@@ -51,8 +51,8 @@ const FutureProjects = () => {
         <p className="opacity-80 leading-relaxed text-[0.9rem]">
           Mon objectif est de me spécialiser en développement d'applications et
           cybersécurité tout en restant ouvert aux opportunités qui se
-          présentent. Je souhaite apporter des solutions innovantes, efficaces et
-          sécurisées.
+          présentent. Je veux livrer du code clair, des systèmes fiables et des
+          interfaces soignées.
         </p>
       </div>
     </>
@@ -130,7 +130,7 @@ const Education = () => {
 };
 
 const TechBadge = ({ name, icon }: { name: string; icon: string }) => (
-  <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg border border-white/8 bg-white/5 transition-all hover:-translate-y-0.5 hover:bg-white/10 hover:border-white/15 cursor-default">
+  <div className="flex items-center gap-2.5 px-3 py-2 rounded-md border border-white/8 bg-white/5 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 hover:bg-white/10 hover:border-white/15 hover:shadow-[0_12px_28px_-12px_rgba(12,10,8,0.65)] cursor-default">
     <div
       className="w-4 h-4 opacity-80"
       style={{
@@ -226,7 +226,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="flex flex-col justify-center mx-4 sm:mx-6 md:mx-8 mt-24 sm:mt-32 gap-8 sm:gap-12"
+      className="flex flex-col justify-center mx-4 sm:mx-6 md:mx-8 mt-28 sm:mt-36 gap-10 sm:gap-14 pb-4"
     >
       <FadeIn direction="up" distance={40}>
         <div style={{ fontFamily: "Monument Extended" }}>
@@ -241,8 +241,8 @@ export default function About() {
             animationTo={[{ filter: "blur(0px)", opacity: 1, y: 0 }]}
           />
         </div>
-        <p className="mt-3 text-sm opacity-70 max-w-lg">
-          Développeur passionné, toujours en quête de nouveaux défis techniques.
+        <p className="mt-4 text-sm opacity-70 prose-readable text-pretty">
+          Développeur passionné, curieux des stacks web et de la sécurité.
         </p>
       </FadeIn>
 

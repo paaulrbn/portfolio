@@ -336,7 +336,7 @@ function ModalSection({
 }) {
   return (
     <div>
-      <h4 className="text-xs font-semibold tracking-wide uppercase opacity-60 mb-3 flex items-center gap-2">
+      <h4 className="text-xs font-medium tracking-[0.04em] text-[#e8e8e0]/55 mb-3 flex items-center gap-2">
         <Icon size={14} strokeWidth={1.5} />
         {title}
       </h4>
@@ -368,7 +368,7 @@ function Project() {
     <>
       <section
         id="projects"
-        className="flex flex-col justify-center mx-4 sm:mx-6 md:mx-8 mt-24 sm:mt-32 gap-8 sm:gap-12"
+        className="flex flex-col justify-center mx-4 sm:mx-6 md:mx-8 mt-28 sm:mt-36 gap-10 sm:gap-14 pb-4"
       >
         <FadeIn direction="up" distance={40}>
           <div style={{ fontFamily: "Monument Extended" }}>
@@ -383,9 +383,8 @@ function Project() {
               animationTo={[{ filter: "blur(0px)", opacity: 1, y: 0 }]}
             />
           </div>
-          <p className="mt-3 text-sm opacity-70 max-w-lg">
-            Une sélection de projets académiques et personnels qui illustrent mon
-            parcours en développement.
+          <p className="mt-4 text-sm opacity-70 prose-readable text-pretty">
+            Une sélection de projets académiques et personnels qui illustrent mon parcours en développement.
           </p>
         </FadeIn>
 
@@ -412,7 +411,7 @@ function Project() {
                   {proj.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="text-[0.7rem] font-medium opacity-70 px-2.5 py-1 rounded-full border border-white/10 bg-white/5"
+                      className="text-[0.7rem] font-medium opacity-70 px-2.5 py-1 rounded-md border border-white/10 bg-white/5"
                     >
                       {tag}
                     </span>
@@ -438,7 +437,9 @@ function Project() {
                     className="rounded-2xl border border-white/8 backdrop-blur-xl relative overflow-hidden w-full h-full flex flex-col"
                     style={{
                       background:
-                        "linear-gradient(135deg, rgba(14,14,18,0.95) 0%, rgba(22,22,28,0.7) 100%)",
+                        "linear-gradient(145deg, rgba(16,15,18,0.96) 0%, rgba(22,21,26,0.72) 100%)",
+                      boxShadow:
+                        "0 20px 40px -12px rgba(18, 16, 12, 0.45), 0 1px 0 0 rgba(255,255,255,0.05) inset",
                     }}
                   >
                     <div
@@ -467,7 +468,7 @@ function Project() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-1000 flex items-center justify-center bg-black/70 backdrop-blur-md p-4 overflow-hidden cursor-pointer"
+            className="fixed inset-0 z-100 flex items-center justify-center bg-[#060608]/75 backdrop-blur-md p-4 overflow-hidden cursor-pointer"
             onClick={closeModal}
             onWheel={(e) => e.preventDefault()}
           >
@@ -489,7 +490,7 @@ function Project() {
               {/* Header */}
               <div className="flex justify-between items-center p-5 sm:p-7 border-b border-white/6">
                 <div className="flex-1 min-w-0 pr-4">
-                  <span className="inline-block text-[0.65rem] font-semibold tracking-wider uppercase opacity-60 mb-2">
+                  <span className="inline-block text-[0.65rem] font-medium tracking-[0.06em] text-[#e8e8e0]/50 mb-2">
                     {project.category}
                   </span>
                   <h2 className="text-xl sm:text-2xl font-semibold leading-snug">
@@ -498,7 +499,7 @@ function Project() {
                 </div>
                 <button
                   onClick={closeModal}
-                  className="flex items-center justify-center w-9 h-9 rounded-full border border-white/10 bg-white/5 text-white/50 hover:text-white hover:bg-white/10 transition-all cursor-pointer shrink-0 mt-0.5"
+                  className="flex items-center justify-center w-9 h-9 rounded-xl border border-white/10 bg-white/5 text-white/50 hover:text-white hover:bg-white/10 transition-all duration-200 active:scale-[0.97] cursor-pointer shrink-0 mt-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e8e8e0]/40"
                   aria-label="Fermer la fiche projet"
                 >
                   <X size={16} strokeWidth={1.5} />
@@ -518,7 +519,7 @@ function Project() {
                   {project.technologies.map((tech: string, index: number) => (
                     <span
                       key={index}
-                      className="text-xs font-medium opacity-75 px-3 py-1.5 rounded-full border border-white/10 bg-white/4"
+                      className="text-xs font-medium opacity-75 px-3 py-1.5 rounded-md border border-white/10 bg-white/4"
                     >
                       {tech}
                     </span>
@@ -579,7 +580,7 @@ function Project() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2.5 text-sm font-medium opacity-70 hover:opacity-100 transition-opacity"
+                      className="inline-flex items-center gap-2.5 text-sm font-medium opacity-70 hover:opacity-100 transition-opacity duration-200 rounded-md focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#e8e8e0]/40"
                     >
                       <Github size={16} strokeWidth={1.5} />
                       Voir sur GitHub
