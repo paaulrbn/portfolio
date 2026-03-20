@@ -49,7 +49,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? "bg-[#060608]/48 backdrop-blur-md outline-1 outline-[#e8e8e0]/[0.06]"
+          ? "bg-[#060608]/48 backdrop-blur-md outline-1 outline-[#e8e8e0]/6"
           : "bg-transparent outline-1 outline-[#e8e8e0]/0"
       }`}
       style={

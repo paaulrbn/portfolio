@@ -9,7 +9,7 @@ interface MenuProps {
 }
 
 const menuItems = [
-  { label: "HOME", href: "#top", angle: -12.9 },
+  { label: "ACCUEIL", href: "#top", angle: -12.9 },
   { label: "À PROPOS", href: "#about", angle: -5 },
   { label: "PROJETS", href: "#projects", angle: 5 },
   { label: "CONTACT", href: "#contact", angle: 14 },

@@ -96,7 +96,7 @@ export default function Contact() {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="Comment vous appeler"
+            placeholder="Nom"
             autoComplete="name"
             aria-invalid={Boolean(errors.name)}
             aria-describedby={errors.name ? "contact-name-error" : undefined}
@@ -217,7 +217,7 @@ export default function Contact() {
     >
       <div className="max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20 lg:items-end">
-          {/* Colonne navigation + marque : ancrée en bas comme le formulaire */}
+          {/* Colonne navigation */}
           <aside className="lg:col-span-5 order-2 lg:order-1 flex flex-col gap-8 sm:gap-10 lg:justify-end">
             <FadeIn direction="up" distance={28}>
               <nav
@@ -261,7 +261,7 @@ export default function Contact() {
                     rel="noopener noreferrer"
                     whileTap={{ scale: 0.92 }}
                     onClick={() => hapticLight()}
-                    className="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/[0.04] hover:bg-white/10 hover:border-white/18 transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#e8e8e0]/40"
+                    className="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/4 hover:bg-white/10 hover:border-white/18 transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#e8e8e0]/40"
                     aria-label="Profil GitHub"
                   >
                     <Github size={16} strokeWidth={1.5} />
@@ -270,7 +270,7 @@ export default function Contact() {
                     type="button"
                     whileTap={{ scale: 0.92 }}
                     onClick={scrollToTop}
-                    className="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/[0.04] hover:bg-white/10 hover:border-white/18 transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#e8e8e0]/40"
+                    className="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/4 hover:bg-white/10 hover:border-white/18 transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#e8e8e0]/40"
                     aria-label="Revenir en haut de la page"
                   >
                     <ArrowUp size={16} strokeWidth={1.5} />
@@ -280,7 +280,7 @@ export default function Contact() {
             </FadeIn>
           </aside>
 
-          {/* Colonne contact : même ancrage bas */}
+          {/* Colonne contact */}
           <div className="lg:col-span-7 order-1 lg:order-2 flex flex-col gap-8 sm:gap-10 lg:justify-end">
             <FadeIn direction="up" distance={36}>
               <p
@@ -308,7 +308,7 @@ export default function Contact() {
             </FadeIn>
 
             <FadeIn delay={0.1} distance={28}>
-              <div className="rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-md p-5 sm:p-7 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.5)]">
+              <div className="rounded-2xl border border-white/8 bg-white/4 backdrop-blur-md p-5 sm:p-7 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.5)]">
                 {formBlock}
               </div>
             </FadeIn>
