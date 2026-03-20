@@ -238,7 +238,10 @@ export default function Contact() {
                       radius={72}
                       falloff="gaussian"
                       className="text-2xl sm:text-3xl md:text-4xl tracking-tight leading-none"
-                      style={{ color: "inherit" }}
+                      style={{
+                        color: "inherit",
+                        fontFamily: '"Roboto Flex Footer", sans-serif',
+                      }}
                     />
                   </a>
                 ))}
