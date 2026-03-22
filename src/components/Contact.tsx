@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   Send,
   User,
@@ -23,7 +23,21 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
+const ROBOTO_FLEX_URL = "/fonts/RobotoFlex-Variable.woff2";
+
 export default function Contact() {
+  useEffect(() => {
+    const font = new FontFace("Roboto Flex Footer", `url(${ROBOTO_FLEX_URL})`, {
+      weight: "100 1000",
+      stretch: "25% 151%",
+      style: "normal",
+      display: "swap",
+      unicodeRange: "U+0020-007E, U+00C0-00FF",
+    });
+    font.load().then((loaded) => {
+      document.fonts.add(loaded);
+    }).catch(() => {});
+  }, []);
   const [formData, setFormData] = useState({
     name: "",
     subject: "",
@@ -228,6 +242,7 @@ export default function Contact() {
                   <a
                     key={label}
                     href={href}
+                    onClick={() => hapticLight()}
                     className="block w-fit py-0.5 text-[#e8e8e0]/88 hover:text-[#e8e8e0] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8e8e0]/40 rounded-sm"
                   >
                     <VariableProximity
