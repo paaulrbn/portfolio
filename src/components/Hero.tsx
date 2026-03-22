@@ -74,7 +74,12 @@ function Hero() {
       canvas.height = Math.floor(video.videoHeight * CANVAS_SCALE);
     };
 
+    const resumePlayback = () => {
+      video.play().catch(() => {});
+    };
+
     video.addEventListener("loadedmetadata", initCanvas);
+    video.addEventListener("pause", resumePlayback);
     if (video.readyState >= 1) initCanvas();
 
     if (hasRVFC) {
@@ -86,6 +91,7 @@ function Hero() {
 
     return () => {
       video.removeEventListener("loadedmetadata", initCanvas);
+      video.removeEventListener("pause", resumePlayback);
       cancelAnimationFrame(rafId);
     };
   }, []);
