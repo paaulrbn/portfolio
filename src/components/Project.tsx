@@ -47,33 +47,6 @@ const projectsData: Record<number, ProjectData> = {
       "https://github.com/paaulrbn/S1.01-Programme-de-classification-automatique",
   },
   2: {
-    title: "Base de Données du Titanic",
-    category: "Base de données",
-    description:
-      "Ce projet, réalisé en binôme, consiste à analyser le contexte historique et les données relatives au naufrage du Titanic afin de modéliser une base de données. Cette modélisation inclut la création d'un Schéma Entité-Association (SEA) et sa transformation en Schéma Logique de Relations (SLR). Les données sont ensuite implémentées dans une base PostgreSQL et des requêtes sont écrites pour vérifier la conformité des données.",
-    competences: [
-      "Analyse de données historiques",
-      "Modélisation de bases de données (SEA, SLR)",
-      "Utilisation de PostgreSQL",
-      "Écriture et exécution de requêtes SQL",
-      "Validation et test des contraintes",
-    ],
-    objectifs: [
-      "Comprendre et synthétiser les informations sur le naufrage",
-      "Produire un SEA modélisant les données pertinentes",
-      "Transformer le SEA en SLR et l'implémenter",
-      "Écrire des tests pour vérifier les contraintes",
-      "Extraire des informations pertinentes via des requêtes",
-    ],
-    techniques: [
-      "Maîtrise de PostgreSQL pour la création de bases de données",
-      "Aptitude à écrire des requêtes SQL complexes",
-      "Capacité à tester et valider des contraintes",
-    ],
-    technologies: ["PostgreSQL", "SQL", "Modélisation BDD"],
-    github: null,
-  },
-  3: {
     title: "Site Web Institutionnel Capgemini",
     category: "Développement Web",
     description:
@@ -100,7 +73,7 @@ const projectsData: Record<number, ProjectData> = {
     technologies: ["HTML", "CSS", "JavaScript", "Whimsical"],
     github: null,
   },
-  4: {
+  3: {
     title: "Thibou - Guide de Musée Intelligent",
     category: "Full-Stack",
     description:
@@ -129,7 +102,7 @@ const projectsData: Record<number, ProjectData> = {
     technologies: ["React", "Next.js", "TypeScript", "PostgreSQL"],
     github: "https://github.com/balded1ams/Thibou",
   },
-  5: {
+  4: {
     title: "Plateforme de Gestion de Stages",
     category: "Mobile & Web",
     description:
@@ -160,7 +133,7 @@ const projectsData: Record<number, ProjectData> = {
     technologies: ["Symfony", "Android Java", "API REST", "PostgreSQL"],
     github: null,
   },
-  6: {
+  5: {
     title: "École des Loustics - Jeux Éducatifs",
     category: "Mobile",
     description:
@@ -193,7 +166,7 @@ const projectsData: Record<number, ProjectData> = {
     technologies: ["Android Java", "Room Database", "Architecture MVC"],
     github: "https://github.com/paaulrbn/Ecole-des-Loustics",
   },
-  7: {
+  6: {
     title: "ACDeces - Logiciel de Pompes Funèbres",
     category: "Desktop",
     description:
@@ -225,7 +198,7 @@ const projectsData: Record<number, ProjectData> = {
     technologies: ["Java", "JavaFX", "FXML", "Architecture MVC"],
     github: null,
   },
-  8: {
+  7: {
     title: "PCPWidget - Visualisation Interactive",
     category: "Visualisation & Recherche",
     description:
@@ -252,9 +225,7 @@ const projectsData: Record<number, ProjectData> = {
     techniques: [
       "Programmation C++ moderne avec Qt6 et CMake",
       "Optimisation du rendu graphique pour haute résolution",
-      "Développement d'interfaces utilisateur complexes avec Qt",
       "Architecture MVC et séparation des responsabilités",
-      "Gestion avancée des événements souris",
       "Sérialisation/désérialisation JSON pour la persistence",
       "Développement de bindings ctypes Python-C++",
       "Documentation automatique avec Doxygen",
@@ -262,6 +233,73 @@ const projectsData: Record<number, ProjectData> = {
       "Tests et optimisation pour environnements multi-écrans",
     ],
     technologies: ["C++17", "Qt6", "CMake", "Python"],
+    github: null,
+  },
+  8: {
+    title: "MANGO - Gestion musicale",
+    category: "Full-Stack",
+    description:
+      "MANGO est une application web complète pour gérer et consulter des données musicales : albums, artistes, pistes, studios d'enregistrement et beatmakers. Un backend Node.js/Express expose une API REST documentée (OpenAPI), avec persistance MongoDB via Mongoose, pagination, liens HATEOAS et authentification JWT pour les opérations d'écriture. Le frontend Angular propose la consultation publique, une zone d'administration protégée par guard et intercepteur HTTP, et une interface avec Tailwind CSS.",
+    competences: [
+      "Développement d'API REST avec Express",
+      "Modélisation et persistance NoSQL (MongoDB, Mongoose)",
+      "Authentification et autorisation JWT",
+      "Développement frontend avec Angular et TypeScript",
+      "Routage, guards et intercepteurs HTTP",
+      "Conteneurisation avec Docker et Docker Compose",
+    ],
+    objectifs: [
+      "Centraliser la gestion des entités musicales et leurs relations",
+      "Exposer une API cohérente, paginée et sécurisée pour le CRUD",
+      "Offrir une interface web de consultation et d'administration",
+      "Assurer le déploiement reproductible des services (base, API, UI)",
+    ],
+    techniques: [
+      "Conception de schémas Mongoose et routes REST",
+      "Middleware d'authentification et protection des verbes HTTP sensibles",
+      "Services Angular et programmation réactive (RxJS)",
+      "Documentation API (OpenAPI) et client REST de test côté backend",
+    ],
+    technologies: [
+      "Angular",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Mongoose",
+      "Tailwind CSS",
+      "Docker",
+    ],
+    github: "https://github.com/paaulrbn/MANGO",
+  },
+  9: {
+    title: "SILOSE - Suivi des effectifs",
+    category: "Alternance · Backend API",
+    description:
+      "SILOSE est un système d'information pour le suivi des effectifs des laboratoires de recherche. Il est développé de façon collaborative par plusieurs laboratoires du site grenoblois, avec un backend PHP CodeIgniter 3, PostgreSQL et un frontend Angular. En alternance, je contribue sur la modernisation du backend : passage de CodeIgniter 3 à CodeIgniter 4 et mise en place de tests automatisés avec PHPUnit.",
+    competences: [
+      "Migration d'une base de code CodeIgniter 3 vers CodeIgniter 4",
+      "Tests unitaires et d'intégration API avec PHPUnit",
+      "Travail en équipe sur un dépôt partagé",
+      "Lecture et adaptation de contrôleurs REST existants",
+    ],
+    objectifs: [
+      "Réduire l'écart fonctionnel entre l'API CI3 et la cible CI4",
+      "Sécuriser les régressions via une suite de tests sur les contrôleurs",
+      "Documenter et reproduire les usages de référence",
+    ],
+    techniques: [
+      "Portage d'API REST de CodeIgniter 3 vers CodeIgniter 4",
+      "Intégration de tests PHPUnit au projet",
+      "Modèles CodeIgniter 4 : règles de validation, règles personnalisées et accès données",
+    ],
+    technologies: [
+      "PHP",
+      "CodeIgniter 4",
+      "PHPUnit",
+      "PostgreSQL",
+      "Composer",
+    ],
     github: null,
   },
 };
@@ -276,52 +314,59 @@ const projects = [
   },
   {
     id: 2,
-    title: "Base de Données Titanic",
-    description:
-      "Modélisation complète d'une base de données PostgreSQL sur le naufrage du Titanic",
-    tags: ["PostgreSQL", "SQL"],
-  },
-  {
-    id: 3,
     title: "Site Institutionnel Capgemini",
     description:
       "Conception et réalisation du site web institutionnel de Capgemini pour les élèves de 3ème",
     tags: ["HTML", "CSS", "JavaScript"],
   },
   {
-    id: 4,
+    id: 3,
     title: "Thibou - Guide de Musée",
     description:
       "Application web d'optimisation de parcours dans un musée avec itinéraires personnalisés",
     tags: ["React", "Next.js", "TypeScript"],
   },
   {
-    id: 5,
+    id: 4,
     title: "Gestion de Stages",
     description:
       "Solution complète de gestion des stages avec back-office web et application mobile Android",
     tags: ["Symfony", "Android", "API REST"],
   },
   {
-    id: 6,
+    id: 5,
     title: "École des Loustics",
     description:
       "Application éducative Android avec mini-jeux pour développer les compétences en mathématiques",
     tags: ["Android Java", "Room DB"],
   },
   {
-    id: 7,
+    id: 6,
     title: "ACDeces - Pompes Funèbres",
     description:
       "Application JavaFX de gestion complète pour pompes funèbres avec calendrier et planning",
     tags: ["Java", "JavaFX"],
   },
   {
-    id: 8,
+    id: 7,
     title: "PCPWidget - Visualisation",
     description:
       "Outil de visualisation C++/Qt6 pour données multidimensionnelles avec coordonnées parallèles",
     tags: ["C++17", "Qt6", "Python"],
+  },
+  {
+    id: 8,
+    title: "MANGO - Gestion musicale",
+    description:
+      "API REST Node.js/MongoDB et application Angular pour gérer albums, artistes, pistes, studios et beatmakers",
+    tags: ["Angular", "Node.js", "MongoDB"],
+  },
+  {
+    id: 9,
+    title: "SILOSE - Silabo",
+    description:
+      "Alternance : migration backend CodeIgniter 3 vers 4 et tests PHPUnit",
+    tags: ["PHP", "CodeIgniter 4", "PHPUnit"],
   },
 ];
 

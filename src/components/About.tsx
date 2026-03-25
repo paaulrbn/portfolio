@@ -164,8 +164,10 @@ const Languages = () => {
     { name: "Next.js", icon: "/icons/nextjs.svg" },
     { name: "Angular", icon: "/icons/angular.svg" },
     { name: "Symfony", icon: "/icons/symfony.svg" },
+    { name: "CodeIgniter", icon: "/icons/codeigniter.svg" },
     { name: "Django", icon: "/icons/django.svg" },
     { name: "Android", icon: "/icons/android.svg" },
+    { name: "Flutter", icon: "/icons/flutter.svg" },
   ];
 
   const content = (
@@ -190,6 +192,7 @@ const Tools = () => {
   const tools = [
     { name: "Git", icon: "/icons/git.svg" },
     { name: "VS Code", icon: "/icons/vscode.svg" },
+    { name: "Cursor", icon: "/icons/cursor.svg" },
     { name: "JetBrains", icon: "/icons/jetbrains.svg" },
     { name: "Figma", icon: "/icons/figma.svg" },
     { name: "Notion", icon: "/icons/notion.svg" },
@@ -200,6 +203,8 @@ const Tools = () => {
     { name: "Docker", icon: "/icons/docker.svg" },
     { name: "PostgreSQL", icon: "/icons/postgresql.svg" },
     { name: "MongoDB", icon: "/icons/mongodb.svg" },
+    { name: "Elasticsearch", icon: "/icons/elasticsearch.svg" },
+    { name: "Kibana", icon: "/icons/kibana.svg" },
   ];
 
   const content = (
