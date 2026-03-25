@@ -1,23 +1,10 @@
 @import "tailwindcss";
 
 @font-face {
-    font-family: "Sora";
-    src: url("/fonts/Sora-VariableFont_wght.ttf") format("truetype");
-    font-weight: 100 900;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Monument Extended";
-    src: url("/fonts/MonumentExtended-Regular.otf") format("opentype");
-    font-weight: 400;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Monument Extended";
-    src: url("/fonts/MonumentExtended-Ultrabold.otf") format("opentype");
-    font-weight: 800;
+    font-family: "SF Pro";
+    src: url("/fonts/SF-Pro.woff2") format("woff2");
+    font-weight: 1 1000;
+    font-stretch: 30% 150%;
     font-display: swap;
 }
 
@@ -35,8 +22,23 @@
     font-display: swap;
 }
 
+.font-sf-hero {
+    font-family: "SF Pro", system-ui, sans-serif;
+    font-variation-settings: "wght" 1000, "wdth" 150, "opsz" 28;
+}
+
+.font-sf-section-title {
+    font-family: "SF Pro", system-ui, sans-serif;
+    font-variation-settings: "wght" 700, "wdth" 150, "opsz" 28;
+}
+
+.font-sf-explore {
+    font-family: "SF Pro", system-ui, sans-serif;
+    font-variation-settings: "wght" 300, "wdth" 100, "opsz" 17;
+}
+
 :root {
-    font-family: "Sora", sans-serif;
+    font-family: "SF Pro", system-ui, sans-serif;
     color-scheme: dark;
     color: #e8e8e0;
     background-color: #060608;

@@ -371,7 +371,7 @@ function Project() {
         className="flex flex-col justify-center mx-4 sm:mx-6 md:mx-8 mt-28 sm:mt-36 gap-10 sm:gap-14 pb-4"
       >
         <FadeIn direction="up" distance={40}>
-          <div style={{ fontFamily: "Monument Extended" }}>
+          <div className="font-sf-section-title">
             <BlurText
               text="PROJETS"
               delay={80}
@@ -393,8 +393,7 @@ function Project() {
             const content = (
               <>
                 <div
-                  className="absolute top-2 right-4 text-8xl font-bold text-white/10 select-none pointer-events-none"
-                  style={{ fontFamily: "Monument Extended" }}
+                  className="font-sf-section-title absolute top-2 right-4 text-8xl text-white/10 select-none pointer-events-none"
                 >
                   {String(proj.id).padStart(2, "0")}
                 </div>

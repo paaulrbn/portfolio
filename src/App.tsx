@@ -17,7 +17,9 @@ function App() {
     <div id="top" className="relative min-h-dvh overflow-visible">
       <Analytics />
       <div
-        className="fixed inset-0 z-0 h-dvh w-full pointer-events-none"
+        className={`fixed inset-0 h-dvh w-full pointer-events-none ${
+          isMenuOpen ? "z-40" : "z-0"
+        }`}
         aria-hidden
       >
         <Suspense>
@@ -34,7 +36,6 @@ function App() {
 
       <div className="relative z-10">
         <Header onMenuClick={() => setIsMenuOpen(true)} />
-        <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
         <main id="contenu-principal">
           <Hero />
           <About />
@@ -42,6 +43,8 @@ function App() {
           <Contact />
         </main>
       </div>
+
+      <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </div>
   );
 }

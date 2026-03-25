@@ -86,7 +86,7 @@ function Menu({ isOpen, onClose }: MenuProps) {
             duration: EXIT_DURATION,
             ease: [0.4, 0, 0.2, 1],
           }}
-          className="fixed inset-0 z-50 bg-[#060608]/97 backdrop-blur-xl overflow-hidden"
+          className="fixed inset-0 z-50 bg-[#060608]/20 backdrop-blur-md overflow-hidden"
           onClick={onClose}
         >
           <div

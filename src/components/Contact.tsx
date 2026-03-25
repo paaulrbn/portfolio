@@ -307,7 +307,7 @@ export default function Contact() {
               >
                 Contact
               </p>
-              <div style={{ fontFamily: "Monument Extended, sans-serif" }}>
+              <div className="font-sf-section-title">
                 <BlurText
                   text="CONTACT"
                   delay={80}

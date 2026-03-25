@@ -63,8 +63,7 @@ const ExploreIndicator = ({
           fill="currentColor"
           fontSize="13"
           letterSpacing="0.2em"
-          fontFamily="Sora"
-          fontWeight="300"
+          className="font-sf-explore"
         >
           EXPLORE
         </text>

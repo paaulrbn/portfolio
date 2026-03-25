@@ -106,8 +106,7 @@ function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2, ease }}
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.92] tracking-[-0.03em] text-balance"
-          style={{ fontFamily: "Monument Extended" }}
+          className="font-sf-hero text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl leading-[0.92] tracking-[-0.03em] text-balance"
         >
           PAUL
           <br />

@@ -229,7 +229,7 @@ export default function About() {
       className="flex flex-col justify-center mx-4 sm:mx-6 md:mx-8 mt-28 sm:mt-36 gap-10 sm:gap-14 pb-4"
     >
       <FadeIn direction="up" distance={40}>
-        <div style={{ fontFamily: "Monument Extended" }}>
+        <div className="font-sf-section-title">
           <BlurText
             text="À PROPOS"
             delay={80}
