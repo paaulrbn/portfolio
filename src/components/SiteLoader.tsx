@@ -6,6 +6,7 @@ import {
 } from "motion/react";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
+const exitCurve = [0.76, 0, 0.24, 1] as const;
 const MIN_MS = 720;
 const MAX_WAIT_MS = 12000;
 
@@ -33,7 +34,6 @@ export default function SiteLoader({ onComplete }: SiteLoaderProps) {
   const [progress, setProgress] = useState(0);
   const completeRef = useRef(false);
   const rafRef = useRef(0);
-  const didCompleteCallbackRef = useRef(false);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -47,8 +47,8 @@ export default function SiteLoader({ onComplete }: SiteLoaderProps) {
     const tick = () => {
       if (completeRef.current) return;
       const elapsed = performance.now() - start;
-      const asymptotic = 1 - Math.exp(-elapsed / 2400) * 0.12;
-      setProgress(Math.min(0.88, asymptotic));
+      const raw = 1 - Math.exp(-elapsed / 600);
+      setProgress(Math.min(0.95, raw));
       rafRef.current = requestAnimationFrame(tick);
     };
     rafRef.current = requestAnimationFrame(tick);
@@ -75,9 +75,11 @@ export default function SiteLoader({ onComplete }: SiteLoaderProps) {
       completeRef.current = true;
       cancelAnimationFrame(rafRef.current);
       setProgress(1);
-      const delayOut = reduceMotion ? 80 : 420;
+      const delayOut = reduceMotion ? 60 : 350;
       window.setTimeout(() => {
-        if (!cancelled) setShow(false);
+        if (cancelled) return;
+        onComplete();
+        setShow(false);
       }, delayOut);
     });
 
@@ -86,29 +88,25 @@ export default function SiteLoader({ onComplete }: SiteLoaderProps) {
     };
   }, [reduceMotion]);
 
+  const displayPercent = Math.round(progress * 100);
+
   return (
-    <AnimatePresence
-      onExitComplete={() => {
-        if (didCompleteCallbackRef.current) return;
-        didCompleteCallbackRef.current = true;
-        onComplete();
-      }}
-    >
+    <AnimatePresence>
       {show && (
         <motion.div
           key="site-loader"
           role="status"
           aria-live="polite"
           aria-label="Chargement du site"
-          initial={{ opacity: 1 }}
+          initial={{ y: "0%" }}
           exit={
             reduceMotion
               ? { opacity: 0 }
-              : { opacity: 0, filter: "blur(12px)" }
+              : { y: "-100%" }
           }
           transition={{
-            duration: reduceMotion ? 0.12 : 0.55,
-            ease,
+            duration: reduceMotion ? 0.1 : 0.65,
+            ease: exitCurve,
           }}
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#060608] px-6"
         >
@@ -121,28 +119,28 @@ export default function SiteLoader({ onComplete }: SiteLoaderProps) {
           />
 
           <motion.p
-            className="font-sf-hero mb-10 text-center text-[clamp(2rem,8vw,4.5rem)] leading-none tracking-[-0.03em] text-[#e8e8e0]"
-            initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+            className="font-sf-hero text-center text-[clamp(1.05rem,3vw,1.6rem)] leading-none tracking-[-0.01em] text-[#e8e8e0]"
+            initial={reduceMotion ? false : { opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, ease, delay: 0.08 }}
+            transition={{ duration: 0.35, ease, delay: 0.04 }}
           >
             Paul Roubinet
           </motion.p>
 
-          <div className="relative h-px w-[min(18rem,72vw)] overflow-hidden bg-[#e8e8e0]/12">
-            <div
-              className="h-full bg-[#e8e8e0]/85 transition-[width] duration-300 ease-out"
-              style={{ width: `${Math.round(progress * 100)}%` }}
-            />
-          </div>
-
           <motion.span
-            className="mt-4 font-sf-explore text-[0.6875rem] uppercase tracking-[0.28em] text-[#e8e8e0]/45"
+            className="mt-6 text-[#e8e8e0]/75"
+            style={{
+              fontFamily: '"Andale Mono", monospace',
+              fontSize: "1.2rem",
+              fontVariantNumeric: "tabular-nums",
+              letterSpacing: "0.12em",
+            }}
             initial={reduceMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.35, duration: 0.4 }}
+            transition={{ delay: 0.15, duration: 0.25 }}
+            aria-label={`${displayPercent} pourcent`}
           >
-            Chargement
+            {String(displayPercent).padStart(2, "\u2007")}<span className="opacity-70">%</span>
           </motion.span>
         </motion.div>
       )}

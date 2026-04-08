@@ -5,11 +5,12 @@ import { useHaptics } from "../hooks/useHaptics";
 
 interface HeaderProps {
   onMenuClick: () => void;
+  siteReady?: boolean;
 }
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
-export default function Header({ onMenuClick }: HeaderProps) {
+export default function Header({ onMenuClick, siteReady = false }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const { hapticMedium } = useHaptics();
 
@@ -69,7 +70,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
         <motion.p
           layout="position"
           initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 0.8, y: 0 }}
+          animate={siteReady ? { opacity: 0.8, y: 0 } : { opacity: 0, y: -10 }}
           transition={{ duration: 0.5, delay: 0.1, ease }}
           className="text-sm sm:text-base tracking-wider flex items-baseline gap-4 sm:gap-8"
         >
@@ -104,7 +105,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
         <motion.p
           layout="position"
           initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 0.8, y: 0 }}
+          animate={siteReady ? { opacity: 0.8, y: 0 } : { opacity: 0, y: -10 }}
           transition={{ duration: 0.5, delay: 0.2, ease }}
           className="hidden md:block text-sm sm:text-base tracking-wider"
         >
@@ -114,7 +115,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
         <motion.button
           layout="position"
           initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 0.8, y: 0 }}
+          animate={siteReady ? { opacity: 0.8, y: 0 } : { opacity: 0, y: -10 }}
           transition={{ duration: 0.5, delay: 0.3, ease }}
           whileTap={{ scale: 0.94 }}
           onClick={handleMenuClick}

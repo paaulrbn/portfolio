@@ -41,9 +41,9 @@ function App() {
       </div>
 
       <div className="relative z-10">
-        <Header onMenuClick={() => setIsMenuOpen(true)} />
+        <Header onMenuClick={() => setIsMenuOpen(true)} siteReady={siteReady} />
         <main id="contenu-principal" aria-busy={!siteReady}>
-          <Hero />
+          <Hero siteReady={siteReady} />
           <About />
           <Project />
           <Contact />

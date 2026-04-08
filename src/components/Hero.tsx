@@ -7,7 +7,11 @@ const ease = [0.25, 0.1, 0.25, 1] as const;
 const LUMA_THRESHOLD = 25;
 const CANVAS_SCALE = 0.5;
 
-function Hero() {
+interface HeroProps {
+  siteReady?: boolean;
+}
+
+function Hero({ siteReady = false }: HeroProps) {
   const [mouse, setMouse] = React.useState({ x: 0, y: 0 });
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
@@ -104,7 +108,7 @@ function Hero() {
       <div className="flex flex-col gap-5 sm:gap-7 mt-auto sm:my-auto">
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={siteReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.9, delay: 0.2, ease }}
           className="font-sf-hero text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl leading-[0.92] tracking-[-0.03em] text-balance"
         >
@@ -115,7 +119,7 @@ function Hero() {
 
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          animate={siteReady ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.6, delay: 0.8, ease }}
           className="max-w-sm"
         >
@@ -133,7 +137,7 @@ function Hero() {
 
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.5 }}
+        animate={siteReady ? { opacity: 0.5 } : { opacity: 0 }}
         transition={{ duration: 0.5, delay: 1.5, ease }}
         className="hidden sm:flex flex-row gap-0 justify-end text-xs"
         style={{ letterSpacing: "0.1em", fontFamily: "Andale Mono" }}
@@ -162,7 +166,7 @@ function Hero() {
 
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.45 }}
+        animate={siteReady ? { opacity: 0.45 } : { opacity: 0 }}
         transition={{ duration: 1.5, delay: 0.4, ease }}
         aria-hidden="true"
         className="pointer-events-none aspect-auto
@@ -175,7 +179,7 @@ function Hero() {
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        animate={siteReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.8, delay: 1.6, ease }}
         className="absolute left-1/2 -translate-x-1/2 bottom-0"
       >
