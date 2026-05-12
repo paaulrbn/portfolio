@@ -103,7 +103,8 @@ function Hero({ siteReady = false }: HeroProps) {
   return (
     <section
       aria-label="Introduction"
-      className="flex flex-col items-start min-h-svh w-full px-4 sm:px-6 md:px-8 pt-20 sm:pt-24 pb-24 sm:pb-28 relative overflow-hidden"
+      className="flex flex-col items-start min-h-svh w-full h-full relative overflow-hidden
+                px-4 sm:px-6 md:px-8 pt-20 sm:pt-5 pb-24 sm:pb-5 "
     >
       <div className="flex flex-col gap-5 sm:gap-7 mt-auto sm:my-auto">
         <motion.h1

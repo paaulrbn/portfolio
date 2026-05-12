@@ -85,19 +85,15 @@ export default function Contact() {
   };
 
   const inputClasses =
-    "w-full pl-10 pr-4 py-3 rounded-xl border bg-white/3 text-[#F3F3EC] placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#e8e8e0]/25 focus:border-white/22 focus:bg-white/5 transition-all duration-200 text-sm font-light";
+    "w-full pl-10 pr-3 py-3 rounded-xl border bg-white/3 text-[#F3F3EC] " +
+    "placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#e8e8e0]/25 " +
+    "focus:border-white/22 focus:bg-white/5 transition-[background-color,border-color,box-shadow,color] duration-200 text-base font-light";
   const inputBorder = (field: keyof typeof errors) =>
     errors[field] ? "border-red-300/35" : "border-white/8";
 
   const formBlock = (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-4">
       <div className="relative group">
-        <label
-          htmlFor="contact-name"
-          className="block text-xs font-medium opacity-65 mb-2 tracking-[0.03em]"
-        >
-          Nom
-        </label>
         <div className="relative">
           <User
             className="absolute left-3 top-1/2 -translate-y-1/2 opacity-40 group-focus-within:opacity-70 transition-opacity"
@@ -129,12 +125,6 @@ export default function Contact() {
       </div>
 
       <div className="relative group">
-        <label
-          htmlFor="contact-subject"
-          className="block text-xs font-medium opacity-65 mb-2 tracking-[0.03em]"
-        >
-          Objet
-        </label>
         <div className="relative">
           <Sparkles
             className="absolute left-3 top-1/2 -translate-y-1/2 opacity-40 group-focus-within:opacity-70 transition-opacity"
@@ -167,15 +157,9 @@ export default function Contact() {
       </div>
 
       <div className="relative group">
-        <label
-          htmlFor="contact-message"
-          className="block text-xs font-medium opacity-65 mb-2 tracking-[0.03em]"
-        >
-          Message
-        </label>
         <div className="relative">
           <MessageSquare
-            className="absolute left-3 top-3.5 opacity-40 group-focus-within:opacity-70 transition-opacity"
+            className="absolute left-3 top-4 opacity-40 group-focus-within:opacity-70 transition-opacity"
             size={16}
             strokeWidth={1.5}
           />
@@ -190,7 +174,7 @@ export default function Contact() {
             aria-describedby={
               errors.message ? "contact-message-error" : undefined
             }
-            className={`${inputClasses} resize-none ${inputBorder("message")}`}
+            className={`${inputClasses} min-h-32 resize-y ${inputBorder("message")}`}
           />
         </div>
         {errors.message && (
@@ -208,7 +192,7 @@ export default function Contact() {
         type="button"
         onClick={handleSubmit}
         whileTap={{ scale: 0.98 }}
-        className="group relative mt-1 w-full py-3 px-6 rounded-full font-medium text-sm text-[#0a0a0c] bg-[#F3F3EC] hover:bg-[#fafaf6] transition-all duration-200 flex items-center justify-center gap-2 overflow-hidden cursor-pointer hover:shadow-[0_20px_48px_-12px_rgba(232,232,224,0.18)] hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#e8e8e0]/55"
+        className="group relative w-full py-3 px-6 rounded-xl font-medium text-sm text-[#0a0a0c] bg-[#F3F3EC] hover:bg-[#fafaf6] transition-all duration-200 flex items-center justify-center gap-2 overflow-hidden cursor-pointer hover:shadow-[0_20px_48px_-12px_rgba(232,232,224,0.18)] hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#e8e8e0]/55"
       >
         <span className="relative z-10 flex items-center gap-2">
           <Send
@@ -265,7 +249,7 @@ export default function Contact() {
             <FadeIn delay={0.06} distance={24}>
               <div className="flex flex-row flex-wrap items-center justify-between gap-x-4 gap-y-3">
                 <div className="min-w-0">
-                  <p className="text-lg sm:text-xl md:text-2xl font-medium tracking-[-0.02em] text-[#e8e8e0]/95 normal-case">
+                  <p className="text-lg sm:text-xl md:text-2xl font-medium text-[#e8e8e0]/95 normal-case">
                     Paul Roubinet
                   </p>
                   <p className="mt-1.5 text-sm opacity-50 tracking-wide">
@@ -326,7 +310,7 @@ export default function Contact() {
             </FadeIn>
 
             <FadeIn delay={0.1} distance={28}>
-              <div className="rounded-2xl border border-white/8 bg-white/4 backdrop-blur-md p-5 sm:p-7 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.5)]">
+              <div className="rounded-4xl border border-white/8 bg-white/4 backdrop-blur-md p-4 sm:p-6 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.5)]">
                 {formBlock}
               </div>
             </FadeIn>
