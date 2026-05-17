@@ -87,7 +87,7 @@ export default function Contact() {
   const inputClasses =
     "w-full pl-10 pr-3 py-3 rounded-xl border bg-white/3 text-[#F3F3EC] " +
     "placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#e8e8e0]/25 " +
-    "focus:border-white/22 focus:bg-white/5 transition-[background-color,border-color,box-shadow,color] duration-200 text-base font-light";
+    "focus:border-white/22 focus:bg-white/5 transition-[background-color,border-color,box-shadow,color] duration-200";
   const inputBorder = (field: keyof typeof errors) =>
     errors[field] ? "border-red-300/35" : "border-white/8";
 
@@ -116,7 +116,7 @@ export default function Contact() {
         {errors.name && (
           <p
             id="contact-name-error"
-            className="mt-1.5 text-xs text-red-200/80"
+            className="mt-1.5 text-sm text-red-200/80"
             role="alert"
           >
             {errors.name}
@@ -148,7 +148,7 @@ export default function Contact() {
         {errors.subject && (
           <p
             id="contact-subject-error"
-            className="mt-1.5 text-xs text-red-200/80"
+            className="mt-1.5 text-sm text-red-200/80"
             role="alert"
           >
             {errors.subject}
@@ -180,7 +180,7 @@ export default function Contact() {
         {errors.message && (
           <p
             id="contact-message-error"
-            className="mt-1.5 text-xs text-red-200/80"
+            className="mt-1.5 text-sm text-red-200/80"
             role="alert"
           >
             {errors.message}
@@ -192,11 +192,14 @@ export default function Contact() {
         type="button"
         onClick={handleSubmit}
         whileTap={{ scale: 0.98 }}
-        className="group relative w-full py-3 px-6 rounded-xl font-medium text-sm text-[#0a0a0c] bg-[#F3F3EC] hover:bg-[#fafaf6] transition-all duration-200 flex items-center justify-center gap-2 overflow-hidden cursor-pointer hover:shadow-[0_20px_48px_-12px_rgba(232,232,224,0.18)] hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#e8e8e0]/55"
+        className="group relative w-full py-3 px-6 rounded-xl font-medium text-[#0a0a0c] bg-[#F3F3EC] hover:bg-[#fafaf6] 
+        transition-all duration-200 flex items-center justify-center gap-2 overflow-hidden cursor-pointer 
+        hover:shadow-[0_20px_48px_-12px_rgba(232,232,224,0.18)] hover:-translate-y-0.5 active:translate-y-0 
+        focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#e8e8e0]/55"
       >
         <span className="relative z-10 flex items-center gap-2">
           <Send
-            size={15}
+            size={16}
             className="transition-transform group-hover:translate-x-0.5"
           />
           Envoyer
@@ -236,10 +239,10 @@ export default function Contact() {
                       toFontVariationSettings={navToSettings}
                       radius={72}
                       falloff="gaussian"
-                      className="text-2xl sm:text-3xl md:text-4xl tracking-tight leading-none"
+                      className="text-2xl sm:text-3xl md:text-4xl leading-none"
                       style={{
                         color: "inherit",
-                        fontFamily: '"Roboto Flex Footer", sans-serif',
+                        fontFamily: '"Inter", sans-serif',
                       }}
                     />
                   </a>
@@ -252,7 +255,7 @@ export default function Contact() {
                   <p className="text-lg sm:text-xl md:text-2xl font-medium text-[#e8e8e0]/95 normal-case">
                     Paul Roubinet
                   </p>
-                  <p className="mt-1.5 text-sm opacity-50 tracking-wide">
+                  <p className="mt-1.5 text opacity-50 tracking-wide">
                     Développeur full-stack
                   </p>
                 </div>
@@ -293,7 +296,7 @@ export default function Contact() {
               </p>
               <div className="font-sf-section-title">
                 <BlurText
-                  text="CONTACT"
+                  text="Contact"
                   delay={80}
                   animateBy="letters"
                   direction="bottom"
@@ -303,7 +306,7 @@ export default function Contact() {
                   animationTo={[{ filter: "blur(0px)", opacity: 1, y: 0 }]}
                 />
               </div>
-              <p className="mt-4 text-sm opacity-70 prose-readable text-pretty max-w-lg">
+              <p className="mt-4 opacity-70 prose-readable text-pretty max-w-lg">
                 Un projet, une question ou une idée : écrivez-moi, je réponds
                 dès que possible.
               </p>

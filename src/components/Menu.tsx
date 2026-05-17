@@ -86,7 +86,7 @@ function Menu({ isOpen, onClose }: MenuProps) {
             duration: EXIT_DURATION,
             ease: [0.4, 0, 0.2, 1],
           }}
-          className="fixed inset-0 z-50 bg-[#060608]/20 backdrop-blur-md overflow-hidden"
+          className="fixed inset-0 z-50 overflow-hidden"
           onClick={onClose}
         >
           <div
@@ -140,7 +140,7 @@ function Menu({ isOpen, onClose }: MenuProps) {
               <span className="text-sm tracking-wider font-light opacity-60">
                 FERMER
               </span>
-              <div className="w-10 h-10 rounded-full border border-white/18 bg-white/6 flex items-center justify-center backdrop-blur-sm">
+              <div className="w-10 h-10 rounded-full border border-white/18 flex items-center justify-center backdrop-blur-sm">
                 <X size={18} strokeWidth={1.5} />
               </div>
             </motion.button>

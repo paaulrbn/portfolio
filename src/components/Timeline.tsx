@@ -19,11 +19,11 @@ const TimelineItem = ({
       )}
     </div>
     <div className={isLast ? "" : "pb-5"}>
-      <span className="text-xs font-medium tracking-wide opacity-60 uppercase">
+      <span className="text-sm font-medium tracking-wide opacity-60">
         {entry.period}
       </span>
       <h4 className="font-medium mt-1 text-[0.95rem]">{entry.title}</h4>
-      <p className="text-sm opacity-70 leading-relaxed mt-0.5">{entry.description}</p>
+      <p className="opacity-70 leading-relaxed mt-0.5">{entry.description}</p>
     </div>
   </div>
 );

@@ -50,14 +50,14 @@ export default function Header({ onMenuClick, siteReady = false }: HeaderProps) 
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? "bg-[#060608]/48 backdrop-blur-md outline-1 outline-[#e8e8e0]/6"
+          ? "bg-[#060608]/0 backdrop-blur-xl outline-1 outline-[#e8e8e0]/6 shadow-2xl shadow-blue-500/8"
           : "bg-transparent outline-1 outline-[#e8e8e0]/0"
       }`}
       style={
         scrolled
           ? {
-              boxShadow:
-                "0 20px 48px -20px rgba(6, 6, 8, 0.35)",
+              // boxShadow:
+              //   "0 20px 48px -20px rgba(6, 6, 8, 0.35)",
             }
           : undefined
       }
@@ -65,7 +65,7 @@ export default function Header({ onMenuClick, siteReady = false }: HeaderProps) 
       <motion.div
         layout
         transition={{ layout: { duration: 0.35, ease } }}
-        className="max-w-[1400px] mx-auto flex items-center justify-between px-4 sm:px-6 md:px-8 py-5 sm:py-6"
+        className="max-w-[1400px] mx-auto flex items-center justify-between px-4 sm:px-6 md:px-8 py-6 sm:py-8"
       >
         <motion.p
           layout="position"
@@ -84,7 +84,7 @@ export default function Header({ onMenuClick, siteReady = false }: HeaderProps) 
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.35, ease }}
               >
-                PAUL ROUBINET
+                Paul Roubinet
               </motion.span>
             ) : (
               <motion.span
@@ -95,7 +95,7 @@ export default function Header({ onMenuClick, siteReady = false }: HeaderProps) 
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.35, ease }}
               >
-                GRENOBLE, FRANCE
+                Grenoble, France
               </motion.span>
             )}
           </AnimatePresence>
@@ -121,7 +121,7 @@ export default function Header({ onMenuClick, siteReady = false }: HeaderProps) 
           onClick={handleMenuClick}
           className="flex items-center gap-2.5 text-sm sm:text-base tracking-wider rounded-md px-1 -mx-1 py-1 hover:opacity-100 opacity-90 transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8e8e0]/45"
         >
-          MENU
+          Menu
           <MenuIcon size={22} strokeWidth={1.5} />
         </motion.button>
       </motion.div>

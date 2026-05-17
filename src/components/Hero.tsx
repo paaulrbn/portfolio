@@ -111,11 +111,9 @@ function Hero({ siteReady = false }: HeroProps) {
           initial={{ opacity: 0, y: 40 }}
           animate={siteReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.9, delay: 0.2, ease }}
-          className="font-sf-hero text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl leading-[0.92] tracking-[-0.03em] text-balance"
+          className="font-sf-hero text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl leading-none tracking-[-1.4px] text-balance"
         >
-          PAUL
-          <br />
-          ROUBINET
+          Paul Roubinet
         </motion.h1>
 
         <motion.div
@@ -130,7 +128,7 @@ function Hero({ siteReady = false }: HeroProps) {
             animateBy="words"
             direction="bottom"
             stepDuration={0.4}
-            className="text-sm sm:text-base leading-[1.65] opacity-80 max-w-[65ch]"
+            className="text sm:text-base leading-[1.65] opacity-80 max-w-[65ch]"
           />
         </motion.div>
 
@@ -141,7 +139,7 @@ function Hero({ siteReady = false }: HeroProps) {
         animate={siteReady ? { opacity: 0.5 } : { opacity: 0 }}
         transition={{ duration: 0.5, delay: 1.5, ease }}
         className="hidden sm:flex flex-row gap-0 justify-end text-xs"
-        style={{ letterSpacing: "0.1em", fontFamily: "Andale Mono" }}
+        style={{ letterSpacing: "0.1em", fontFamily: "Jetbrains Mono" }}
       >
         <div className="flex flex-col text-white/40">
           <span>[X]</span>
@@ -182,7 +180,7 @@ function Hero({ siteReady = false }: HeroProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={siteReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.8, delay: 1.6, ease }}
-        className="absolute left-1/2 -translate-x-1/2 bottom-0"
+        className="absolute left-1/2 -translate-x-1/2 bottom-0 "
       >
         <ExploreIndicator
           onClick={() =>
