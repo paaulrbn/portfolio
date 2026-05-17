@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import {
   Send,
   User,
@@ -23,21 +23,7 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
-const ROBOTO_FLEX_URL = "/fonts/RobotoFlex-Variable.woff2";
-
 export default function Contact() {
-  useEffect(() => {
-    const font = new FontFace("Roboto Flex Footer", `url(${ROBOTO_FLEX_URL})`, {
-      weight: "100 1000",
-      stretch: "25% 151%",
-      style: "normal",
-      display: "swap",
-      unicodeRange: "U+0020-007E, U+00C0-00FF",
-    });
-    font.load().then((loaded) => {
-      document.fonts.add(loaded);
-    }).catch(() => {});
-  }, []);
   const [formData, setFormData] = useState({
     name: "",
     subject: "",

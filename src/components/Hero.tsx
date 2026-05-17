@@ -128,7 +128,7 @@ function Hero({ siteReady = false }: HeroProps) {
             animateBy="words"
             direction="bottom"
             stepDuration={0.4}
-            className="text sm:text-base leading-[1.65] opacity-80 max-w-[65ch]"
+            className="leading-[1.65] opacity-80 max-w-[65ch]"
           />
         </motion.div>
 
@@ -138,7 +138,7 @@ function Hero({ siteReady = false }: HeroProps) {
         initial={{ opacity: 0 }}
         animate={siteReady ? { opacity: 0.5 } : { opacity: 0 }}
         transition={{ duration: 0.5, delay: 1.5, ease }}
-        className="hidden sm:flex flex-row gap-0 justify-end text-xs"
+        className="hidden sm:flex flex-row gap-0 justify-end text-sm"
         style={{ letterSpacing: "0.1em", fontFamily: "Jetbrains Mono" }}
       >
         <div className="flex flex-col text-white/40">
