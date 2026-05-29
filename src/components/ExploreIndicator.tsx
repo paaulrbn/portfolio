@@ -1,5 +1,3 @@
-import { useHaptics } from "../hooks/useHaptics";
-
 const ExploreIndicator = ({
   size = 160,
   color = "#e8e8e0",
@@ -11,17 +9,11 @@ const ExploreIndicator = ({
   className?: string;
   onClick?: () => void;
 }) => {
-  const { hapticMedium } = useHaptics();
-
-  const handleClick = () => {
-    hapticMedium();
-    onClick?.();
-  };
-
   return (
     <button
       type="button"
-      onClick={handleClick}
+      data-haptic="impact-medium"
+      onClick={onClick}
       className={`${className} cursor-pointer opacity-40 hover:opacity-70 active:scale-95 transition-all duration-200 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8e8e0]/45`}
       aria-label="Explorer le contenu"
       style={{

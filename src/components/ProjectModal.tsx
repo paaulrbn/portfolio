@@ -61,6 +61,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </h2>
               </div>
               <button
+                type="button"
+                data-haptic="impact-light"
                 onClick={onClose}
                 className="flex items-center justify-center w-10 h-10 rounded-full border border-white/18 cursor-pointer"
                 aria-label="Fermer la fiche projet"

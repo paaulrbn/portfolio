@@ -11,7 +11,6 @@ import { motion } from "motion/react";
 import FadeIn from "./ReactBits/FadeIn";
 import BlurText from "./ReactBits/BlurText";
 import VariableProximity from "./ReactBits/VariableProximity";
-import { useHaptics } from "../hooks/useHaptics";
 
 const navFromSettings = "'wght' 520, 'wdth' 100";
 const navToSettings = "'wght' 900, 'wdth' 118";
@@ -34,7 +33,6 @@ export default function Contact() {
     subject?: string;
     message?: string;
   }>({});
-  const { hapticSuccess, hapticLight } = useHaptics();
   const contactSectionRef = useRef<HTMLElement | null>(null);
 
   const handleChange = (
@@ -58,7 +56,6 @@ export default function Contact() {
     setErrors(next);
     if (Object.keys(next).length > 0) return;
 
-    hapticSuccess();
     const mailtoLink = `mailto:paaul.rbn@gmail.com?subject=${encodeURIComponent(
       subject,
     )}&body=${encodeURIComponent(`${message}\n\n\n${name}`)}`;
@@ -66,8 +63,11 @@ export default function Contact() {
   };
 
   const scrollToTop = () => {
-    hapticLight();
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const scrollToSection = (href: string) => {
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
   const inputClasses =
@@ -176,6 +176,7 @@ export default function Contact() {
 
       <motion.button
         type="button"
+        data-haptic="impact-medium"
         onClick={handleSubmit}
         whileTap={{ scale: 0.98 }}
         className="group relative w-full py-3 px-6 rounded-xl font-medium text-[#0a0a0c] bg-[#F3F3EC] hover:bg-[#fafaf6] 
@@ -212,11 +213,12 @@ export default function Contact() {
                 aria-label="Navigation du site"
               >
                 {navLinks.map(({ label, href }) => (
-                  <a
+                  <button
                     key={label}
-                    href={href}
-                    onClick={() => hapticLight()}
-                    className="block w-fit py-0.5 text-[#e8e8e0]/88 hover:text-[#e8e8e0] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8e8e0]/40 rounded-sm"
+                    type="button"
+                    data-haptic="impact-light"
+                    onClick={() => scrollToSection(href)}
+                    className="block w-fit py-0.5 text-[#e8e8e0]/88 hover:text-[#e8e8e0] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8e8e0]/40 rounded-sm bg-transparent border-0 cursor-pointer text-left"
                   >
                     <VariableProximity
                       label={label}
@@ -231,7 +233,7 @@ export default function Contact() {
                         fontFamily: '"Inter", sans-serif',
                       }}
                     />
-                  </a>
+                  </button>
                 ))}
               </nav>
             </FadeIn>
@@ -246,19 +248,25 @@ export default function Contact() {
                   </p>
                 </div>
                 <div className="flex items-center gap-2.5 shrink-0">
-                  <motion.a
-                    href="https://github.com/paaulrbn"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <motion.button
+                    type="button"
+                    data-haptic="impact-light"
+                    onClick={() => {
+                      window.open(
+                        "https://github.com/paaulrbn",
+                        "_blank",
+                        "noopener,noreferrer",
+                      );
+                    }}
                     whileTap={{ scale: 0.92 }}
-                    onClick={() => hapticLight()}
                     className="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/4 hover:bg-white/10 hover:border-white/18 transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#e8e8e0]/40"
                     aria-label="Profil GitHub"
                   >
                     <Github size={16} strokeWidth={1.5} />
-                  </motion.a>
+                  </motion.button>
                   <motion.button
                     type="button"
+                    data-haptic="impact-light"
                     whileTap={{ scale: 0.92 }}
                     onClick={scrollToTop}
                     className="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/4 hover:bg-white/10 hover:border-white/18 transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#e8e8e0]/40"

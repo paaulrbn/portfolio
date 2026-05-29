@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu as MenuIcon } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { useHaptics } from "../hooks/useHaptics";
 
 interface HeaderProps {
   onMenuClick: () => void;
@@ -12,7 +11,6 @@ const ease = [0.25, 0.1, 0.25, 1] as const;
 
 export default function Header({ onMenuClick, siteReady = false }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
-  const { hapticMedium } = useHaptics();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -40,11 +38,6 @@ export default function Header({ onMenuClick, siteReady = false }: HeaderProps) 
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-
-  const handleMenuClick = () => {
-    hapticMedium();
-    onMenuClick();
-  };
 
   return (
     <header
@@ -114,11 +107,12 @@ export default function Header({ onMenuClick, siteReady = false }: HeaderProps) 
 
         <motion.button
           layout="position"
+          data-haptic="impact-medium"
           initial={{ opacity: 0, y: -10 }}
           animate={siteReady ? { opacity: 0.8, y: 0 } : { opacity: 0, y: -10 }}
           transition={{ duration: 0.5, delay: 0.3, ease }}
           whileTap={{ scale: 0.94 }}
-          onClick={handleMenuClick}
+          onClick={onMenuClick}
           className="flex items-center gap-2.5 text-sm sm:text-base tracking-wider rounded-md px-1 -mx-1 py-1 hover:opacity-100 opacity-90 transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8e8e0]/45"
         >
           Menu

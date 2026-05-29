@@ -1,7 +1,6 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
-import { useHaptics } from "../hooks/useHaptics";
 
 interface MenuProps {
   isOpen: boolean;
@@ -21,7 +20,6 @@ function Menu({ isOpen, onClose }: MenuProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [starRotation, setStarRotation] = useState(-12.9);
   const isOpenRef = useRef(isOpen);
-  const { hapticLight, hapticSelection } = useHaptics();
 
   useEffect(() => {
     isOpenRef.current = isOpen;
@@ -66,13 +64,14 @@ function Menu({ isOpen, onClose }: MenuProps) {
   }, [isOpen, onClose]);
 
   const handleClose = () => {
-    hapticLight();
     onClose();
   };
 
-  const handleNavClick = () => {
-    hapticSelection();
+  const handleNavClick = (href: string) => {
     onClose();
+    requestAnimationFrame(() => {
+      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    });
   };
 
   return (
@@ -123,6 +122,7 @@ function Menu({ isOpen, onClose }: MenuProps) {
             </motion.div>
 
             <motion.button
+              data-haptic="impact-light"
               initial={{ opacity: 0, y: -16 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
@@ -138,7 +138,7 @@ function Menu({ isOpen, onClose }: MenuProps) {
               aria-label="Fermer le menu"
             >
               <span className="text-sm tracking-wider font-light opacity-60">
-                FERMER
+                Fermer
               </span>
               <div className="w-10 h-10 rounded-full border border-white/18 flex items-center justify-center backdrop-blur-sm">
                 <X size={18} strokeWidth={1.5} />
@@ -150,14 +150,12 @@ function Menu({ isOpen, onClose }: MenuProps) {
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {menuItems.map((item, index) => (
-                <motion.a
+                <motion.button
                   key={item.label}
-                  href={item.href}
-                  onClick={handleNavClick}
-                  onMouseEnter={() => {
-                    setHoveredIndex(index);
-                    hapticSelection();
-                  }}
+                  type="button"
+                  data-haptic="selection"
+                  onClick={() => handleNavClick(item.href)}
+                  onMouseEnter={() => setHoveredIndex(index)}
                   initial={{ x: 80, opacity: 0 }}
                   animate={{
                     x: 0,
@@ -177,11 +175,11 @@ function Menu({ isOpen, onClose }: MenuProps) {
                     },
                   }}
                   whileTap={{ scale: 0.96 }}
-                  className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl py-2 sm:py-3 md:py-5 font-medium cursor-pointer"
-                  style={{ fontFamily: "Cirka" }}
+                  className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl py-2 sm:py-3 md:py-5 font-medium cursor-pointer text-left bg-transparent border-0 p-0"
+                  style={{ fontFamily: "Cirka", color: "inherit" }}
                 >
                   {item.label}
-                </motion.a>
+                </motion.button>
               ))}
             </nav>
           </div>

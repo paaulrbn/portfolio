@@ -5,21 +5,17 @@ import BlurText from "./ReactBits/BlurText";
 import CardBackground from "./CardBackground";
 import ProjectModal from "./ProjectModal";
 import { projects, projectsData } from "../data/projects";
-import { useHaptics } from "../hooks/useHaptics";
 
 function Project() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
-  const { hapticRigid, hapticLight } = useHaptics();
 
   const openModal = (id: number) => {
-    hapticRigid();
     setSelectedId(id);
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
   };
 
   const closeModal = () => {
-    hapticLight();
     setSelectedId(null);
     document.body.style.overflow = "";
     document.documentElement.style.overflow = "";
@@ -86,12 +82,14 @@ function Project() {
                 <TiltedCard
                   className="h-full"
                   overlayContent={
-                    <div
+                    <button
+                      type="button"
+                      data-haptic="impact-heavy"
                       onClick={() => openModal(proj.id)}
-                      className="p-5 sm:p-6 flex flex-col h-full cursor-pointer group"
+                      className="p-5 sm:p-6 flex flex-col h-full cursor-pointer group w-full text-left bg-transparent border-0"
                     >
                       {content}
-                    </div>
+                    </button>
                   }
                 >
                   <CardBackground
