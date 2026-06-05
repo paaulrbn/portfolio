@@ -6,6 +6,7 @@ import BlurText from "./ReactBits/BlurText";
 const ease = [0.25, 0.1, 0.25, 1] as const;
 const LUMA_THRESHOLD = 25;
 const CANVAS_SCALE = 0.5;
+const DESKTOP_MQ = "(min-width: 640px)";
 
 interface HeroProps {
   siteReady?: boolean;
@@ -16,8 +17,19 @@ function Hero({ siteReady = false }: HeroProps) {
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
   const [videoSrc, setVideoSrc] = React.useState<string | null>(null);
+  const [showVideo, setShowVideo] = React.useState(
+    () => typeof window !== "undefined" && window.matchMedia(DESKTOP_MQ).matches
+  );
 
   React.useEffect(() => {
+    const mq = window.matchMedia(DESKTOP_MQ);
+    const update = () => setShowVideo(mq.matches);
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  React.useEffect(() => {
+    if (!showVideo) return;
     const hasRIC = typeof requestIdleCallback !== "undefined";
     const id = hasRIC
       ? requestIdleCallback(() => setVideoSrc("/ascii.webm"))
@@ -26,7 +38,7 @@ function Hero({ siteReady = false }: HeroProps) {
       if (hasRIC) cancelIdleCallback(id as number);
       else clearTimeout(id as number);
     };
-  }, []);
+  }, [showVideo]);
 
   React.useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -40,6 +52,7 @@ function Hero({ siteReady = false }: HeroProps) {
   }, []);
 
   React.useEffect(() => {
+    if (!showVideo) return;
     const video = videoRef.current;
     const canvas = canvasRef.current;
     if (!video || !canvas) return;
@@ -48,9 +61,11 @@ function Hero({ siteReady = false }: HeroProps) {
     if (!ctx) return;
 
     let rafId = 0;
+    let active = false;
     const hasRVFC = "requestVideoFrameCallback" in video;
 
     const processFrame = () => {
+      if (!active) return;
       if (video.readyState >= 2 && canvas.width > 0) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -78,27 +93,52 @@ function Hero({ siteReady = false }: HeroProps) {
       canvas.height = Math.floor(video.videoHeight * CANVAS_SCALE);
     };
 
-    const resumePlayback = () => {
+    const startPlayback = () => {
+      if (!siteReady) return;
+      active = true;
+      video.currentTime = 0;
       video.play().catch(() => {});
+      if (hasRVFC) {
+        (video as HTMLVideoElement & { requestVideoFrameCallback: (cb: () => void) => void })
+          .requestVideoFrameCallback(processFrame);
+      } else {
+        processFrame();
+      }
+    };
+
+    const stopPlayback = () => {
+      active = false;
+      video.pause();
+      video.currentTime = 0;
+      cancelAnimationFrame(rafId);
+    };
+
+    const resumePlayback = () => {
+      if (siteReady && active) video.play().catch(() => {});
     };
 
     video.addEventListener("loadedmetadata", initCanvas);
     video.addEventListener("pause", resumePlayback);
     if (video.readyState >= 1) initCanvas();
 
-    if (hasRVFC) {
-      (video as HTMLVideoElement & { requestVideoFrameCallback: (cb: () => void) => void })
-        .requestVideoFrameCallback(processFrame);
+    if (siteReady) {
+      if (video.readyState >= 2) {
+        startPlayback();
+      } else {
+        video.addEventListener("canplay", startPlayback, { once: true });
+      }
     } else {
-      processFrame();
+      stopPlayback();
     }
 
     return () => {
+      active = false;
       video.removeEventListener("loadedmetadata", initCanvas);
       video.removeEventListener("pause", resumePlayback);
+      video.removeEventListener("canplay", startPlayback);
       cancelAnimationFrame(rafId);
     };
-  }, []);
+  }, [showVideo, siteReady]);
 
   return (
     <section
@@ -106,7 +146,7 @@ function Hero({ siteReady = false }: HeroProps) {
       className="flex flex-col items-start min-h-svh w-full h-full relative overflow-hidden
                 px-4 sm:px-6 md:px-8 pt-20 sm:pt-5 pb-24 sm:pb-5 "
     >
-      <div className="flex flex-col gap-5 sm:gap-7 mt-auto sm:my-auto">
+      <div className="flex flex-col gap-5 sm:gap-7 my-auto">
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={siteReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
@@ -151,30 +191,33 @@ function Hero({ siteReady = false }: HeroProps) {
         </div>
       </motion.div>
 
-      <video
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        playsInline
-        aria-hidden="true"
-        style={{ position: "absolute", top: 0, left: 0, width: "1px", height: "1px", opacity: 0, pointerEvents: "none" }}
-      >
-        {videoSrc && <source src={videoSrc} type="video/webm" />}
-      </video>
+      {showVideo && (
+        <>
+          <video
+            ref={videoRef}
+            loop
+            muted
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+            style={{ position: "absolute", top: 0, left: 0, width: "1px", height: "1px", opacity: 0, pointerEvents: "none" }}
+          >
+            {videoSrc && <source src={videoSrc} type="video/webm" />}
+          </video>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={siteReady ? { opacity: 0.45 } : { opacity: 0 }}
-        transition={{ duration: 1.5, delay: 0.4, ease }}
-        aria-hidden="true"
-        className="pointer-events-none aspect-auto
-                  w-1/2 mx-auto m-4 mb-16
-                  sm:w-1/3 sm:right-5 sm:absolute sm:top-1/2 sm:-translate-y-1/2"
-        style={{ zIndex: "-1" }}
-      >
-        <canvas ref={canvasRef} style={{ width: "100%", height: "100%" }} />
-      </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={siteReady ? { opacity: 0.45 } : { opacity: 0 }}
+            transition={{ duration: 1.5, delay: 0.4, ease }}
+            aria-hidden="true"
+            className="pointer-events-none aspect-auto hidden sm:block
+                      sm:w-1/3 sm:right-5 sm:absolute sm:top-1/2 sm:-translate-y-1/2"
+            style={{ zIndex: "-1" }}
+          >
+            <canvas ref={canvasRef} style={{ width: "100%", height: "100%" }} />
+          </motion.div>
+        </>
+      )}
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
