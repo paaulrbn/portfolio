@@ -61,6 +61,9 @@ function Project() {
                 <h3 className="text-md font-semibold mb-2 leading-snug relative z-10">
                   {proj.title}
                 </h3>
+                <p className="text-sm opacity-60 mb-2 relative z-10">
+                  {proj.date}
+                </p>
                 <p className="opacity-70 leading-relaxed mb-2 grow relative z-10">
                   {proj.description}
                 </p>

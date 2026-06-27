@@ -163,7 +163,7 @@ function Hero({ siteReady = false }: HeroProps) {
           className="max-w-sm"
         >
           <BlurText
-            text="Étudiant en BUT Informatique à l'IUT2 de Grenoble. Passionné par la technologie et la programmation, je développe des solutions créatives et fonctionnelles."
+            text="Étudiant en BUT Informatique à l'IUT2 de Grenoble et futur étudiant en master MIAGE. Passionné par la technologie et la programmation, je développe des solutions créatives et fonctionnelles."
             delay={20}
             animateBy="words"
             direction="bottom"

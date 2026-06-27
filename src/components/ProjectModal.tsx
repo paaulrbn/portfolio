@@ -59,6 +59,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 <h2 className="text-xl sm:text-2xl font-semibold leading-snug">
                   {project.title}
                 </h2>
+                <p className="text-sm text-[#e8e8e0]/55">{project.date}</p>
               </div>
               <button
                 type="button"

@@ -21,7 +21,7 @@ const WhoAmI = () => {
         <p className="opacity-80 leading-relaxed">
           Je suis Paul Roubinet, j'ai 20 ans et je suis étudiant en 3ème
           année de BUT Informatique à l'IUT2 de Grenoble, dans le parcours
-          réalisation d'applications.
+          réalisation d'applications et futur étudiant en master MIAGE.
         </p>
         <p className="opacity-80 leading-relaxed">
           Je suis développeur Fullstack passionné par le développement web, le
