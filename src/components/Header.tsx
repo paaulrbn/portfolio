@@ -70,22 +70,22 @@ export default function Header({ onMenuClick, siteReady = false }: HeaderProps) 
             {scrolled ? (
               <motion.span
                 key="name"
-                layout="position"
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 0.9, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.35, ease }}
+                className="whitespace-nowrap"
               >
                 Paul Roubinet
               </motion.span>
             ) : (
               <motion.span
                 key="location"
-                layout="position"
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 0.9, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.35, ease }}
+                className="whitespace-nowrap"
               >
                 Grenoble, France
               </motion.span>
