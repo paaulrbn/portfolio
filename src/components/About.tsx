@@ -13,13 +13,24 @@ import CardBackground from "./CardBackground";
 import SectionTitle from "./SectionTitle";
 import Timeline, { type TimelineEntry } from "./Timeline";
 
+const getAge = (birthDate: Date): number => {
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
+};
+
 const WhoAmI = () => {
+  const age = getAge(new Date(2005, 5, 30));
   const content = (
     <>
       <SectionTitle icon={User} title="Qui suis-je" />
       <div className="flex flex-col gap-3">
         <p className="opacity-80 leading-relaxed">
-          Je suis Paul Roubinet, j'ai 20 ans et je suis étudiant en 3ème
+          Je suis Paul Roubinet, j'ai {age} ans et je suis étudiant en 3ème
           année de BUT Informatique à l'IUT2 de Grenoble, dans le parcours
           réalisation d'applications et futur étudiant en master MIAGE.
         </p>
@@ -28,7 +39,7 @@ const WhoAmI = () => {
           développement d'applications et la cybersécurité.
         </p>
         <p className="opacity-80 leading-relaxed">
-          Titulaire du permis B, je suis toujours curieux d'apprendre de
+          Titulaire du permis B. Je suis toujours curieux d'apprendre de
           nouvelles technologies. J'ai développé mes compétences en autodidacte
           en parallèle de ma formation.
         </p>
@@ -97,7 +108,12 @@ const Experience = () => {
 
 const educationEntries: TimelineEntry[] = [
   {
-    period: "2023 - Présent",
+    period: "2026",
+    title: "Master MIAGE",
+    description: "Méthodes Informatiques Appliquées à la Gestion des Entreprises",
+  },
+  {
+    period: "2023 - 2026",
     title: "BUT Informatique, parcours réalisation d'applications",
     description: "IUT2 de Grenoble",
   },

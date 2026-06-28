@@ -41,17 +41,16 @@ export default function Header({ onMenuClick, siteReady = false }: HeaderProps) 
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled
           ? "bg-[#060608]/0 backdrop-blur-xl outline-1 outline-[#e8e8e0]/6 shadow-2xl shadow-blue-500/8"
           : "bg-transparent outline-1 outline-[#e8e8e0]/0"
-      }`}
+        }`}
       style={
         scrolled
           ? {
-              // boxShadow:
-              //   "0 20px 48px -20px rgba(6, 6, 8, 0.35)",
-            }
+            // boxShadow:
+            //   "0 20px 48px -20px rgba(6, 6, 8, 0.35)",
+          }
           : undefined
       }
     >
@@ -92,7 +91,7 @@ export default function Header({ onMenuClick, siteReady = false }: HeaderProps) 
               </motion.span>
             )}
           </AnimatePresence>
-          <span className="tabular-nums">{time}</span>
+          <motion.span layout="position" transition={{ duration: 0.35, ease }} className="tabular-nums">{time}</motion.span>
         </motion.p>
 
         <motion.p

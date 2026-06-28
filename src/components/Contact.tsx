@@ -5,6 +5,7 @@ import {
   MessageSquare,
   Sparkles,
   Github,
+  Linkedin,
   ArrowUp,
 } from "lucide-react";
 import { motion } from "motion/react";
@@ -248,6 +249,22 @@ export default function Contact() {
                   </p>
                 </div>
                 <div className="flex items-center gap-2.5 shrink-0">
+                  <motion.button
+                    type="button"
+                    data-haptic="impact-light"
+                    onClick={() => {
+                      window.open(
+                        "https://www.linkedin.com/in/paul-roubinet-b5457a353/",
+                        "_blank",
+                        "noopener,noreferrer",
+                      );
+                    }}
+                    whileTap={{ scale: 0.92 }}
+                    className="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/4 hover:bg-white/10 hover:border-white/18 transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#e8e8e0]/40"
+                    aria-label="Profil LinkedIn"
+                  >
+                    <Linkedin size={16} strokeWidth={1.5} />
+                  </motion.button>
                   <motion.button
                     type="button"
                     data-haptic="impact-light"
