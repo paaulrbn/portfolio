@@ -207,7 +207,7 @@ function Hero({ siteReady = false }: HeroProps) {
 
           <motion.div
             initial={{ opacity: 0 }}
-            animate={siteReady ? { opacity: 0.45 } : { opacity: 0 }}
+            animate={siteReady ? { opacity: 0.65 } : { opacity: 0 }}
             transition={{ duration: 1.5, delay: 0.4, ease }}
             aria-hidden="true"
             className="pointer-events-none aspect-auto hidden sm:block
