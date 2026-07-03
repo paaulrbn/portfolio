@@ -10,13 +10,18 @@ interface HeaderProps {
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
 export default function Header({ onMenuClick, siteReady = false }: HeaderProps) {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
+    const onScroll = () => {
+      const progress = Math.min(window.scrollY / 80, 1);
+      setScrollProgress(progress);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const scrolled = scrollProgress > 0.5;
 
   const [time, setTime] = useState(
     new Date().toLocaleTimeString("fr-FR", {
@@ -40,20 +45,11 @@ export default function Header({ onMenuClick, siteReady = false }: HeaderProps) 
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled
-          ? "bg-[#060608]/0 backdrop-blur-xl outline-1 outline-[#e8e8e0]/6 shadow-2xl shadow-blue-500/8"
-          : "bg-transparent outline-1 outline-[#e8e8e0]/0"
-        }`}
-      style={
-        scrolled
-          ? {
-            // boxShadow:
-            //   "0 20px 48px -20px rgba(6, 6, 8, 0.35)",
-          }
-          : undefined
-      }
-    >
+    <header className="fixed top-0 left-0 right-0 z-40 overflow-visible">
+      <div aria-hidden style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: "-8px", backdropFilter: `blur(${20 * scrollProgress}px)`, WebkitBackdropFilter: `blur(${20 * scrollProgress}px)`, maskImage: "linear-gradient(to bottom, black 50%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, black 50%, transparent 100%)", pointerEvents: "none" }} />
+      <div aria-hidden style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: "-16px", backdropFilter: `blur(${12 * scrollProgress}px)`, WebkitBackdropFilter: `blur(${12 * scrollProgress}px)`, maskImage: "linear-gradient(to bottom, black 35%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, black 35%, transparent 100%)", pointerEvents: "none" }} />
+      <div aria-hidden style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: "-24px", backdropFilter: `blur(${6 * scrollProgress}px)`, WebkitBackdropFilter: `blur(${6 * scrollProgress}px)`, maskImage: "linear-gradient(to bottom, black 20%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, black 20%, transparent 100%)", pointerEvents: "none" }} />
+      <div aria-hidden style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: "-32px", backdropFilter: `blur(${2 * scrollProgress}px)`, WebkitBackdropFilter: `blur(${2 * scrollProgress}px)`, maskImage: "linear-gradient(to bottom, black 5%,  transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, black 5%,  transparent 100%)", pointerEvents: "none" }} />
       <motion.div
         layout
         transition={{ layout: { duration: 0.35, ease } }}
